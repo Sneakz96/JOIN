@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!--#BOOTSTRAP-->
+    <!--#FONTS-->
+    <link rel="stylesheet" href="./css/fonts.css">
+    <!--#CSS-->
+    <link rel="stylesheet" href="./css/responsive.css">
+    <link rel="stylesheet" href="./css/root.css">
+    <link rel="stylesheet" href="./css/style.css">
+    <!--#JS-->
+    <script src="./js/menu.js"></script>
+    <script src="./js/script.js"></script>
+    <!--#FAVICON-->
+    <link rel="icon" type="image/png" href="./img/logo.png">
+    <!--#TITLE-->
+    <title>Our.Join</title>
+</head>
+
+<body onload="init()">
+    <div class="side-menu">
+        <img src="./img/logo.png" class="logo">
+        <div class="menu-links">
+            <a href="#" id="board" class="active" onclick="changeOnBoard()">Board</a>
+            <a href="#" id="backlog" onclick="changeOnBacklog()">Backlog</a>
+            <a href="#" id="addtask" onclick="changeOnAddTask()">AddTask</a>
+            <a href="#" id="help" onclick="changeOnHelp()">Help</a>
+        </div>
+        <div class="logged-profile">
+            <img src="./img/jahleel.jpg" class="profile-picture profile-logo">
+        </div>
+    </div>
+    <div class="main">
+        <div id="content" class="content">
+            <div class="board-content">
+                <div class="container">
+                    <h2 class="text-align-c">to do</h2>
+                    <div class="board-container" id="toDo">
+                    </div>
+                </div>
+                <div class="container">
+                    <h2 class="text-align-c">in progress</h2>
+                    <div class="board-container" id="inProgress">
+                    </div>
+                </div>
+                <div class="container">
+                    <h2 class="text-align-c">testing</h2>
+                    <div class="board-container" id="testing">
+                    </div>
+                </div>
+                <div class="container">
+                    <h2 class="text-align-c">done</h2>
+                    <div class="board-container" id="done">
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="backlogContent" class="content d-none">
+            <div class="headline">
+                <h2>Backlog</h2>
+                <span class="sub-header">Learning Management System Project</span>
+            </div>
+            <div class="table-header">
+                <span>assigned to</span>
+                <span>category</span>
+                <span>details</span>
+            </div>
+            <div class="logs">
+                <div class="contact-card">
+                    <div class="color"></div>
+                    <div class="infos">
+                        <div class="contact">
+                            <img src="./img/jahleel.jpg" class="profile-picture img">
+                            <div class="contact-name">
+                                <span>Jahleel Heider</span>
+                                <a href="#">Jahleelr-h@gmx.de</a>
+                            </div>
+                        </div>
+                        <div id="category">
+                            Office
+                        </div>
+                        <span class="detail-card">Lorem ipsum dolor sit amet consectetur adipisicing elit. Optio
+                            deserunt itaque doloremque saepe quasi ipsa, cupiditate magni!</span>
+                    </div>
+                </div>
+                <div class="contact-card"></div>
+                <div class="contact-card"></div>
+                <div class="contact-card"></div>
+            </div>
+        </div>
+        <div id="addtaskContent" class="content d-none">
+            <div class="headline">
+                <h2>Add Task</h2>
+                <span class="sub-header">Learning Management System Project</span>
+            </div>
+            <div class="new-task">
+                <div>
+                    <h3>title</h3>
+                    <input type="text" class="input-field" placeholder="Management meeting preparation">
+                    <h3>category</h3>
+                    <div class="d-flex">
+                        <input type="text" class="input-field" placeholder="Management">
+                        <img src="./img/chevron.png" class="icon">
+                    </div>
+                    <h3>description</h3>
+                    <input type="text" class="description-container input-field"
+                        placeholder="Eveniet odit veniam aliquid, eaque saepe quasi recusandae quod quia dicta aut, magnam obcaecati cumque eos doloribus molestias totam? Ex, eveniet excepturi!">
+                </div>
+                <div>
+                    <h3>due date</h3>
+                    <input type="date" class="input-field">
+                    <h3>urgency</h3>
+                    <div class="d-flex">
+                        <input type="text" class="input-field " placeholder="High">
+                        <img src="./img/chevron.png" class="icon">
+                    </div>
+                    <h3>assigned to</h3>
+                    <div class="assigned-to-images">
+                        <img src="./img/jahleel.jpg" class="profile-picture">
+                        <img src="./img/icon plus.png" class="plus">
+                    </div>
+                    <div class="buttons">
+                        <button class="cancel">cancel</button>
+                        <button class="create-task">create task</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div id="helpContent" class="d-none">
+
+        </div>
+    </div>
+
+
+    <div class="footer">
+        <p>Logos stammen u. A. von <a href="https://icons8.com">https://icons8.com</a></p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,15 @@
+/*ROOT*/
+
+.d-none{
+    display: none;
+}
+
+.text-align-c{
+    text-align: center;
+}
+
+.d-flex{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}

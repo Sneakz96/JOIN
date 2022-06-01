@@ -1,0 +1,295 @@
+* {
+    margin: 0;
+    padding: 0;
+    font-family: 'PT Sans';
+}
+
+/*SIDE-MENU*/
+
+.side-menu {
+    height: 100vh;
+    width: 160px;
+    background-color: rgb(61, 73, 202);
+}
+
+.logo {
+    margin: 40px;
+    height: 100px;
+}
+
+.logo:hover {
+    cursor: pointer;
+}
+
+.menu-links {
+    display: flex;
+    align-items: flex-start;
+    justify-content: center;
+    flex-direction: column;
+    margin-top: 20%;
+    width: 100%;
+    margin-left: 20%;
+}
+
+.menu-links a {
+    text-decoration: none;
+    color: rgb(250, 250, 250);
+    margin-top: 15px;
+    font-size: 23px;
+}
+
+.menu-links a:hover {
+    cursor: pointer;
+    margin-left: 10px;
+    border-left: 5px solid white;
+}
+
+.active {
+    margin-right: 10px;
+    border-left: 5px solid white;
+}
+
+.logged-profile {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.profile-logo {
+    position: fixed;
+    bottom: 100px;
+    border: 4px solid white;
+}
+
+/*MAIN*/
+
+h2 {
+    color: #000;
+    text-transform: uppercase;
+}
+
+.headline {
+    margin-left: 50px;
+}
+
+.sub-header {
+    color: rgb(10, 42, 172);
+}
+
+.main {
+    display: flex;
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 160px;
+    height: 100vh;
+}
+
+.content {
+    width: 100%;
+    margin-top: 100px;
+    margin-bottom: 100px;
+}
+
+.board-content {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+}
+
+.container {
+    width: 220px;
+}
+
+.board-container {
+    background-color: rgb(239, 239, 239);
+    min-height: 500px;
+}
+
+.txt {
+    margin: 50px;
+}
+
+/*BACKLOG*/
+
+.table-header {
+    color: rgb(10, 42, 172);
+    font-size: 21px;
+    font-weight: 600;
+    text-transform: uppercase;
+    display: flex;
+    justify-content: space-between;
+    margin-left: 50px;
+    margin-right: 50px;
+    margin-top: 50px;
+}
+
+.logs {
+    margin-left: 50px;
+    margin-right: 50px;
+}
+
+.contact-card {
+    height: 125px;
+    background-color: rgb(231, 231, 231);
+    border-radius: 20px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 21px;
+}
+
+.color {
+    height: 100%;
+    width: 1rem;
+    background-color: rgb(255, 145, 0);
+    border-top-left-radius: 20px;
+    border-bottom-left-radius: 20px;
+}
+
+.infos {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 100%;
+}
+
+.contact {
+    display: flex;
+    margin-right: 10%;
+}
+
+.profile-picture {
+    height: 100px;
+    width: 100px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 100%;
+}
+
+.profile-picture:hover {
+    cursor: pointer;
+}
+
+.img {
+    margin-left: 30px;
+    margin-right: 30px;
+}
+
+.contact-name {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-direction: column;
+}
+
+.contact-name a {
+    text-decoration: none;
+    color: rgb(10, 42, 172);
+}
+
+
+.detail-card {
+    max-width: 460px;
+    margin-right: 20px;
+}
+
+/*ADD TASK*/
+
+h3 {
+    text-transform: uppercase;
+    color: rgb(10, 42, 172);
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+.new-task {
+    margin-left: 50px;
+    margin-top: 50px;
+    display: flex;
+    justify-content: space-evenly;
+    width: 90%;
+    background-color: rgb(227, 227, 227);
+    padding: 30px;
+}
+
+.input-field {
+    padding: 10px;
+    width: 300px;
+    border: 1px solid lightgrey;
+}
+
+.icon {
+    height: 18px;
+    background-color: white;
+    padding: 10px;
+    border: 1px solid lightgrey;
+    border-left: none;
+}
+
+.icon:hover {
+    cursor: pointer;
+}
+
+.description-container {
+    height: 220px;
+    display: block;
+    word-wrap: break-word;
+}
+
+.assigned-to-images {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    margin-top: 50px;
+    margin-left: 20px;
+}
+
+.plus {
+    margin-left: 20px;
+}
+
+.plus:hover {
+    cursor: pointer;
+}
+
+.buttons {
+    display: flex;
+    justify-content: flex-end;
+    margin-top: 30px;
+}
+
+
+
+
+.cancel {
+    padding: 15px;
+    font-size: 21px;
+    border: none;
+    border-radius: 10px;
+    color: rgb(10, 42, 172);
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.cancel:hover {
+    cursor: pointer;
+}
+
+.create-task {
+    padding: 15px;
+    font-size: 21px;
+    border: none;
+    border-radius: 10px;
+    color: white;
+    background-color: rgb(10, 42, 172);
+    margin-left: 20px;
+    text-transform: uppercase;
+    font-weight: 500;
+}
+
+.create-task:hover {
+    cursor: pointer;
+}
