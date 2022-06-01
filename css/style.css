@@ -61,6 +61,12 @@
     border: 4px solid white;
 }
 
+.mb-menu-button{
+    display: none;
+    height: 40px;
+    margin: 40px;
+}
+
 /*MAIN*/
 
 h2 {
