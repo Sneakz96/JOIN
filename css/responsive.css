@@ -95,28 +95,35 @@
         height: 100px !important;
         font-size: 16px !important;
     }
+
     .contact {
         display: flex;
         margin-right: 0px !important;
         margin-left: 8px;
     }
+
     .detail-card {
         display: none !important;
     }
-    .logs{
+
+    .logs {
         margin-left: 10px !important;
         margin-right: 10px !important;
     }
-    .img{
+
+    .img {
         display: none;
     }
+
     .infos {
         display: flex;
         align-items: center;
         justify-content: space-around !important;
         width: 100%;
     }
-    .info-icon{
+
+    .info-icon {
+        display: flex;
         margin-left: 30px;
         margin-right: 30px;
     }

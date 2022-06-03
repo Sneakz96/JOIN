@@ -33,8 +33,10 @@ function changeOnAddTask(){
 
 function changeOnHelp(){
     document.getElementById('help').classList.add('active');
+    document.getElementById('addtaskContent').classList.add('d-none');
     document.getElementById('content').classList.add('d-none');
     document.getElementById('board').classList.remove('active');
     document.getElementById('backlog').classList.remove('active');
+    document.getElementById('backlogContent').classList.add('d-none');
     document.getElementById('addtask').classList.remove('active');
 }

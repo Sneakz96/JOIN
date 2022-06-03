@@ -1,15 +1,29 @@
 /*ROOT*/
 
-.d-none{
+.d-none {
     display: none;
 }
 
-.text-align-c{
+.text-align-c {
     text-align: center;
 }
 
-.d-flex{
+.d-flex {
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.txt {
+    margin: 50px;
+}
+
+/*BG_COLORS*/
+
+.bg-blue {
+    background-color: rgb(61, 73, 202);
+}
+
+.bg-blue:hover {
+    background-color: rgb(61, 73, 202);
 }
