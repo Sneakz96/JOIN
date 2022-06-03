@@ -1,4 +1,4 @@
-let pins = [];
+let allTasks = [];
 
 
 function init() {
@@ -18,24 +18,24 @@ function createTask() {
         'title' :title,
         'category' : category,
         'description' : description,
+        'createdAt' : new Date().getTime(),
         'dueDate': dueDate,
         'urgency' : urgency,
     }
     
     
-    console.log(task);
-
-
-
-
-
-
-
+    allTasks.push(task);
+    
+    console.log(allTasks);
 
 
     addToDo();
     addBacklog();
+
 }
+
+
+
 
 function addToDo() {
     let toDo = document.getElementById('toDo');
