@@ -6,23 +6,46 @@ function init() {
 }
 
 
-function addTask() {
-    let = document.getElementById('');
-    let = document.getElementById('');
+function createTask() {
+    let title = document.getElementById('title').value;
+    let category = document.getElementById('categoryBtn').innerHTML;
+    let description = document.getElementById('description').value;
+    let dueDate = document.getElementById('dueDate').value;
+    let urgency = document.getElementById('urgencyBtn').innerHTML;
+    //let asiTo = document.getElementById('').value;
+
+    let task = {
+        'title' :title,
+        'category' : category,
+        'description' : description,
+        'dueDate': dueDate,
+        'urgency' : urgency,
+    }
+    
+    
+    console.log(task);
 
 
+
+
+
+
+
+
+
+    addToDo();
+    addBacklog();
 }
 
-function createTask() {
+function addToDo() {
     let toDo = document.getElementById('toDo');
-    let logs = document.getElementById('logs');
-
     toDo.innerHTML += createTask_TEMPLATE_TO_DO();
+}
 
+function addBacklog() {
+    let logs = document.getElementById('logs');
     logs.innerHTML += createTask_TEMPLATE_LOGS();
 }
-
-
 
 
 

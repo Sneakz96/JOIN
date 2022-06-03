@@ -86,10 +86,9 @@
             </div>
 
             <div class="logs" id="logs">
-              
+
             </div>
         </div>
-
 
         <div id="addtaskContent" class="content d-none">
             <div class="headline">
@@ -99,52 +98,55 @@
             <div class="new-task">
                 <div>
                     <h3>title</h3>
-                    <input type="text" class="input-field" placeholder="Management meeting preparation">
-
-
+                    <input type="text" id="title" class="input-field" placeholder="Management meeting preparation">
                     <h3>category</h3>
                     <div class="btn-group">
                         <button id="categoryBtn" class="btn bg-blue btn-secondary btn-lg" type="button">
                             TEAM
                         </button>
-                        <button type="button" class="btn btn-lg bg-blue btn-secondary dropdown-toggle dropdown-toggle-split"
+                        <button type="button"
+                            class="btn btn-lg bg-blue btn-secondary dropdown-toggle dropdown-toggle-split"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>
                         <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#" onclick="changeCategoryButtonTxt_MANAGEMENT()">Management</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="changeCategoryButtonTxt_MARKETING()">Marketing</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="changeCategoryButtonTxt_FINANCE()">Finance</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="changeCategoryButtonTxt_OPERATION_MANAGEMENT()">Operations Management</a></li>
+                            <li><a class="dropdown-item" href="#"
+                                    onclick="changeCategoryButtonTxt_MANAGEMENT()">Management</a></li>
+                            <li><a class="dropdown-item" href="#"
+                                    onclick="changeCategoryButtonTxt_MARKETING()">Marketing</a></li>
+                            <li><a class="dropdown-item" href="#"
+                                    onclick="changeCategoryButtonTxt_FINANCE()">Finance</a></li>
+                            <li><a class="dropdown-item" href="#"
+                                    onclick="changeCategoryButtonTxt_OPERATION_MANAGEMENT()">Operations Management</a>
+                            </li>
                             <li><a class="dropdown-item" href="#" onclick="changeCategoryButtonTxt_IT()">IT</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="changeCategoryButtonTxt_HUMAN_RESOURCE()">Human Resource</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="changeCategoryButtonTxt_COSTUMER_SERVICE()">Costumer Service</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="changeCategoryButtonTxt_PRODUCTION()">Production</a></li>
+                            <li><a class="dropdown-item" href="#"
+                                    onclick="changeCategoryButtonTxt_HUMAN_RESOURCE()">Human Resource</a></li>
+                            <li><a class="dropdown-item" href="#"
+                                    onclick="changeCategoryButtonTxt_COSTUMER_SERVICE()">Costumer Service</a></li>
+                            <li><a class="dropdown-item" href="#"
+                                    onclick="changeCategoryButtonTxt_PRODUCTION()">Production</a></li>
                             <li><a class="dropdown-item" href="#" onclick="changeCategoryButtonTxt_TEAM()">Team</a></li>
                         </ul>
                     </div>
 
 
 
-
-
                     <h3>description</h3>
-                    <input type="text" class="description-container input-field"
+                    <input type="text" id="description" class="description-container input-field"
                         placeholder="Eveniet odit veniam aliquid, eaque saepe quasi recusandae quod quia dicta aut, magnam obcaecati cumque eos doloribus molestias totam? Ex, eveniet excepturi!">
+
                 </div>
                 <div>
                     <h3>due date</h3>
-                    <input type="date" class="input-field">
-
-
-
-
+                    <input type="date" id="dueDate" class="input-field">
                     <h3>urgency</h3>
                     <div class="btn-group ">
                         <button id="urgencyBtn" class="btn btn-secondary bg-blue btn-lg" type="button">
                             High
                         </button>
-                        <button type="button" class="btn btn-lg bg-blue btn-secondary dropdown-toggle dropdown-toggle-split"
+                        <button type="button"
+                            class="btn btn-lg bg-blue btn-secondary dropdown-toggle dropdown-toggle-split"
                             data-bs-toggle="dropdown" aria-expanded="false">
                             <span class="visually-hidden">Toggle Dropdown</span>
                         </button>

@@ -117,7 +117,7 @@ h2 {
     min-height: 500px;
 }
 
-.task{
+.task {
     color: white;
     margin: 5px;
     height: 100px;
@@ -212,7 +212,7 @@ h2 {
     overflow-x: hidden;
 }
 
-#category{
+#category {
     margin-right: 5%;
 }
 
@@ -240,10 +240,12 @@ h3 {
     width: 300px;
     border: 1px solid lightgrey;
 }
-.info-icon{
+
+.info-icon {
     margin-right: 30px;
     display: none;
 }
+
 .icon {
     height: 18px;
     background-color: white;
