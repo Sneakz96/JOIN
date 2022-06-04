@@ -21,10 +21,15 @@
     <script src="./js/menu.js"></script>
     <script src="./js/template.js"></script>
     <script src="./js/script.js"></script>
+    <script src="mini_backend.js"></script>
     <!--#FAVICON-->
     <link rel="icon" type="image/png" href="./img/logo.png">
     <!--#TITLE-->
     <title>Our.Join</title>
+
+    <script>
+        setURL('ftp://f014d9e0@gruppe-250.developerakademie.net/Gruppenarbeit%20JOIN/smallest_backend_ever');
+    </script>
 </head>
 
 <body onload="init()">
@@ -42,8 +47,6 @@
         <img src="./icons/menu-4-32.png" class="mb-menu-button">
     </div>
     <div class="main">
-
-
 
         <div id="content" class="content">
             <div class="board-content">
@@ -71,9 +74,6 @@
         </div>
 
 
-
-
-
         <div id="backlogContent" class="content d-none">
             <div class="headline">
                 <h2>Backlog</h2>
@@ -90,6 +90,7 @@
             </div>
         </div>
 
+
         <div id="addtaskContent" class="content d-none">
             <div class="headline">
                 <h2>Add Task</h2>
@@ -97,11 +98,9 @@
             </div>
             <div class="new-task">
                 <div>
-
                     <h3>title</h3>
                     <input type="text" id="title" class="input-field" placeholder="Management meeting preparation"
                         required>
-
                     <h3>category</h3>
                     <select id="categoryBtn" class="form-select form-select-lg mb-3"
                         aria-label=".form-select-lg example" required>
@@ -115,18 +114,13 @@
                         <option value="Production">Production</option>
                         <option value="Team">Team</option>
                     </select>
-
-
-
                     <h3>description</h3>
                     <input type="text" id="description" class="description-container input-field" required
                         placeholder="Eveniet odit veniam aliquid, eaque saepe quasi recusandae quod quia dicta aut, magnam obcaecati cumque eos doloribus molestias totam? Ex, eveniet excepturi!">
-
                 </div>
                 <div>
                     <h3>due date</h3>
                     <input type="date" id="dueDate" class="input-field" required>
-
                     <h3>urgency</h3>
                     <select id="urgencyBtn" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
                         required>
@@ -134,47 +128,42 @@
                         <option value="Mid">Mid</option>
                         <option value="High">High</option>
                     </select>
-
-
-
                     <h3>assigned to</h3>
                     <div class="assigned-to-images">
-                        <img src="./img/jahleel.jpg" class="profile-picture">
+                        <div id="receivers">
+
+                        </div>
                         <img src="./img/icon plus.png" class="plus" id="add" onclick="openTeam()" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Bottom popover">
+                        
+                        <div id="overlay">
+                            <div id="modal">
+                                <button id="close-modal-btn" onclick="closeTeam()">X</button>
+                                <img src="./img/logo.png" class="logo">
+                                <img id="member_1" src="./img/jahleel.jpg" class="profile-picture" onclick="addTeamImg()">
+                                <img id="member_2" src="./img/user-4-64.png" class="profile-picture" onclick="addTeamImg()">
+                                <img id="member_3" src="./img/user-4-64.png" class="profile-picture" onclick="addTeamImg()">
+                            </div>
+                        </div>                    
+
                     </div>
                     <div class="buttons">
                         <button class="cancel">cancel</button>
                         <button class="create-task bg-blue" onclick="createTask()">create task</button>
                     </div>
-                    
+
                 </div>
             </div>
         </div>
-
-
-
-
-
-
-
-
-
-
 
         <div id="helpContent" class="d-none">
 
         </div>
     </div>
 
-
-
-
-
-
-
     <div class="footer">
         <p>Logos stammen u. A. von <a href="https://icons8.com">https://icons8.com</a></p>
     </div>
+
 </body>
 
 </html>

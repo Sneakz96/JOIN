@@ -1,4 +1,7 @@
 let allTasks = [];
+let team = ['Jahleel', 'Maik', 'Joshua'];
+
+
 
 //FUNCTION_AT_START
 function init() {
@@ -6,7 +9,7 @@ function init() {
 }
 
 //FUNCTION_LOAD_EXISTING_TASKS
-function loadAllTasks(){
+function loadAllTasks() {
     let allTasksAsString = localStorage.getItem('allTasks');
     allTasks = JSON.parse(allTasksAsString);
     console.log('loaded tasks', allTasks)
@@ -28,7 +31,7 @@ function createTask() {
         'createdAt': new Date().getTime(),
         'dueDate': dueDate,
         'urgency': urgency,
-        'assigned to': 'me',
+        'assigned to': team,
     }
 
     allTasks.push(task);
@@ -50,9 +53,35 @@ function addBacklog() {
     logs.innerHTML += createTask_TEMPLATE_LOGS();
 }
 
-//FUNCTION_
-function openTeam(){
-    let team = document.getElementById('team');
-    team.classList.remove('d-none');
-    team.innerHTML = prompt('show team');
+//FUNCTION_OPEN_TEAM_MODAL
+function openTeam() {
+    const overlay = document.querySelector('#overlay');
+
+    document.querySelector('#add').addEventListener('click', () => {
+        overlay.style.display = 'block';
+    })
+}
+
+//FUNCTION_CLOSE_TEAM_MODAL
+function closeTeam() {
+    const overlay = document.querySelector('#overlay');
+
+    document.querySelector('#close-modal-btn').addEventListener('click', () => {
+        overlay.style.display = 'none';
+    })
+}
+
+
+
+function addTeamImg() {
+
+    //onclick push to team[]
+    //and create of for-loop
+
+    for (let i = 0; i < team.length; i++) {
+        let receiver = document.getElementById('receivers');
+        receiver.innerHTML = /*html*/`<div>
+        <img id="member_1" src="./img/jahleel.jpg" class="profile-picture">
+        </div>`
+    }
 }
