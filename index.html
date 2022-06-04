@@ -97,77 +97,56 @@
             </div>
             <div class="new-task">
                 <div>
+
                     <h3>title</h3>
-                    <input type="text" id="title" class="input-field" placeholder="Management meeting preparation">
+                    <input type="text" id="title" class="input-field" placeholder="Management meeting preparation"
+                        required>
+
                     <h3>category</h3>
-                    <div class="btn-group">
-                        <button id="categoryBtn" class="btn bg-blue btn-secondary btn-lg" type="button">
-                            TEAM
-                        </button>
-                        <button type="button"
-                            class="btn btn-lg bg-blue btn-secondary dropdown-toggle dropdown-toggle-split"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class="visually-hidden">Toggle Dropdown</span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#"
-                                    onclick="changeCategoryButtonTxt_MANAGEMENT()">Management</a></li>
-                            <li><a class="dropdown-item" href="#"
-                                    onclick="changeCategoryButtonTxt_MARKETING()">Marketing</a></li>
-                            <li><a class="dropdown-item" href="#"
-                                    onclick="changeCategoryButtonTxt_FINANCE()">Finance</a></li>
-                            <li><a class="dropdown-item" href="#"
-                                    onclick="changeCategoryButtonTxt_OPERATION_MANAGEMENT()">Operations Management</a>
-                            </li>
-                            <li><a class="dropdown-item" href="#" onclick="changeCategoryButtonTxt_IT()">IT</a></li>
-                            <li><a class="dropdown-item" href="#"
-                                    onclick="changeCategoryButtonTxt_HUMAN_RESOURCE()">Human Resource</a></li>
-                            <li><a class="dropdown-item" href="#"
-                                    onclick="changeCategoryButtonTxt_COSTUMER_SERVICE()">Costumer Service</a></li>
-                            <li><a class="dropdown-item" href="#"
-                                    onclick="changeCategoryButtonTxt_PRODUCTION()">Production</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="changeCategoryButtonTxt_TEAM()">Team</a></li>
-                        </ul>
-                    </div>
+                    <select id="categoryBtn" class="form-select form-select-lg mb-3"
+                        aria-label=".form-select-lg example" required>
+                        <option value="Management" selected>Management</option>
+                        <option value="Marketing">Marketing</option>
+                        <option value="Finance">Finance</option>
+                        <option value="Operations Management">Operations Management</option>
+                        <option value="IT">IT</option>
+                        <option value="Human Resource">Human Resource</option>
+                        <option value="Costumer Service">Costumer Service</option>
+                        <option value="Production">Production</option>
+                        <option value="Team">Team</option>
+                    </select>
 
 
 
                     <h3>description</h3>
-                    <input type="text" id="description" class="description-container input-field"
+                    <input type="text" id="description" class="description-container input-field" required
                         placeholder="Eveniet odit veniam aliquid, eaque saepe quasi recusandae quod quia dicta aut, magnam obcaecati cumque eos doloribus molestias totam? Ex, eveniet excepturi!">
 
                 </div>
                 <div>
                     <h3>due date</h3>
-                    <input type="date" id="dueDate" class="input-field">
+                    <input type="date" id="dueDate" class="input-field" required>
+
                     <h3>urgency</h3>
-                    <div class="btn-group ">
-                        <button id="urgencyBtn" class="btn btn-secondary bg-blue btn-lg" type="button">
-                            High
-                        </button>
-                        <button type="button"
-                            class="btn btn-lg bg-blue btn-secondary dropdown-toggle dropdown-toggle-split"
-                            data-bs-toggle="dropdown" aria-expanded="false">
-                            <span class="visually-hidden">Toggle Dropdown</span>
-                        </button>
-                        <ul class="dropdown-menu">
-                            <li><a class="dropdown-item" href="#" onclick="changeUrgencyButtonTxt_LOW()">Low</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="changeUrgencyButtonTxt_MID()">Mid</a></li>
-                            <li><a class="dropdown-item" href="#" onclick="changeUrgencyButtonTxt_HIGH()">High</a></li>
-                        </ul>
-                    </div>
+                    <select id="urgencyBtn" class="form-select form-select-lg mb-3" aria-label=".form-select-lg example"
+                        required>
+                        <option value="Low" selected>Low</option>
+                        <option value="Mid">Mid</option>
+                        <option value="High">High</option>
+                    </select>
 
 
 
                     <h3>assigned to</h3>
                     <div class="assigned-to-images">
                         <img src="./img/jahleel.jpg" class="profile-picture">
-                        <img src="./img/icon plus.png" class="plus">
+                        <img src="./img/icon plus.png" class="plus" id="add" onclick="openTeam()" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Bottom popover">
                     </div>
                     <div class="buttons">
                         <button class="cancel">cancel</button>
                         <button class="create-task bg-blue" onclick="createTask()">create task</button>
                     </div>
+                    
                 </div>
             </div>
         </div>

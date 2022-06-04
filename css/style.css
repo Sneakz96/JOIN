@@ -264,6 +264,8 @@ h3 {
     word-wrap: break-word;
 }
 
+
+
 .assigned-to-images {
     display: flex;
     justify-content: flex-start;
@@ -279,6 +281,18 @@ h3 {
 .plus:hover {
     cursor: pointer;
 }
+
+.popover{
+    
+}
+
+
+
+
+
+
+
+
 
 .buttons {
     display: flex;
