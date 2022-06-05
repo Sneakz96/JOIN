@@ -1,4 +1,4 @@
-let allTasks = [];
+let allTasks = ['1'];
 let team = ['Jahleel', 'Maik', 'Joshua'];
 
 
@@ -10,9 +10,14 @@ function init() {
 
 //FUNCTION_LOAD_EXISTING_TASKS
 function loadAllTasks() {
-    let allTasksAsString = localStorage.getItem('allTasks');
-    allTasks = JSON.parse(allTasksAsString);
-    console.log('loaded tasks', allTasks)
+    if (!localStorage.getItem('allTasks')) {
+        return
+    } else {
+        let allTasksAsString = localStorage.getItem('allTasks');
+        allTasks = JSON.parse(allTasksAsString);
+        console.log('loaded tasks', allTasks)
+    }
+
 }
 
 //FUNCTION_CREATE_TASK
@@ -80,7 +85,7 @@ function addTeamImg() {
 
     for (let i = 0; i < team.length; i++) {
         let receiver = document.getElementById('receivers');
-        receiver.innerHTML = /*html*/`<div>
+        receiver.innerHTML = /*html*/ `<div>
         <img id="member_1" src="./img/jahleel.jpg" class="profile-picture">
         </div>`
     }
