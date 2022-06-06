@@ -264,8 +264,6 @@ h3 {
     word-wrap: break-word;
 }
 
-
-
 .assigned-to-images {
     display: flex;
     justify-content: flex-start;
@@ -274,6 +272,19 @@ h3 {
     margin-left: 20px;
 }
 
+#receivers{
+    display: flex;
+    flex-wrap: wrap;
+    max-width: 390px;
+}
+
+.receiver{
+    margin: 3px;
+}
+
+.team-img{
+    margin: 3px;
+}
 .plus {
     margin-left: 20px;
 }
@@ -297,7 +308,7 @@ h3 {
 
 #modal{
     max-width: 600px;
-    height: 300px;
+    height: 500px;
     margin: auto;
     background-color: rgb(67, 67, 67);
     position: absolute;
@@ -305,12 +316,37 @@ h3 {
     bottom: 0;
     left: 0;
     right: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#rendered-team{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
 }
 
 .buttons {
     display: flex;
     justify-content: flex-end;
     margin-top: 30px;
+}
+
+#close-modal-btn{
+    height: 40px;
+    width: 40px;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    color: white;
+    background-color: rgb(67, 67, 67);
+    border: none;
+}
+
+.join-logo{
+    position: absolute;
+    top: 0;
 }
 
 .cancel {

@@ -1,11 +1,12 @@
 let allTasks = ['1'];
-let team = ['Jahleel', 'Maik', 'Joshua'];
+let team = ['img/jahleel.jpg', 'img/jahleel.jpg', 'img/jahleel.jpg'];
 
 
 
 //FUNCTION_AT_START
 function init() {
     loadAllTasks();
+    renderTeam();
 }
 
 //FUNCTION_LOAD_EXISTING_TASKS
@@ -17,7 +18,6 @@ function loadAllTasks() {
         allTasks = JSON.parse(allTasksAsString);
         console.log('loaded tasks', allTasks)
     }
-
 }
 
 //FUNCTION_CREATE_TASK
@@ -67,7 +67,11 @@ function openTeam() {
     })
 }
 
-//FUNCTION_CLOSE_TEAM_MODAL
+
+/**
+ * FUNCTION_CLOSE_TEAM_MODAL
+ * 
+ */
 function closeTeam() {
     const overlay = document.querySelector('#overlay');
 
@@ -77,16 +81,24 @@ function closeTeam() {
 }
 
 
-
-function addTeamImg() {
-
-    //onclick push to team[]
-    //and create of for-loop
-
+/**
+ * FUNCTION_RENDER_TEAM
+ * 
+ */
+function renderTeam() {
+    let renderedTeam = document.getElementById('rendered-team');
+    console.log(team[1])
     for (let i = 0; i < team.length; i++) {
-        let receiver = document.getElementById('receivers');
-        receiver.innerHTML = /*html*/ `<div>
-        <img id="member_1" src="./img/jahleel.jpg" class="profile-picture">
-        </div>`
+        renderedTeam.innerHTML += renderTeam_template(i);
     }
 }
+
+
+/**
+ * onclick push to team[]
+ * and create of for-loop
+ */
+function addTeamImg() {
+        let receiver = document.getElementById('receivers');
+        receiver.innerHTML += addTeamImg_template();
+    }

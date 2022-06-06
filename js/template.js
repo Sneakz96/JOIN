@@ -1,12 +1,14 @@
-function createTask_TEMPLATE_TO_DO(){
-return /*html*/ `<div class="task bg-blue" id="">
-<span>Viel Spaß! Die Daten sind am Server!</span>
-</div>`
+function createTask_TEMPLATE_TO_DO() {
+    return /*html*/`
+    <div class="task bg-blue" id="">
+    <span>Viel Spaß!</span>
+    </div>`
 }
 
 
-function createTask_TEMPLATE_LOGS(){
-    return /*html*/ `<div class="contact-card">
+function createTask_TEMPLATE_LOGS() {
+    return /*html*/`
+    <div class="contact-card">
     <div class="color"></div>
     <div class="infos">
         <div class="contact">
@@ -19,8 +21,23 @@ function createTask_TEMPLATE_LOGS(){
         <div id="category">
             Office
         </div>
-        <div class="detail-card">Viel Spass! Die Daten sind am Server! :)</div>
+        <div class="detail-card">Viel Spass!</div>
         <img src="./icons/info-2-32.png" class="info-icon">
     </div>
-</div>`;
+    </div>`;
+}
+
+
+function renderTeam_template(i) {
+    return /*html*/`
+    <div class="team-img" onclick="addTeamImg(${i})">
+    <img id="member_${i}" src="${team[i]}" class="profile-picture m-20">
+    </div>`
+}
+
+
+function addTeamImg_template(){
+    return `<div class="receiver">
+    <img id="member_1" src="./img/jahleel.jpg" class="profile-picture">
+    </div>`
 }
