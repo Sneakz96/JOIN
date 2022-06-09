@@ -1,12 +1,14 @@
 let allTasks = ['1'];
 let team = ['img/1.jpg', 'img/2.jpg', 'img/jahleel.jpg', 'img/3.jpg', 'img/4.jpg'];
+let email = ['testemail1@web.de', 'testemail2@web.de', 'testemail3@web.de', 'testemail4@web.de', 'testemail5@web.de']
 let assignTo = [];
-
+let backlog = [];
 /**
  * FUNCTION_AT_START
  */
 function init() {
     loadAllTasks();
+    loadBacklog();
     renderTeam();
 }
 
@@ -39,12 +41,13 @@ function cancel() {
  */
 function createTask() {
     let title = document.getElementById('title').value;
-    let category = document.getElementById('categoryBtn').innerHTML;
+    let category = document.getElementById('categoryBtn').value;
     let description = document.getElementById('description').value;
     let dueDate = document.getElementById('dueDate').value;
     let urgency = document.getElementById('urgencyBtn').value;
-    let asiTo = assignTo.length + 1;
-
+    let asiTo = assignTo[0];
+    let asiToImg = team[0]
+    let asiToemail = email[0]
     let task = {
         'title': title,
         'category': category,
@@ -52,13 +55,14 @@ function createTask() {
         'createdAt': new Date().getTime(),
         'dueDate': dueDate,
         'urgency': urgency,
-        'assigned to': asiTo,
+        'assigned_to': asiToImg,
+        'assigned_to_email': asiToemail,
     }
     allTasks.push(task);
     let allTasksAsString = JSON.stringify(allTasks);
     localStorage.setItem('allTasks', allTasksAsString);
-    addToDo();
-    addBacklog();
+    addTaskToBacklog(task);
+    loadBacklog();
 }
 
 /**
@@ -72,11 +76,34 @@ function addToDo() {
 /**
  * FUNCTION_ADD_TO_BACKLOG
  */
-function addBacklog() {
-    let logs = document.getElementById('logs');
-    logs.innerHTML += createTask_TEMPLATE_LOGS();
+function addTaskToBacklog(task) {
+    backlog.push(task);
+    let backlogAsString = JSON.stringify(backlog);
+    localStorage.setItem('backlog', backlogAsString)
 }
 
+function loadBackLogLS() {
+    let backlogdata = JSON.parse(localStorage.getItem('backlog'))
+    if (backlogdata) {
+        backlog = backlogdata;
+    }
+
+}
+
+function loadBacklog() {
+    loadBackLogLS();
+    let logs = document.getElementById('logs');
+    logs.innerHTML = '';
+    backlog.forEach((task) => {
+        let title = task.title;
+        let category = task.category;
+        let asiToImg = task.assigned_to;
+        let email = task.assigned_to_email
+        let description = task.description;
+        logs.innerHTML += createTask_TEMPLATE_LOGS(title, category, asiToImg, email, description);
+    })
+
+}
 /**
  * FUNCTION_OPEN_TEAM_MODAL
  */
