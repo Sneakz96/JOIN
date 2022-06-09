@@ -1,7 +1,45 @@
-let allTasks = ['1'];
-let team = ['img/1.jpg', 'img/2.jpg', 'img/jahleel.jpg', 'img/3.jpg', 'img/4.jpg'];
+let allTasks = [];
 let assignTo = [];
 
+
+
+
+let team = [
+    {
+        'ID':'1',
+        'name': '',
+        'e-mail': 'join@service.com',
+        'img.src': './img/1.jpg'
+    },
+    {
+        'ID':'2',
+        'name': '',
+        'e-mail': 'join@service.com',
+        'img.src': './img/2.jpg'
+    },
+    {
+        'ID':'3',
+        'name': '',
+        'e-mail': 'join@service.com',
+        'img.src': './img/3.jpg'
+    },
+    {
+        'ID':'4',
+        'name': '',
+        'e-mail': 'join@service.com',
+        'img.src': './img/4.jpg'
+    },
+    {
+        'ID':'5',
+        'name': '',
+        'e-mail': 'join@service.com',
+        'img.src': './img/jahleel.jpg'
+    },
+    ]
+
+
+
+//memberName src=, email=,
 /**
  * FUNCTION_AT_START
  */
@@ -22,6 +60,7 @@ function loadAllTasks() {
         console.log('loaded tasks', allTasks);
     }
 }
+
 /**
  * FUNCTION_CANCEL
  */
@@ -33,7 +72,6 @@ function cancel() {
     document.getElementById('receivers').innerHTML = '';
 }
 
-
 /**
  * FUNCTION_CREATE_TASK
  */
@@ -43,7 +81,7 @@ function createTask() {
     let description = document.getElementById('description').value;
     let dueDate = document.getElementById('dueDate').value;
     let urgency = document.getElementById('urgencyBtn').value;
-    let asiTo = assignTo.length + 1;
+    let asiTo = assignTo;
 
     let task = {
         'title': title,
@@ -102,7 +140,7 @@ function closeTeam() {
  */
 function renderTeam() {
     let renderedTeam = document.getElementById('rendered-team');
-    console.log(assignTo)
+    console.log(assignTo);
     for (let i = 0; i < team.length; i++) {
         renderedTeam.innerHTML += renderTeam_template(i);
     }
@@ -112,9 +150,9 @@ function renderTeam() {
  * onclick push to team[]
  * and create of for-loop
  */
-function addTeamImg() {
+function addTeamImg(i) {
     let receiver = document.getElementById('receivers');
-    assignTo.push(Selection);
+    assignTo.push(team[i]);
     receiver.innerHTML = '';
     for (let i = 0; i < assignTo.length; i++) {
         receiver.innerHTML += addTeamImg_template(i);

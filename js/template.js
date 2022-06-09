@@ -31,13 +31,13 @@ function createTask_TEMPLATE_LOGS() {
 function renderTeam_template(i) {
     return /*html*/`
     <div class="team-img" onclick="addTeamImg(${i})">
-    <img id="member_${i}" src="${team[i]}" class="profile-picture m-10">
+    <img id="member_${i}" src="${team[i]['img.src']}" class="profile-picture m-10">
     </div>`
 }
 
 
 function addTeamImg_template(i){
     return `<div class="receiver" id="">
-    <img id="members_${i}" src="${assignTo}" class="profile-picture">
+    <img id="members_${i}" src="${assignTo[i]['img.src']}" class="profile-picture">
     </div>`
 }
