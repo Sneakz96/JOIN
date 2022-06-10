@@ -81,7 +81,7 @@ function createTask() {
     let description = document.getElementById('description').value;
     let dueDate = document.getElementById('dueDate').value;
     let urgency = document.getElementById('urgencyBtn').value;
-    let asiTo = assignTo[src];
+    let asiTo = assignTo;
 
     let task = {
         'title': title,
