@@ -6,36 +6,36 @@ let assignTo = [];
 
 let team = [
     {
-        'ID':'1',
+        'ID': '1',
         'name': '',
         'e-mail': 'join@service.com',
         'img.src': './img/1.jpg'
     },
     {
-        'ID':'2',
+        'ID': '2',
         'name': '',
         'e-mail': 'join@service.com',
         'img.src': './img/2.jpg'
     },
     {
-        'ID':'3',
+        'ID': '3',
         'name': '',
         'e-mail': 'join@service.com',
         'img.src': './img/3.jpg'
     },
     {
-        'ID':'4',
+        'ID': '4',
         'name': '',
         'e-mail': 'join@service.com',
         'img.src': './img/4.jpg'
     },
     {
-        'ID':'5',
+        'ID': '5',
         'name': '',
         'e-mail': 'join@service.com',
         'img.src': './img/jahleel.jpg'
     },
-    ]
+]
 
 
 
@@ -92,12 +92,22 @@ function createTask() {
         'urgency': urgency,
         'assigned to': asiTo,
     }
-    allTasks.push(task);
-    let allTasksAsString = JSON.stringify(allTasks);
-    localStorage.setItem('allTasks', allTasksAsString);
-    addToDo();
-    addBacklog();
+    if (noUserAdded()) {
+        alert('Bitte weisen Sie mindestens einem Mitarbeiter das Ticket zu.');
+    } else {
+        allTasks.push(task);
+        let allTasksAsString = JSON.stringify(allTasks);
+        localStorage.setItem('allTasks', allTasksAsString);
+        addToDo();
+        addBacklog();
+    }
 }
+
+
+function noUserAdded() {
+    return document.getElementById('receivers').childNodes.length === 0;
+}
+
 
 /**
  * FUNCTION_ADD_TO_TO_DO
