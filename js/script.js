@@ -93,7 +93,7 @@ function createTask() {
         'assigned to': asiTo,
     }
     if (noUserAdded()) {
-        alert('Bitte weisen Sie mindestens einem Mitarbeiter das Ticket zu.');
+        alert('Bitte weisen Sie das Ticket mindestens einem Mitarbeiter zu.');
     } else {
         allTasks.push(task);
         let allTasksAsString = JSON.stringify(allTasks);
