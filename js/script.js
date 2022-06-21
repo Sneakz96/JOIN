@@ -7,31 +7,31 @@ let assignTo = [];
 let team = [
     {
         'ID': '1',
-        'name': '',
+        'name': 'Joshua',
         'e-mail': 'join@service.com',
         'img.src': './img/1.jpg'
     },
     {
         'ID': '2',
-        'name': '',
+        'name': 'Maik',
         'e-mail': 'join@service.com',
         'img.src': './img/2.jpg'
     },
     {
         'ID': '3',
-        'name': '',
+        'name': 'BeispielUser1',
         'e-mail': 'join@service.com',
         'img.src': './img/3.jpg'
     },
     {
         'ID': '4',
-        'name': '',
+        'name': 'BeispielUser2',
         'e-mail': 'join@service.com',
         'img.src': './img/4.jpg'
     },
     {
         'ID': '5',
-        'name': '',
+        'name': 'Jahleel',
         'e-mail': 'join@service.com',
         'img.src': './img/jahleel.jpg'
     },
@@ -98,8 +98,6 @@ function createTask() {
         allTasks.push(task);
         let allTasksAsString = JSON.stringify(allTasks);
         localStorage.setItem('allTasks', allTasksAsString);
-        addToDo();
-        addBacklog();
     }
 }
 
@@ -120,9 +118,20 @@ function addToDo() {
 /**
  * FUNCTION_ADD_TO_BACKLOG
  */
-function addBacklog() {
+function renderBacklog() {
     let logs = document.getElementById('logs');
-    logs.innerHTML += createTask_TEMPLATE_LOGS();
+    logs.innerHTML = '';
+    for (let i = 0; i < allTasks.length; i++) {
+        let task = allTasks[i];
+        let title = task['title'];
+        let category = task['category'];
+        let asiToImg = task['assigned to'][0]['img.src'];
+        let email = task['assigned to'][0]['e-mail'];
+        let description = task['description'];
+        // console.log(title, category, asiToImg, email, description);
+        logs.innerHTML += createTask_TEMPLATE_LOGS(title, category, asiToImg, email, description);
+    }
+
 }
 
 /**

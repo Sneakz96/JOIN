@@ -2,7 +2,7 @@ function createTask_TEMPLATE_TO_DO() {
     return /*html*/ `
     <div class="task bg-blue" id="">
     <span>Viel Spaß!</span>
-    </div>`
+    </div>`;
 }
 
 
@@ -53,12 +53,12 @@ function renderTeam_template(i) {
     return /*html*/ `
     <div class="team-img" onclick="addTeamImg(${i})">
     <img id="member_${i}" src="${team[i]['img.src']}" class="profile-picture m-10">
-    </div>`
+    </div>`;
 }
 
 
 function addTeamImg_template(i) {
     return `<div class="receiver" id="">
     <img id="members_${i}" src="${assignTo[i]['img.src']}" class="profile-picture">
-    </div>`
+    </div>`;
 }
