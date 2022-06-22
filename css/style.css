@@ -90,6 +90,7 @@ h2 {
     right: 0;
     left: 160px;
     height: 100vh;
+    overflow: auto;
 }
 
 .content {
@@ -170,13 +171,13 @@ h2 {
 
 .contact {
     display: flex;
+    align-items: center;
     margin-right: 10%;
 }
 
 .profile-picture {
-    height: 100px;
-    width: 100px;
-    object-fit: cover;
+    height: 50px;
+    width: 50px;
     object-position: top;
     border-radius: 100%;
 }

@@ -28,16 +28,16 @@ function createTask_TEMPLATE_TO_DO() {
     </div>`;
 } * / */
 
-function createTask_TEMPLATE_LOGS(title, category, asiToImg, email, description) {
+function createTask_TEMPLATE_LOGS(title, category, userImgs, emails, description) {
     return /*html*/ `
     <div class="contact-card">
     <div class="color"></div>
     <div class="infos">
         <div class="contact">
-            <img src="${asiToImg}" class="profile-picture img">
+            <img src="${userImgs[0]}" class="profile-picture img">
             <div class="contact-name">
                 <span>${title}</span>
-                <a href="mailto:${email}">${email}</a>
+                <a href="mailto:${emails[0]}">${emails[0]}</a>
             </div>
         </div>
         <div id="category">

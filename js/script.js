@@ -8,33 +8,21 @@ let team = [
     {
         'ID': '1',
         'name': 'Joshua',
-        'e-mail': 'join@service.com',
+        'e-mail': 'joshua@join.com',
         'img.src': './img/1.jpg'
     },
     {
         'ID': '2',
         'name': 'Maik',
-        'e-mail': 'join@service.com',
+        'e-mail': 'Maik@join.com',
         'img.src': './img/2.jpg'
     },
     {
         'ID': '3',
-        'name': 'BeispielUser1',
-        'e-mail': 'join@service.com',
-        'img.src': './img/3.jpg'
-    },
-    {
-        'ID': '4',
-        'name': 'BeispielUser2',
-        'e-mail': 'join@service.com',
-        'img.src': './img/4.jpg'
-    },
-    {
-        'ID': '5',
         'name': 'Jahleel',
-        'e-mail': 'join@service.com',
+        'e-mail': 'Jahleel@join.com',
         'img.src': './img/jahleel.jpg'
-    },
+    }
 ]
 
 
@@ -77,7 +65,7 @@ function cancel() {
  */
 function createTask() {
     let title = document.getElementById('title').value;
-    let category = document.getElementById('categoryBtn').innerHTML;
+    let category = document.getElementById('categoryBtn').value;
     let description = document.getElementById('description').value;
     let dueDate = document.getElementById('dueDate').value;
     let urgency = document.getElementById('urgencyBtn').value;
@@ -98,6 +86,8 @@ function createTask() {
         allTasks.push(task);
         let allTasksAsString = JSON.stringify(allTasks);
         localStorage.setItem('allTasks', allTasksAsString);
+        alert('Das Ticket wurde erstellt')
+        cancel();
     }
 }
 
@@ -125,13 +115,36 @@ function renderBacklog() {
         let task = allTasks[i];
         let title = task['title'];
         let category = task['category'];
-        let asiToImg = task['assigned to'][0]['img.src'];
-        let email = task['assigned to'][0]['e-mail'];
+        let userImgs = [];
+        let emails = [];
         let description = task['description'];
-        // console.log(title, category, asiToImg, email, description);
-        logs.innerHTML += createTask_TEMPLATE_LOGS(title, category, asiToImg, email, description);
+        getUserEmails(emails, task);
+        getUserImg(userImgs, task);
+       // console.log(title, category, userImgs, emails, description);
+      // logs.innerHTML += createTask_TEMPLATE_LOGS(title, category, userImgs, emails, description);
     }
+}
 
+/**
+ * FUNCTION_GUT_USER_EMAIL
+ */
+
+function getUserEmails(emails, task){
+    for (j = 0; j < task['assigned to'].length; j++) {
+        let email = task['assigned to'][j]['e-mail'];
+        emails.push(email);
+    }
+}
+
+/**
+ * FUNCTION_GUT_USER_IMG
+ */
+
+function getUserImg(userImgs, task) {
+    for (j = 0; j < task['assigned to'].length; j++) {
+        let userImg = task['assigned to'][j]['img.src'];
+        userImgs.push(userImg);
+    }
 }
 
 /**
