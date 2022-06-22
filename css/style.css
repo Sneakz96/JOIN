@@ -172,12 +172,13 @@ h2 {
 .contact {
     display: flex;
     align-items: center;
-    margin-right: 10%;
+    max-width: 50%;
 }
 
 .profile-picture {
     height: 50px;
     width: 50px;
+    object-fit: cover;
     object-position: top;
     border-radius: 100%;
 }
@@ -187,8 +188,8 @@ h2 {
 }
 
 .img {
-    margin-left: 30px;
-    margin-right: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .contact-name {
@@ -199,10 +200,19 @@ h2 {
 }
 
 .contact-name a {
+    font-size: 16px;
     text-decoration: none;
     color: rgb(10, 42, 172);
 }
 
+.contact-picture {
+    display: flex;
+}
+
+.contact-email {
+    display: flex;
+    flex-direction: column;
+}
 
 .detail-card {
     display: flex;
@@ -211,10 +221,11 @@ h2 {
     margin-right: 0px;
     overflow-y: scroll;
     overflow-x: hidden;
+    max-width: 30%;
 }
 
 #category {
-    margin-right: 5%;
+    max-width: 20%;
 }
 
 /*ADD TASK*/
