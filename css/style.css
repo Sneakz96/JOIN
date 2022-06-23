@@ -69,6 +69,10 @@
 
 /*MAIN*/
 
+#content {
+    animation: opacity 175ms ease-in-out;
+}
+
 h2 {
     color: #000;
     text-transform: uppercase;
@@ -125,6 +129,10 @@ h2 {
 }
 
 /*BACKLOG*/
+
+#backlogContent {
+    animation: opacity 175ms ease-in-out;
+}
 
 .table-header {
     color: rgb(10, 42, 172);
@@ -195,6 +203,9 @@ h2 {
 
 .profile-picture:hover, .profile-picture-sm:hover {
     cursor: pointer;
+    box-shadow: 0 16px 16px -4px rgba(0, 0, 0, 0.3);
+    transition: all 125ms ease-in-out;
+    transform: scale(1.01);
 }
 
 .img {
@@ -239,6 +250,10 @@ h2 {
 }
 
 /*ADD TASK*/
+
+#addtaskContent {
+    animation: opacity 175ms ease-in-out;
+}
 
 h3 {
     text-transform: uppercase;
@@ -407,6 +422,11 @@ h3 {
     cursor: pointer;
 }
 
+/* Help content*/
+#helpcontent {
+    animation: opacity 175ms ease-in-out;
+}
+
 @keyframes zoomIn {
     from {
         transform: scale(0);
@@ -414,5 +434,14 @@ h3 {
 
     to {
         transform: scale(1);
+    }
+}
+
+@keyframes opacity {
+    from {
+        opacity: 0%;
+    }
+    to {
+        opacity: 100%;
     }
 }
