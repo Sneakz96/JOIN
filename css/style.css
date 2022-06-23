@@ -344,10 +344,10 @@ h3 {
 }
 
 #modal{
-    max-width: 580px;
-    height: 300px;
+    width: 580px;
+    height: 400px;
     margin: auto;
-    background-color: rgb(67, 67, 67);
+    background-color: rgb(61, 73, 202);
     position: absolute;
     top: 0;
     bottom: 0;
@@ -356,12 +356,18 @@ h3 {
     display: flex;
     flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
     z-index: 21;
     animation: zoomIn 125ms ease-in-out;
+    border-radius: 12px;
+}
+
+.headline-overlay {
+    font-size: 30px;
+    color: white;
 }
 
 #rendered-team{
-    margin-top: 100px;
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -379,7 +385,7 @@ h3 {
     height: 40px;
     width: 40px;
     position: absolute;
-    left: 0px;
+    right: 0px;
     top: 0px;
     color: white;
     background-color: rgb(67, 67, 67);
@@ -387,8 +393,6 @@ h3 {
 }
 
 .join-logo{
-    position: absolute;
-    top: 0;
     object-fit: cover;
     height: 60px;
 }
@@ -401,10 +405,13 @@ h3 {
     color: rgb(10, 42, 172);
     text-transform: uppercase;
     font-weight: 500;
+    transition: all 125ms ease-in-out;
 }
 
 .cancel:hover {
     cursor: pointer;
+    background-color: rgb(212, 212, 212);
+    transition: all 125ms ease-in-out;
 }
 
 .create-task {
@@ -416,10 +423,14 @@ h3 {
     margin-left: 20px;
     text-transform: uppercase;
     font-weight: 500;
+    transition: all 125ms ease-in-out;
+   
 }
 
 .create-task:hover {
     cursor: pointer;
+    transition: all 125ms ease-in-out;
+    background-color: rgb(59, 66, 147);
 }
 
 /* Help content*/
