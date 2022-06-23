@@ -166,7 +166,7 @@ function renderUserEmail(i, emails) {
  function renderUserImg(i, userImgs) {
     let backlogTemplate = document.getElementById('userImg' + i);
     for (let j = 0; j < userImgs.length; j++) {
-        backlogTemplate.innerHTML += /*html*/ `<img src="${userImgs[j]}" class="profile-picture img">`;
+        backlogTemplate.innerHTML += /*html*/ `<img src="${userImgs[j]}" class="profile-picture-sm img">`;
     }
 }
 
