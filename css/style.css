@@ -99,8 +99,6 @@ h2 {
 
 .content {
     width: 100%;
-    margin-top: 100px;
-    margin-bottom: 100px;
 }
 
 /*BOARD_CONTENT*/
@@ -382,14 +380,24 @@ h3 {
 }
 
 #close-modal-btn{
-    height: 40px;
-    width: 40px;
+    height: 45px;
+    width: 45px;
     position: absolute;
-    right: 0px;
-    top: 0px;
+    right: 8px;
+    top: 8px;
     color: white;
-    background-color: rgb(67, 67, 67);
+    background-color: rgba(255, 255, 255, 0);
     border: none;
+    border-radius: 50%;
+    transition: all 125ms ease-in-out;
+    font-size: 22px;
+    font-weight: 400;
+}
+
+#close-modal-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: all 125ms ease-in-out;
+
 }
 
 .join-logo{
