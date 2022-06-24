@@ -58,6 +58,7 @@ function cancel() {
     document.getElementById('dueDate').value = '';
     document.getElementById('urgencyBtn').value = '';
     document.getElementById('receivers').innerHTML = '';
+    resetMemberProfiles();
 }
 
 /**
@@ -120,7 +121,7 @@ function renderBacklog() {
         let description = task['description'];
         getUserEmails(emails, task);
         getUserImg(userImgs, task);
-        logs.innerHTML += createTask_TEMPLATE_LOGS(i, title, category, userImgs, emails, description);
+        logs.innerHTML += createTask_TEMPLATE_LOGS(i, title, category, description);
         renderUserImg(i, userImgs);
         renderUserEmail(i, emails);
     }
@@ -163,7 +164,7 @@ function renderUserEmail(i, emails) {
  * FUNCTION_RENDER_USER_IMG
  */
 
- function renderUserImg(i, userImgs) {
+function renderUserImg(i, userImgs) {
     let backlogTemplate = document.getElementById('userImg' + i);
     for (let j = 0; j < userImgs.length; j++) {
         backlogTemplate.innerHTML += /*html*/ `<img src="${userImgs[j]}" class="profile-picture-sm img">`;
@@ -211,5 +212,24 @@ function addTeamImg(i) {
     receiver.innerHTML = '';
     for (let i = 0; i < assignTo.length; i++) {
         receiver.innerHTML += addTeamImg_template(i);
+    }
+    hideMemberProfile(i);
+}
+
+/**
+ * FUNCTION_HIDE_MEMBER_Profile
+ */
+
+function hideMemberProfile(i) {
+    document.getElementById('member_' + i).parentNode.classList.add('d-none');
+}
+
+/**
+ * FUNCTION_HIDE_MEMBER_Profile
+ */
+
+function resetMemberProfiles() {
+    for (i = 0; i < team.length; i++) {
+        document.getElementById('member_' + i).parentNode.classList.remove('d-none');
     }
 }

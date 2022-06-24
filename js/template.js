@@ -28,7 +28,7 @@ function createTask_TEMPLATE_TO_DO() {
     </div>`;
 } * / */
 
-function createTask_TEMPLATE_LOGS(i, title, category, userImgs, emails, description) {
+function createTask_TEMPLATE_LOGS(i, title, category, description) {
     return /*html*/ `
     <div class="contact-card">
     <div class="color"></div>
