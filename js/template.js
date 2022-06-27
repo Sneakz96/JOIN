@@ -30,7 +30,7 @@ function createTask_TEMPLATE_TO_DO() {
 
 function createTask_TEMPLATE_LOGS(i, title, category, description) {
     return /*html*/ `
-    <div class="contact-card">
+ <div class="contact-card">
     <div class="color"></div>
     <div class="infos">
         <div class="contact">
@@ -48,9 +48,12 @@ function createTask_TEMPLATE_LOGS(i, title, category, description) {
         ${category}
         </div>
         <div class="detail-card">${description}</div>
-        <img src="./icons/info-2-32.png" class="info-icon">
     </div>
-    </div>`;
+    <div class="icon-container">
+       <img src="./icons/arrow.png" class="contact-card-icon">
+       <img src="./icons/trash.ico" class="contact-card-icon">
+    </div>
+ </div>`;
 }
 
 function renderTeam_template(i) {
