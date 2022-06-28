@@ -6,10 +6,6 @@
     font-family: 'PT Sans';
 }
 
-.d-none {
-    display: none
-}
-
 /*SIDE-MENU*/
 
 .side-menu {
@@ -248,6 +244,7 @@ h2 {
     overflow-y: auto;
     word-break: break-all;
     font-size: 16px;
+    align-items: center;
 }
 
 .icon-container {

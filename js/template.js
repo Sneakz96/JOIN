@@ -50,7 +50,7 @@ function createTask_TEMPLATE_LOGS(i, title, category, description) {
         <div class="detail-card">${description}</div>
     </div>
     <div class="icon-container">
-       <img src="./icons/arrow.png" class="contact-card-icon">
+       <img onclick="addToDo(${i})" src="./icons/arrow.png" class="contact-card-icon">
        <img onclick="deleteBacklogTask(${i})" src="./icons/trash.ico" class="contact-card-icon">
     </div>
  </div>`;

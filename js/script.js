@@ -2,9 +2,6 @@ let allTasks = [];
 let assignTo = [];
 let tasksOnBoard = [];
 
-
-
-
 let team = [
     {
         'ID': '1',
@@ -107,6 +104,9 @@ function noUserAdded() {
 function save() {
     let allTasksAsString = JSON.stringify(allTasks);
     localStorage.setItem('allTasks', allTasksAsString);
+
+    let tasksOnBoardAsString = JSON.stringify(tasksOnBoard);
+    localStorage.setItem('tasksOnBoard', tasksOnBoardAsString);
 }
 
 function deleteBacklogTask(i) {
@@ -120,9 +120,21 @@ function deleteBacklogTask(i) {
 /**
  * FUNCTION_ADD_TO_TO_DO
  */
-function addToDo() {
+function addToDo(i) {
+    tasksOnBoard.push(allTasks[i]);
+    console.log(tasksOnBoard);
+    deleteBacklogTask(i);
+    // let toDo = document.getElementById('toDo');
+    // toDo.innerHTML += createTask_TEMPLATE_TO_DO();
+}
+
+function renderToDos() {
     let toDo = document.getElementById('toDo');
-    toDo.innerHTML += createTask_TEMPLATE_TO_DO();
+    toDo.innerHTML = '';
+
+    for (let i = 0; i < tasksOnBoard.length; i++) {
+        toDo.innerHTML += createTask_TEMPLATE_TO_DO();
+    }
 }
 
 /**
@@ -131,7 +143,7 @@ function addToDo() {
 function renderBacklog() {
     let logs = document.getElementById('logs');
     logs.innerHTML = '';
-    for (let i = allTasks.length -1; i >= 0; i--) { //render task backward
+    for (let i = allTasks.length - 1; i >= 0; i--) { //render task backward
         let task = allTasks[i];
         let title = task['title'];
         let category = task['category'];
