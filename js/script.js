@@ -85,17 +85,35 @@ function createTask() {
         alert('Bitte weisen Sie das Ticket mindestens einem Mitarbeiter zu.');
     } else {
         allTasks.push(task);
-        let allTasksAsString = JSON.stringify(allTasks);
-        localStorage.setItem('allTasks', allTasksAsString);
-        alert('Das Ticket wurde erstellt')
+        save();
         cancel();
+        alert('Das Ticket wurde erstellt');
+        changeOnBacklog();
     }
 }
 
+/**
+ * FUNCTION_NO_USER_ADDED
+ */
 
 function noUserAdded() {
     return document.getElementById('receivers').childNodes.length === 0;
 }
+
+/**
+ * FUNCTION_SAVE
+ */
+function save() {
+    let allTasksAsString = JSON.stringify(allTasks);
+    localStorage.setItem('allTasks', allTasksAsString);
+}
+
+function deleteBacklogTask(i) {
+    allTasks.splice(i, 1);
+    save();
+    renderBacklog();
+}
+
 
 
 /**
@@ -112,7 +130,7 @@ function addToDo() {
 function renderBacklog() {
     let logs = document.getElementById('logs');
     logs.innerHTML = '';
-    for (let i = 0; i < allTasks.length; i++) {
+    for (let i = allTasks.length -1; i >= 0; i--) { //render task backward
         let task = allTasks[i];
         let title = task['title'];
         let category = task['category'];
