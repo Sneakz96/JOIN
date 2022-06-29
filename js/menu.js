@@ -28,6 +28,7 @@ function changeOnAddTask(){
     document.getElementById('backlog').classList.remove('active');
     document.getElementById('backlogContent').classList.add('d-none');
     document.getElementById('help').classList.remove('active');
+    cancel(); //clear fields
 }
 
 
