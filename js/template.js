@@ -1,6 +1,6 @@
 function createTask_TEMPLATE_TO_DO(i, title, names, date) {
     return /*html*/ `
-    <div class="dragable-card" id="">
+    <div id="dragable-card${i}" class="dragable-card">
        <span class="dragable-card-title">${title}</span>
          <span id="dragable-card-names${i}" class="dragable-card-names">
            <!--names are rendered here-->
@@ -11,7 +11,7 @@ function createTask_TEMPLATE_TO_DO(i, title, names, date) {
 
 function createTask_TEMPLATE_LOGS(i, title, category, description) {
     return /*html*/ `
- <div class="contact-card">
+ <div id="contact-card${i}" class="contact-card">
     <div class="infos">
         <div class="contact">
             <div id="userImg${i}" class="contact-picture">

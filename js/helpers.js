@@ -1,5 +1,5 @@
 
-//Help functions for board.js und backlog.js
+//Help functions for board.js, backlog.js
 
 /**
  * FUNCTION_GET_USER_NAMES

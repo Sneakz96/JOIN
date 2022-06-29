@@ -1,0 +1,11 @@
+.Low {
+    border-left: 8px solid #4bb543;
+}
+
+.Mid {
+    border-left: 8px solid #f6d52d;
+}
+
+.High {
+    border-left: 8px solid #ca0b00;
+}

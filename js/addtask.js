@@ -114,3 +114,15 @@ function resetMemberProfiles() {
         document.getElementById('member_' + i).parentNode.classList.remove('d-none');
     }
 }
+
+/**
+ * FUNCTION_ADD_URGENCY_COLOR
+ */
+
+function addUrgencyColor(i){
+    let colorBacklogCard = tasksInBacklog[i]['urgency'];
+    console.log(colorBacklogCard);
+
+
+    //document.getElementById('contact-card' + i);
+}
