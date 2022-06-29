@@ -1,4 +1,4 @@
-let allTasks = [];
+let tasksInBacklog = [];
 let assignTo = [];
 
 /**
@@ -36,7 +36,7 @@ function createTask() {
     if (noUserAdded()) {
         alert('Bitte weisen Sie das Ticket mindestens einem Mitarbeiter zu.');
     } else {
-        allTasks.push(task);
+        tasksInBacklog.push(task);
         save();
         cancel();
         alert('Das Ticket wurde erstellt');

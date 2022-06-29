@@ -1,33 +1,22 @@
 
 /**
- * FUNCTION_DELETE_BACKLOG_TASK
- */
-
-function deleteBacklogTask(i) {
-    allTasks.splice(i, 1);
-    save();
-    renderBacklog();
-}
-
-/**
  * FUNCTION_ADD_TO_TO_DO
  */
 
  function addToDo(i) {
-    tasksOnBoard.push(allTasks[i]);
+    tasksOnBoard.push(tasksInBacklog[i]);
     console.log(tasksOnBoard);
     deleteBacklogTask(i);
-    // let toDo = document.getElementById('toDo');
-    // toDo.innerHTML += createTask_TEMPLATE_TO_DO();
 }
 
-function renderToDos() {
-    let toDo = document.getElementById('toDo');
-    toDo.innerHTML = '';
+/**
+ * FUNCTION_DELETE_BACKLOG_TASK
+ */
 
-    for (let i = 0; i < tasksOnBoard.length; i++) {
-        toDo.innerHTML += createTask_TEMPLATE_TO_DO();
-    }
+ function deleteBacklogTask(i) {
+    tasksInBacklog.splice(i, 1);
+    save();
+    renderBacklog();
 }
 
 /**
@@ -37,8 +26,8 @@ function renderToDos() {
 function renderBacklog() {
     let logs = document.getElementById('logs');
     logs.innerHTML = '';
-    for (let i = allTasks.length - 1; i >= 0; i--) { //render task backward
-        let task = allTasks[i];
+    for (let i = tasksInBacklog.length - 1; i >= 0; i--) { //render task backward
+        let task = tasksInBacklog[i];
         let title = task['title'];
         let category = task['category'];
         let userImgs = [];
