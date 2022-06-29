@@ -135,7 +135,6 @@ h2 {
     min-height: 110px;
     max-height: 250px;
     border-radius: 8px;
-    border-left: 6px solid #4bb543;
     word-break: break-all;
 
 }
@@ -197,7 +196,6 @@ h2 {
     justify-content: space-between;
     align-items: center;
     font-size: 21px;
-    border-left: 8px solid #ca0b00;
 }
 
 .color {

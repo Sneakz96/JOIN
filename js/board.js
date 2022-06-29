@@ -15,6 +15,7 @@ function renderToDos() {
         getUserNames(names, task);
         toDo.innerHTML += createTask_TEMPLATE_TO_DO(i, title, names, date);
         renderUserName(i, names);
+        addUrgencyColor(task);
     }
 }
 
