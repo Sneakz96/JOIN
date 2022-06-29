@@ -6,6 +6,7 @@ function changeOnBoard(){
     document.getElementById('addtask').classList.remove('active');
     document.getElementById('addtaskContent').classList.add('d-none');
     document.getElementById('help').classList.remove('active');
+    renderToDos();
 }
 
 

@@ -1,37 +1,17 @@
-function createTask_TEMPLATE_TO_DO() {
+function createTask_TEMPLATE_TO_DO(i, title, names, date) {
     return /*html*/ `
-    <div class="task bg-blue" id="">
-    <span>Viel Spaß!</span>
+    <div class="dragable-card" id="">
+       <span class="dragable-card-title">${title}</span>
+         <span id="dragable-card-names${i}" class="dragable-card-names">
+           <!--names are rendered here-->
+         </span>
+       <span class="dragable-card-date">${date}</span>
     </div>`;
 }
-
-
-/* function createTask_TEMPLATE_LOGS() {
-    return /*html
-`
-    <div class="contact-card">
-    <div class="color"></div>
-    <div class="infos">
-        <div class="contact">
-            <img src="./img/jahleel.jpg" class="profile-picture img">
-            <div class="contact-name">
-                <span>Jahleel Heider</span>
-                <a href="#">Jahleelr-h@gmx.de</a>
-            </div>
-        </div>
-        <div id="category">
-            Office
-        </div>
-        <div class="detail-card">Viel Spass!</div>
-        <img src="./icons/info-2-32.png" class="info-icon">
-    </div>
-    </div>`;
-} * / */
 
 function createTask_TEMPLATE_LOGS(i, title, category, description) {
     return /*html*/ `
  <div class="contact-card">
-    <div class="color"></div>
     <div class="infos">
         <div class="contact">
             <div id="userImg${i}" class="contact-picture">

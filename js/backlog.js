@@ -21,6 +21,7 @@
 
 /**
  * FUNCTION_ADD_TO_BACKLOG
+ * help functions are in helpers.js
  */
 
 function renderBacklog() {
@@ -40,48 +41,3 @@ function renderBacklog() {
         renderUserEmail(i, emails);
     }
 }
-
-/**
- * FUNCTION_GUT_USER_EMAIL
- */
-
-function getUserEmails(emails, task) {
-    for (j = 0; j < task['assigned to'].length; j++) {
-        let email = task['assigned to'][j]['e-mail'];
-        emails.push(email);
-    }
-}
-
-/**
- * FUNCTION_GUT_USER_IMG
- */
-
-function getUserImg(userImgs, task) {
-    for (j = 0; j < task['assigned to'].length; j++) {
-        let userImg = task['assigned to'][j]['img.src'];
-        userImgs.push(userImg);
-    }
-}
-
-/**
- * FUNCTION_RENDER_USER_IMG
- */
-
-function renderUserEmail(i, emails) {
-    let backlogTemplate = document.getElementById('userEmail' + i);
-    for (let j = 0; j < emails.length; j++) {
-        backlogTemplate.innerHTML += /*html*/ `<a href="mailto:${emails[j]}">${emails[j]}</a>`;
-    }
-}
-
-/**
- * FUNCTION_RENDER_USER_IMG
- */
-
-function renderUserImg(i, userImgs) {
-    let backlogTemplate = document.getElementById('userImg' + i);
-    for (let j = 0; j < userImgs.length; j++) {
-        backlogTemplate.innerHTML += /*html*/ `<img src="${userImgs[j]}" class="profile-picture-sm img">`;
-    }
-}
-

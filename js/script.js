@@ -5,6 +5,7 @@
 function init() {
     loadAllTasks();
     renderTeam();
+    renderBacklog();
 }
 
 /**
