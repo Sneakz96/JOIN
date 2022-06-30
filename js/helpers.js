@@ -69,18 +69,23 @@ function renderUserImg(i, userImgs) {
 }
 
 /**
- * FUNCTION_ADD_URGENCY_COLOR
+ * FUNCTION_ADD_URGENCY_COLOR_TO_BOARD
  * the name of the css class is identical to the name of 'urgency' (Low, Mid, High)
  * High = red, Mid = yellow, Low = green
  */
 
-function addUrgencyColor(task) {
+function addUrgencyColorsToBacklog(i, task) {
     let color = task['urgency'];
-    console.log(color);
-    //document.getElementById('contact-card' + i).classList.add(color); //backlog
-   // document.getElementById('dragable-card' + i).classList.add(color); //board
-
-
-    //document.getElementById('contact-card' + i);
+    document.getElementById('contact-card' + i).classList.add(color);
 }
 
+/**
+ * FUNCTION_ADD_URGENCY_COLOR_TO_BOARD
+ * the name of the css class is identical to the name of 'urgency' (Low, Mid, High)
+ * High = red, Mid = yellow, Low = green
+ */
+
+function addUrgencyColorsToBoard(i, task) {
+    let color = task['urgency'];
+    document.getElementById('dragable-card' + i).classList.add(color);
+}

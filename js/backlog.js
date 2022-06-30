@@ -39,6 +39,6 @@ function renderBacklog() {
         logs.innerHTML += createTask_TEMPLATE_LOGS(i, title, category, description);
         renderUserImg(i, userImgs);
         renderUserEmail(i, emails);
-        addUrgencyColor(task);
+        addUrgencyColorsToBacklog(i, task);
     }
 }
