@@ -1,6 +1,6 @@
 function createTask_TEMPLATE_TO_DO(i, title, date) {
     return /*html*/ `
-    <div id="dragable-card${i}" class="dragable-card">
+    <div id="dragable-card${i}" draggable="true" ondragstart="startDragging()" class="dragable-card">
        <span class="dragable-card-title">${title}</span>
          <div id="dragable-card-names${i}" class="dragable-card-names">
            <!--names are rendered here-->

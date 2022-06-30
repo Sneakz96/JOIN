@@ -25,6 +25,7 @@ function createTask() {
     let asiTo = assignTo;
 
     let task = {
+        'id' : tasksInBacklog.length + tasksOnBoard.length,
         'title': title,
         'category': category,
         'description': description,
