@@ -7,6 +7,7 @@ function changeOnBoard(){
     document.getElementById('addtaskContent').classList.add('d-none');
     document.getElementById('help').classList.remove('active');
     renderToDos();
+    loadAllTasks();
 }
 
 
@@ -19,6 +20,7 @@ function changeOnBacklog(){
     document.getElementById('addtaskContent').classList.add('d-none');
     document.getElementById('help').classList.remove('active');
     renderBacklog();
+    loadAllTasks();
 }
 
 
@@ -31,6 +33,7 @@ function changeOnAddTask(){
     document.getElementById('backlogContent').classList.add('d-none');
     document.getElementById('help').classList.remove('active');
     cancel(); //clear fields
+    loadAllTasks();
 }
 
 
