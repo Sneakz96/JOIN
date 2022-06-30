@@ -21,9 +21,17 @@ function renderToDos() {
     }
 }
 
+/**
+ * FUNCTION_START_DRAGGING
+ */
+
 function startDragging(ticketID) {
     console.log(ticketID);
 }
+
+/**
+ * FUNCTION_OPEN_DETAIL_VIEW
+ */
 
 function openDetailView(i){
     let currentTask = tasksOnBoard[i];
@@ -35,7 +43,23 @@ function openDetailView(i){
     addUrgencyColorToDetailCard(i, currentTask);
 }
 
+/**
+ * FUNCTION_CLOSE_DETAIL_VIEW
+ */
+
 function closeDetailView(i){
     document.getElementById('detail-view' + i).classList.add('d-none');
+}
+
+/**
+ * FUNCTION_DELETE_BOARD_TASK
+ */
+
+function deleteBoardTask(i) {
+    closeDetailView(i);
+    tasksOnBoard.splice(i, 1);
+    resetTaskIDs();
+    save();
+    renderToDos();
 }
 
