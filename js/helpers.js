@@ -19,7 +19,7 @@ function getUserNames(names, task) {
 function renderUserName(i, names) {
     let boardTemplateElement = document.getElementById('dragable-card-names' + i);
     for (let j = 0; j < names.length; j++) {
-        boardTemplateElement.innerHTML += /*html*/ `${names}`
+        boardTemplateElement.innerHTML += /*html*/ `<span>${names[j]}</span>`
     }
 }
 

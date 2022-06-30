@@ -153,6 +153,8 @@ h2 {
     justify-content: flex-start;
     padding-left: 8px;
     font-size: 16px;
+    gap: 5px;
+    color: rgb(10, 42, 172);
 }
 
 .dragable-card-date {

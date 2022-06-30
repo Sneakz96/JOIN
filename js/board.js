@@ -13,7 +13,7 @@ function renderToDos() {
         let names = [];
         let date = tasksOnBoard[i]['dueDate'];
         getUserNames(names, task);
-        toDo.innerHTML += createTask_TEMPLATE_TO_DO(i, title, names, date);
+        toDo.innerHTML += createTask_TEMPLATE_TO_DO(i, title, date);
         renderUserName(i, names);
         addUrgencyColorsToBoard(i, task);
     }
