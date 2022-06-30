@@ -89,3 +89,20 @@ function addUrgencyColorsToBoard(i, task) {
     let color = task['urgency'];
     document.getElementById('dragable-card' + i).classList.add(color);
 }
+
+
+/**
+ * FUNCTION_RESET_TASK_IDS
+ */
+
+ function resetTaskIDs() {
+    for (i = 0; i < tasksInBacklog.length; i++) {
+        let ID = tasksInBacklog[i]['id'];
+        ID - 1;
+    }
+
+    for(i = 0; i < tasksOnBoard.length; i++){
+        let ID = tasksOnBoard[i]['id'];
+        ID - 1;
+    }
+}
