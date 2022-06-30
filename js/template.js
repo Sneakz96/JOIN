@@ -1,6 +1,6 @@
 function createTask_TEMPLATE_TO_DO(i, title, date, ticketID) {
     return /*html*/ `
-    <div id="dragable-card${i}" draggable="true" ondragstart="startDragging(${ticketID})" class="dragable-card">
+    <div id="dragable-card${i}" draggable="true" ondragstart="startDragging(${ticketID})" class="dragable-card" onclick="openDetailView(${i})">
        <span class="dragable-card-title">${title}</span>
          <div id="dragable-card-names${i}" class="dragable-card-names">
            <!--names are rendered here-->
@@ -34,6 +34,17 @@ function createTask_TEMPLATE_LOGS(i, title, category, description) {
        <img onclick="deleteBacklogTask(${i})" src="./icons/trash.ico" class="contact-card-icon">
     </div>
  </div>`;
+}
+
+function detailViewTemplate(i, title, description){
+    return /*html*/ `
+    <div id="detail-view${i}" class="detail-view-bg" onclick="closeDetailView(${i})">
+        <div id="detail-view-container${i}" class="detail-view-container" onclick="stopAutoClose(event)">
+            <span class="detail-card-title">${title}</span>
+            <span class="detail-card-description">${description}<span>
+        </div>
+    </div>
+    `;
 }
 
 function renderTeam_template(i) {

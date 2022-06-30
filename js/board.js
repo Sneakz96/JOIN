@@ -25,3 +25,17 @@ function startDragging(ticketID) {
     console.log(ticketID);
 }
 
+function openDetailView(i){
+    let currentTask = tasksOnBoard[i];
+    let title = currentTask['title'];
+    let description = currentTask['description'];
+    let container = document.getElementById('dialog-container');
+    container.innerHTML = '';
+    container.innerHTML += detailViewTemplate(i, title, description);
+    addUrgencyColorToDetailCard(i, currentTask);
+}
+
+function closeDetailView(i){
+    document.getElementById('detail-view' + i).classList.add('d-none');
+}
+

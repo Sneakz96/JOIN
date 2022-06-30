@@ -90,6 +90,17 @@ function addUrgencyColorsToBoard(i, task) {
     document.getElementById('dragable-card' + i).classList.add(color);
 }
 
+/**
+ * FUNCTION_ADD_URGENCY_COLOR_TO_DETAIL_CARD
+ * the name of the css class is identical to the name of 'urgency' (Low, Mid, High)
+ * High = red, Mid = yellow, Low = green
+ */
+
+function addUrgencyColorToDetailCard(i, currentTask) {
+    let color = currentTask['urgency'];
+    document.getElementById('detail-view-container' + i).classList.add(color);
+}
+
 
 /**
  * FUNCTION_RESET_TASK_IDS
@@ -105,4 +116,12 @@ function addUrgencyColorsToBoard(i, task) {
         let ID = tasksOnBoard[i]['id'];
         ID - 1;
     }
+}
+
+/**
+ * FUNCTION_STOP_AUTO_CLOSE
+ */
+
+function stopAutoClose(event) {
+    event.stopPropagation();
 }
