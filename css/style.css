@@ -69,6 +69,10 @@
 
 /*MAIN*/
 
+#content {
+    animation: opacity 175ms ease-in-out;
+}
+
 h2 {
     color: #000;
     text-transform: uppercase;
@@ -90,12 +94,11 @@ h2 {
     right: 0;
     left: 160px;
     height: 100vh;
+    overflow: auto;
 }
 
 .content {
     width: 100%;
-    margin-top: 100px;
-    margin-bottom: 100px;
 }
 
 /*BOARD_CONTENT*/
@@ -112,18 +115,59 @@ h2 {
 
 .board-container {
     display: flex;
-    justify-content: center;
-    background-color: rgb(239, 239, 239);
+    flex-direction: column;
+    align-items: center;
+    background-color: rgb(227, 227, 227);
     min-height: 500px;
+    border-radius: 12px;
+    padding-top: 8px;
+    padding-bottom: 8px;
 }
 
-.task {
-    color: white;
-    margin: 5px;
-    height: 100px;
+.dragable-card {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    background-color: white;
+    margin-top: 8px;
+    margin-bottom: 8px;
+    width: 90%;
+    min-height: 110px;
+    max-height: 250px;
+    border-radius: 8px;
+    word-break: break-all;
+
+}
+
+.dragable-card-title {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 8px;
+    font-size: 18px;
+}
+
+.dragable-card-names {
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    padding-left: 8px;
+    font-size: 16px;
+}
+
+.dragable-card-date {
+    width: 100%;
+    display: flex;
+    justify-content: flex-end;
+    padding-right: 5px;
+    font-size: 12px;
 }
 
 /*BACKLOG*/
+
+#backlogContent {
+    animation: opacity 175ms ease-in-out;
+}
 
 .table-header {
     color: rgb(10, 42, 172);
@@ -145,8 +189,9 @@ h2 {
 .contact-card {
     height: 125px;
     background-color: rgb(231, 231, 231);
-    border-radius: 20px;
-    margin-top: 15px;
+    border-radius: 12px;
+    margin-top: 10px;
+    margin-bottom: 10px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -170,7 +215,8 @@ h2 {
 
 .contact {
     display: flex;
-    margin-right: 10%;
+    align-items: center;
+
 }
 
 .profile-picture {
@@ -179,15 +225,28 @@ h2 {
     object-fit: cover;
     object-position: top;
     border-radius: 100%;
+    border: 4px solid white;
 }
 
-.profile-picture:hover {
+.profile-picture-sm {
+    height: 50px;
+    width: 50px;
+    object-fit: cover;
+    object-position: top;
+    border-radius: 100%;
+    border: 4px solid white;
+}
+
+.profile-picture:hover, .profile-picture-sm:hover {
     cursor: pointer;
+    box-shadow: 0 16px 16px -4px rgba(0, 0, 0, 0.3);
+    transition: all 125ms ease-in-out;
+    transform: scale(1.01);
 }
 
 .img {
-    margin-left: 30px;
-    margin-right: 30px;
+    margin-left: 10px;
+    margin-right: 10px;
 }
 
 .contact-name {
@@ -198,25 +257,59 @@ h2 {
 }
 
 .contact-name a {
+    font-size: 16px;
     text-decoration: none;
     color: rgb(10, 42, 172);
 }
 
+.contact-picture {
+    display: flex;
+}
+
+.contact-email {
+    display: flex;
+    flex-direction: column;
+}
 
 .detail-card {
     display: flex;
     max-width: 400px;
     height: 100px;
     margin-right: 0px;
-    overflow-y: scroll;
-    overflow-x: hidden;
+    overflow-y: auto;
+    word-break: break-all;
+    font-size: 16px;
+    align-items: center;
 }
 
-#category {
-    margin-right: 5%;
+.icon-container {
+    height: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    padding-left: 12px;
+    padding-right: 12px;
 }
+
+.contact-card-icon {
+    height: 20px;
+}
+
+.contact-card-icon:hover {
+    cursor: pointer;
+    box-shadow: 0 16px 16px -4px rgba(0, 0, 0, 0.3);
+    transition: all 125ms ease-in-out;
+    transform: scale(1.01);
+}
+
+
+
 
 /*ADD TASK*/
+
+#addtaskContent {
+    animation: opacity 175ms ease-in-out;
+}
 
 h3 {
     text-transform: uppercase;
@@ -307,25 +400,32 @@ h3 {
 }
 
 #modal{
-    max-width: 600px;
-    height: 500px;
+    width: 580px;
+    height: 330px;
     margin: auto;
-    background-color: rgb(67, 67, 67);
+    background-color: rgb(61, 73, 202);
     position: absolute;
     top: 0;
     bottom: 0;
     left: 0;
     right: 0;
     display: flex;
-    justify-content: center;
+    flex-direction: column;
     align-items: center;
+    justify-content: space-evenly;
     z-index: 21;
+    animation: zoomIn 125ms ease-in-out;
+    border-radius: 12px;
+}
+
+.headline-overlay {
+    font-size: 30px;
+    color: white;
 }
 
 #rendered-team{
-    margin-top: 100px;
     display: flex;
-    justify-content: space-between;
+    justify-content: space-evenly;
     align-items: center;
     width: 100%;
     flex-wrap: wrap;
@@ -338,19 +438,29 @@ h3 {
 }
 
 #close-modal-btn{
-    height: 40px;
-    width: 40px;
+    height: 45px;
+    width: 45px;
     position: absolute;
-    left: 0px;
-    top: 0px;
+    right: 8px;
+    top: 8px;
     color: white;
-    background-color: rgb(67, 67, 67);
+    background-color: rgba(255, 255, 255, 0);
     border: none;
+    border-radius: 50%;
+    transition: all 125ms ease-in-out;
+    font-size: 22px;
+    font-weight: 400;
+}
+
+#close-modal-btn:hover {
+    background-color: rgba(255, 255, 255, 0.2);
+    transition: all 125ms ease-in-out;
+
 }
 
 .join-logo{
-    position: absolute;
-    top: 0;
+    object-fit: cover;
+    height: 60px;
 }
 
 .cancel {
@@ -361,10 +471,13 @@ h3 {
     color: rgb(10, 42, 172);
     text-transform: uppercase;
     font-weight: 500;
+    transition: all 125ms ease-in-out;
 }
 
 .cancel:hover {
     cursor: pointer;
+    background-color: rgb(212, 212, 212);
+    transition: all 125ms ease-in-out;
 }
 
 .create-task {
@@ -376,8 +489,36 @@ h3 {
     margin-left: 20px;
     text-transform: uppercase;
     font-weight: 500;
+    transition: all 125ms ease-in-out;
+   
 }
 
 .create-task:hover {
     cursor: pointer;
+    transition: all 125ms ease-in-out;
+    background-color: rgb(59, 66, 147);
+}
+
+/* Help content*/
+#helpcontent {
+    animation: opacity 175ms ease-in-out;
+}
+
+@keyframes zoomIn {
+    from {
+        transform: scale(0);
+    }
+
+    to {
+        transform: scale(1);
+    }
+}
+
+@keyframes opacity {
+    from {
+        opacity: 0%;
+    }
+    to {
+        opacity: 100%;
+    }
 }

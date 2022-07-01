@@ -17,9 +17,14 @@
     <link rel="stylesheet" href="./css/responsive.css">
     <link rel="stylesheet" href="./css/root.css">
     <link rel="stylesheet" href="./css/style.css">
+    <link rel="stylesheet" href="./css/urgency-colors.css">
     <!--#JS-->
     <script src="./js/team.js"></script>
+    <script src="./js/addtask.js"></script>
+    <script src="./js/board.js"></script>
+    <script src="./js/backlog.js"></script>
     <script src="./js/menu.js"></script>
+    <script src="./js/helpers.js"></script>
     <script src="./js/template.js"></script>
     <script src="./js/script.js"></script>
     <script src="mini_backend.js"></script>
@@ -27,9 +32,6 @@
     <link rel="icon" type="image/png" href="./img/logo.png">
     <!--#TITLE-->
     <title>Our.Join</title>
-
-    <script>
-    </script>
 </head>
 
 <body onload="init(),  setURL('http:/'+'/gruppe-250.developerakademie.net/Gruppenarbeit%20JOIN/smallest_backend_ever')">
@@ -99,7 +101,7 @@
                         <h3>category</h3>
                         <select id="categoryBtn" class="form-select form-select-lg mb-3"
                             aria-label=".form-select-lg example" required>
-                            <option value="Management" selected>Management</option>
+                            <option value="Management">Management</option>
                             <option value="Marketing">Marketing</option>
                             <option value="Finance">Finance</option>
                             <option value="Operations Management">Operations Management</option>
@@ -119,7 +121,7 @@
                         <h3>urgency</h3>
                         <select id="urgencyBtn" class="form-select form-select-lg mb-3"
                             aria-label=".form-select-lg example" required>
-                            <option value="Low" selected>Low</option>
+                            <option value="Low">Low</option>
                             <option value="Mid">Mid</option>
                             <option value="High">High</option>
                         </select>
@@ -133,7 +135,8 @@
                             <div id="overlay">
                                 <div id="modal">
                                     <button id="close-modal-btn" onclick="closeTeam()">X</button>
-                                    <img src="./img/logo.png" class="logo join-logo">
+                                    <img src="./img/logo.png" class="join-logo">
+                                    <span class="headline-overlay">Choose an employee</span>
                                     <div id="rendered-team"></div>
                                 </div>
                             </div>
