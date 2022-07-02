@@ -15,7 +15,7 @@ const backend = {
     deleteItem: function(key) {
         delete jsonFromServer[key];
         return saveJSONToServer();
-    }
+    },
 };
 window.onload = async function() {
     downloadFromServer();
@@ -23,9 +23,18 @@ window.onload = async function() {
 
 async function downloadFromServer() {
     let result = await loadJSONFromServer();
-    jsonFromServer = JSON.parse(result);
-    console.log('Loaded', result);
+    if (result == '') {
+        result = {};
+    }
+    try {
+        jsonFromServer = JSON.parse(result);
+        console.log('Loaded', result);
+    } catch (e) {
+        debugger;
+        console.error(e);
+    }
 }
+
 
 function setURL(url) {
     BASE_SERVER_URL = url;

@@ -1,11 +1,9 @@
-
 /**
  * FUNCTION_ADD_TO_TO_DO
  */
 
-function addToDo(i) {
-    tasksOnBoard.push(tasksInBacklog[i]);
-    console.log(tasksOnBoard);
+async function addToDo(i) {
+    await addUserOnBoardDB(i);
     deleteBacklogTask(i);
 }
 
@@ -13,10 +11,10 @@ function addToDo(i) {
  * FUNCTION_DELETE_BACKLOG_TASK
  */
 
-function deleteBacklogTask(i) {
+async function deleteBacklogTask(i) {
     tasksInBacklog.splice(i, 1);
-    resetTaskIDs();
-    save();
+    await deleteUserBacklogDB();
+    //resetTaskIDs();
     renderBacklog();
 }
 

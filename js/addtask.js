@@ -16,7 +16,7 @@ function cancel() {
 /**
  * FUNCTION_CREATE_TASK
  */
-function createTask() {
+async function createTask() {
     let title = document.getElementById('title').value;
     let category = document.getElementById('categoryBtn').value;
     let description = document.getElementById('description').value;
@@ -25,7 +25,7 @@ function createTask() {
     let asiTo = assignTo;
 
     let task = {
-        'id' : tasksInBacklog.length + tasksOnBoard.length + 1,
+        'id': tasksInBacklog.length + tasksOnBoard.length + 1,
         'title': title,
         'category': category,
         'description': description,
@@ -37,9 +37,9 @@ function createTask() {
     if (noUserAdded()) {
         alert('Bitte weisen Sie das Ticket mindestens einem Mitarbeiter zu.');
     } else {
-        tasksInBacklog.push(task);
-        save();
+        // tasksInBacklog.push(task);
         cancel();
+        await addUserBacklogDB(task);
         alert('Das Ticket wurde erstellt');
         changeOnBacklog();
     }
@@ -56,7 +56,7 @@ function noUserAdded() {
 /**
  * FUNCTION_OPEN_TEAM_MODAL
  */
- function openTeam() {
+function openTeam() {
     const overlay = document.querySelector('#overlay');
     document.querySelector('#add').addEventListener('click', () => {
         overlay.style.display = 'block';

@@ -36,7 +36,7 @@ function createTask_TEMPLATE_LOGS(i, title, category, description) {
  </div>`;
 }
 
-function detailViewTemplate(i, title, description){
+function detailViewTemplate(i, title, description) {
     return /*html*/ `
     <div id="detail-view${i}" class="detail-view-bg" onclick="closeDetailView(${i})">
         <div id="detail-view-container${i}" class="detail-view-container" onclick="stopAutoClose(event)">
