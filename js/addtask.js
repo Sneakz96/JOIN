@@ -34,7 +34,7 @@ async function createTask() {
         'urgency': urgency,
         'assigned to': asiTo,
     }
-    if (noUserAdded()) {
+    if (noUserAdded()) { //statsdessen alle Field filled
         alert('Bitte weisen Sie das Ticket mindestens einem Mitarbeiter zu.');
     } else {
         // tasksInBacklog.push(task);
@@ -68,7 +68,8 @@ function openTeam() {
  */
 function closeTeam() {
     const overlay = document.querySelector('#overlay');
-    document.querySelector('#close-modal-btn').addEventListener('click', () => {
+    document.querySelector('#close-modal-btn').addEventListener('click', (event) => {
+        event.preventDefault();
         overlay.style.display = 'none';
     })
 }

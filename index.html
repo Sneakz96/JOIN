@@ -96,7 +96,6 @@
                 <h2>Add Task</h2>
                 <span class="sub-header">Learning Management System Project</span>
             </div>
-            <form onsubmit="createTask()">
                 <div class="new-task">
                     <div>
                         <h3>title</h3>
@@ -132,7 +131,7 @@
                             <img src="./img/icon plus.png" class="plus" id="add" onclick="openTeam()" data-bs-container="body" data-bs-toggle="popover" data-bs-placement="right" data-bs-content="Bottom popover">
                             <div id="overlay">
                                 <div id="modal">
-                                    <button id="close-modal-btn" onclick="closeTeam()">X</button>
+                                    <button id="close-modal-btn" onclick="closeTeam(event)">X</button>
                                     <img src="./img/logo.png" class="join-logo">
                                     <span class="headline-overlay">Choose an employee</span>
                                     <div id="rendered-team"></div>
@@ -141,11 +140,10 @@
                         </div>
                         <div class="buttons">
                             <button class="cancel" onclick="cancel()">cancel</button>
-                            <button class="create-task bg-blue">create task</button>
+                            <button class="create-task bg-blue" onclick="createTask()">create task</button>
                         </div>
                     </div>
                 </div>
-            </form>
         </div>
         <div id="helpContent" class="d-none">
 
