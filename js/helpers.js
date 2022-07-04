@@ -103,25 +103,21 @@ function addUrgencyColorToDetailCard(i, currentTask) {
 
 
 /**
- * FUNCTION_RESET_TASK_IDS
- */
-
- function resetTaskIDs() {
-    for (i = 0; i < tasksInBacklog.length; i++) {
-        let ID = tasksInBacklog[i]['id'];
-        ID - 1;
-    }
-
-    for(i = 0; i < tasksOnBoard.length; i++){
-        let ID = tasksOnBoard[i]['id'];
-        ID - 1;
-    }
-}
-
-/**
  * FUNCTION_STOP_AUTO_CLOSE
  */
 
 function stopAutoClose(event) {
     event.stopPropagation();
+}
+
+
+/**
+ * Function Id Generator
+ */
+
+function guidGenerator() {
+    var S4 = function() {
+       return (((1+Math.random())*0x10000)|0).toString(16).substring(1);
+    };
+    return (S4()+S4()+"-"+S4()+"-"+S4()+"-"+S4()+"-"+S4()+S4()+S4());
 }
