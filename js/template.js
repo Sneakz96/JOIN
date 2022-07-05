@@ -1,6 +1,6 @@
-function createTask_TEMPLATE_TO_DO(i, title, date, ticketID) {
+function createTask_TEMPLATE_TO_DO(i, title, date, id) {
     return /*html*/ `
-    <div id="dragable-card${i}" draggable="true" ondragstart="startDragging(${ticketID})" class="dragable-card" onclick="openDetailView(${i})">
+    <div id="dragable-card${i}" draggable="true" ondragstart="startDragging(${id})" class="dragable-card" onclick="openDetailView(${i})">
        <span class="dragable-card-title">${title}</span>
          <div id="dragable-card-names${i}" class="dragable-card-names">
            <!--names are rendered here-->

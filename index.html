@@ -57,22 +57,26 @@
             <div class="board-content">
                 <div class="container">
                     <h2 class="text-align-c">to do</h2>
-                    <div class="board-container" id="toDo">
+                    <div class="board-container" id="toDo" ondrop="moveTo('toDo')" ondragover="allowDrop(event)">
+            <!-- templates are rendered here -->
                     </div>
                 </div>
                 <div class="container">
                     <h2 class="text-align-c">in progress</h2>
-                    <div class="board-container" id="inProgress">
+                    <div class="board-container" id="inProgress" ondrop="moveTo('inProgress')" ondragover="allowDrop(event)">
+            <!-- templates are rendered here -->
                     </div>
                 </div>
                 <div class="container">
                     <h2 class="text-align-c">testing</h2>
-                    <div class="board-container" id="testing">
+                    <div class="board-container" id="testing" ondrop="moveTo('testing')" ondragover="allowDrop(event)">
+            <!-- templates are rendered here -->
                     </div>
                 </div>
                 <div class="container">
                     <h2 class="text-align-c">done</h2>
-                    <div class="board-container" id="done">
+                    <div class="board-container" id="done" ondrop="moveTo('done')" ondragover="allowDrop(event)">
+            <!-- templates are rendered here -->
                     </div>
                 </div>
             </div>

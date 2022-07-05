@@ -1,5 +1,5 @@
 let tasksOnBoard = [];
-let currentDraggedTemplate;
+let currentDraggedCard;
 
 /**
  * FUNCTION_DELETE_BACKLOG_TASK
@@ -13,12 +13,12 @@ function renderToDos() {
             return
         }
         let task = tasksOnBoard[i];
-        let ticketID = task['id'];
+        let id = task['id'];
         let title = tasksOnBoard[i]['title'];
         let names = [];
         let date = tasksOnBoard[i]['dueDate'];
         getUserNames(names, task);
-        toDo.innerHTML += createTask_TEMPLATE_TO_DO(i, title, date, ticketID);
+        toDo.innerHTML += createTask_TEMPLATE_TO_DO(i, title, date, id);
         renderNames(i, names);
         addUrgencyColorsToBoard(i, task);
     }
@@ -40,9 +40,27 @@ function renderToDos() {
  * FUNCTION_START_DRAGGING
  */
 
-function startDragging(ticketID) {
-    console.log(ticketID);
+function startDragging(id) {
+    currentDraggedCard = id;
 }
+
+/**
+ * FUNCTION allow Drop
+ */
+
+function allowDrop(ev) {
+    ev.preventDefault();
+  }
+
+  
+/**
+ * Function move to
+ */
+
+function moveTo(category){
+
+}
+
 
 /**
  * FUNCTION_OPEN_DETAIL_VIEW
