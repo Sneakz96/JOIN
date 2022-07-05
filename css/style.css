@@ -228,6 +228,16 @@ h2 {
     text-align: left;
 }
 
+.detail-card-category {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 14px;
+    width: 90%;
+    font-weight: bold;
+    font-style: italic;
+    margin-top: 8px;
+}
+
 .detail-card-description {
     width: 90%;
     font-size: 20px;

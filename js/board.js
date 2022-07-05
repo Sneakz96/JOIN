@@ -71,10 +71,11 @@ function openDetailView(i) {
     let title = currentTask['title'];
     let description = currentTask['description'];
     let names = [];
+    let category = currentTask['category'];
     getUserNames(names, currentTask);
     let container = document.getElementById('dialog-container');
     container.innerHTML = '';
-    container.innerHTML += detailViewTemplate(i, title, description);
+    container.innerHTML += detailViewTemplate(i, title, category, description);
     addUrgencyColorToDetailCard(i, currentTask);
     renderNamesInDetailCard(i, names);
 }
