@@ -234,6 +234,19 @@ h2 {
     margin-top: 10px;
     flex: 1;
     text-align: left;
+    overflow-y: auto;
+    word-break: break-word;
+}
+
+.detail-card-names {
+    display: flex;
+    justify-content: flex-start;
+    font-size: 18px;
+    margin-top: 12px;
+    width: 90%;
+    gap: 8px;
+    margin-bottom: 12px;
+    color: rgb(10, 42, 172);
 }
 
 /*BACKLOG*/
@@ -350,7 +363,7 @@ h2 {
     height: 100px;
     margin-right: 0px;
     overflow-y: auto;
-    word-break: break-all;
+    word-break: break-word;
     font-size: 16px;
     align-items: center;
 }

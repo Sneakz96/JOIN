@@ -43,3 +43,25 @@ function renderBacklog() {
         addUrgencyColorsToBacklog(i, task);
     }
 }
+
+/**
+ * FUNCTION_RENDER_USER_EMAIL
+ */
+
+ function renderUserEmail(i, emails) {
+    let backlogTemplate = document.getElementById('userEmail' + i);
+    for (let j = 0; j < emails.length; j++) {
+        backlogTemplate.innerHTML += /*html*/ `<a href="mailto:${emails[j]}">${emails[j]}</a>`;
+    }
+}
+
+/**
+ * FUNCTION_RENDER_USER_IMG
+ */
+
+ function renderUserImg(i, userImgs) {
+    let backlogTemplate = document.getElementById('userImg' + i);
+    for (let j = 0; j < userImgs.length; j++) {
+        backlogTemplate.innerHTML += /*html*/ `<img src="${userImgs[j]}" class="profile-picture-sm img">`;
+    }
+}

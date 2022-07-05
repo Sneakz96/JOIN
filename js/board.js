@@ -19,10 +19,22 @@ function renderToDos() {
         let date = tasksOnBoard[i]['dueDate'];
         getUserNames(names, task);
         toDo.innerHTML += createTask_TEMPLATE_TO_DO(i, title, date, ticketID);
-        renderUserName(i, names);
+        renderNames(i, names);
         addUrgencyColorsToBoard(i, task);
     }
 }
+
+/**
+ * FUNCTION_RENDER_USER_Name
+ */
+
+ function renderNames(i, names) {
+    let boardTemplateElement = document.getElementById('dragable-card-names' + i);
+    for (let j = 0; j < names.length; j++) {
+        boardTemplateElement.innerHTML += /*html*/ `<span>${names[j]}</span>`
+    }
+}
+
 
 /**
  * FUNCTION_START_DRAGGING
@@ -40,10 +52,20 @@ function openDetailView(i) {
     let currentTask = tasksOnBoard[i];
     let title = currentTask['title'];
     let description = currentTask['description'];
+    let names = [];
+    getUserNames(names, currentTask);
     let container = document.getElementById('dialog-container');
     container.innerHTML = '';
     container.innerHTML += detailViewTemplate(i, title, description);
     addUrgencyColorToDetailCard(i, currentTask);
+    renderNamesInDetailCard(i, names);
+}
+
+function renderNamesInDetailCard(i, names){
+    let currentTemplate = document.getElementById('detail-view-names' + i);
+    for (let j = 0; j < names.length; j++) {
+        currentTemplate.innerHTML += `<span>${names[j]}</span>`;
+    }
 }
 
 /**

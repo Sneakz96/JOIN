@@ -42,7 +42,10 @@ function detailViewTemplate(i, title, description) {
         <div id="detail-view-container${i}" class="detail-view-container" onclick="stopAutoClose(event)">
             <img onclick="closeDetailView(${i})" src="./icons/x-mark.png" class="detail-view-x-mark">
             <span class="detail-card-title">${title}</span>
-            <span class="detail-card-description">${description}<span>
+            <span class="detail-card-description">${description}</span>
+            <div id="detail-view-names${i}" class="detail-card-names">
+                <!--names are rendered here-->
+            </div>
             <img onclick="deleteBoardTask(${i})" src="./icons/trash.ico" class="detail-view-trash-icon">
         </div>
     </div>
