@@ -82,7 +82,7 @@ function stopAutoClose(event) {
  * Function Id Generator
  */
 
-function guidGenerator() {
+function idGenerator() {
     var S4 = function() {
        return (((1+Math.random())*0x10000)|0);
     };

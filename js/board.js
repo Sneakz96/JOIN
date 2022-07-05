@@ -57,8 +57,10 @@ function allowDrop(ev) {
  * Function move to
  */
 
-function moveTo(category){
-
+function moveTo(status){
+    let ticket = tasksOnBoard.find(t => t.id === currentDraggedCard);
+    ticket['status'] = status;
+    console.log(status);
 }
 
 

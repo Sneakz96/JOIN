@@ -17,15 +17,16 @@ function cancel() {
  * FUNCTION_CREATE_TASK
  */
 async function createTask() {
+
     let title = document.getElementById('title').value;
     let category = document.getElementById('categoryBtn').value;
     let description = document.getElementById('description').value;
     let dueDate = document.getElementById('dueDate').value;
     let urgency = document.getElementById('urgencyBtn').value;
     let asiTo = assignTo;
-
+    
     let task = {
-        'id': guidGenerator(),
+        'id': idGenerator(),
         'title': title,
         'category': category,
         'description': description,
@@ -33,6 +34,7 @@ async function createTask() {
         'dueDate': dueDate,
         'urgency': urgency,
         'assigned to': asiTo,
+        'status' : 'toDo'
     }
     if (noUserAdded()) { //statsdessen alle Field filled
         alert('Bitte weisen Sie das Ticket mindestens einem Mitarbeiter zu.');
@@ -44,6 +46,7 @@ async function createTask() {
         changeOnBacklog();
     }
 }
+
 
 /**
  * FUNCTION_NO_USER_ADDED
