@@ -5,30 +5,114 @@ let currentDraggedCard;
  * FUNCTION_DELETE_BACKLOG_TASK
  */
 
-function renderToDos() {
-    let toDo = document.getElementById('toDo');
-    toDo.innerHTML = '';
-    for (let i = 0; i < tasksOnBoard.length; i++) {
-        if (!tasksOnBoard[i]) {
+function renderBoard() {
+    let toDoJSON = tasksOnBoard.filter(t => t['status'] == 'toDo');
+    let inProgressJSON = tasksOnBoard.filter(t => t['status'] == 'inProgress');
+    let testingJSON = tasksOnBoard.filter(t => t['status'] == 'testing');
+    let doneJSON = tasksOnBoard.filter(t => t['status'] == 'done');
+
+    console.log(toDoJSON, inProgressJSON, doneJSON, testingJSON);
+    
+    let toDoContainer = document.getElementById('toDo');
+    let inProgressContainer = document.getElementById('inProgress');
+    let testingContainer = document.getElementById('testing');
+    let doneContainer = document.getElementById('done');
+
+    clearBoard(toDoContainer, inProgressContainer, testingContainer, doneContainer);
+    renderToDoArea(toDoJSON, toDoContainer);
+    renderinProgressArea(inProgressJSON, inProgressContainer);
+    renderTestingArea(testingJSON, testingContainer);
+    renderDoneArea(doneJSON, doneContainer);
+}
+
+
+function renderToDoArea(toDo, toDoContainer) {
+    for (let i = 0; i < toDo.length; i++) {
+        if (!toDo[i]) {
             return
         }
-        let task = tasksOnBoard[i];
+        let task = toDo[i];
         let id = task['id'];
-        let title = tasksOnBoard[i]['title'];
+        let title = task['title'];
         let names = [];
-        let date = tasksOnBoard[i]['dueDate'];
+        let date = task['dueDate'];
         getUserNames(names, task);
-        toDo.innerHTML += createTask_TEMPLATE_TO_DO(i, title, date, id);
+        toDoContainer.innerHTML += createTask_TEMPLATE_TO_DO(i, title, date, id);
         renderNames(i, names);
         addUrgencyColorsToBoard(i, task);
     }
+}
+
+
+function renderinProgressArea(inProgressJSON, inProgressContainer){
+    for (let i = 0; i < inProgressJSON.length; i++) {
+        if (!inProgressJSON[i]) {
+            return
+        }
+        let task = inProgressJSON[i];
+        let id = task['id'];
+        let title = task['title'];
+        let names = [];
+        let date = task['dueDate'];
+        getUserNames(names, task);
+        inProgressContainer.innerHTML += createTask_TEMPLATE_TO_DO(i, title, date, id);
+        renderNames(i, names);
+        addUrgencyColorsToBoard(i, task);
+    }
+}
+
+
+function renderTestingArea(testingJSON, testingContainer) {
+    for (let i = 0; i < testingJSON.length; i++) {
+        if (!testingJSON[i]) {
+            return
+        }
+        let task = testingJSON[i];
+        let id = task['id'];
+        let title = task['title'];
+        let names = [];
+        let date = task['dueDate'];
+        getUserNames(names, task);
+        testingContainer.innerHTML += createTask_TEMPLATE_TO_DO(i, title, date, id);
+        renderNames(i, names);
+        addUrgencyColorsToBoard(i, task);
+    }
+}
+
+function renderDoneArea(doneJSON, doneContainer) {
+    for (let i = 0; i < doneJSON.length; i++) {
+        if (!doneJSON[i]) {
+            return
+        }
+        let task = doneJSON[i];
+        let id = task['id'];
+        let title = task['title'];
+        let names = [];
+        let date = task['dueDate'];
+        getUserNames(names, task);
+        doneContainer.innerHTML += createTask_TEMPLATE_TO_DO(i, title, date, id);
+        renderNames(i, names);
+        addUrgencyColorsToBoard(i, task);
+    }
+}
+
+
+/**
+ * FUNCTION
+ */
+
+function clearBoard(toDoContainer, inProgressContainer, testingContainer, doneContainer) {
+    toDoContainer.innerHTML = '';
+    inProgressContainer.innerHTML = '';
+    testingContainer.innerHTML = '';
+    doneContainer.innerHTML = '';
 }
 
 /**
  * FUNCTION_RENDER_USER_Name
  */
 
- function renderNames(i, names) {
+function renderNames(i, names) {
     let boardTemplateElement = document.getElementById('dragable-card-names' + i);
     for (let j = 0; j < names.length; j++) {
         boardTemplateElement.innerHTML += /*html*/ `<span>${names[j]}</span>`
@@ -50,17 +134,17 @@ function startDragging(id) {
 
 function allowDrop(ev) {
     ev.preventDefault();
-  }
+}
 
-  
+
 /**
  * Function move to
  */
 
-function moveTo(status){
+function moveTo(status) {
     let ticket = tasksOnBoard.find(t => t.id === currentDraggedCard);
     ticket['status'] = status;
-    console.log(status);
+    renderBoard();
 }
 
 
@@ -82,7 +166,7 @@ function openDetailView(i) {
     renderNamesInDetailCard(i, names);
 }
 
-function renderNamesInDetailCard(i, names){
+function renderNamesInDetailCard(i, names) {
     let currentTemplate = document.getElementById('detail-view-names' + i);
     for (let j = 0; j < names.length; j++) {
         currentTemplate.innerHTML += `<span>${names[j]}</span>`;
@@ -105,6 +189,6 @@ async function deleteBoardTask(i) {
     closeDetailView(i);
     tasksOnBoard.splice(i, 1);
     await deleteUserOnBoardDB()
-        //resetTaskIDs();
-    renderToDos();
+    //resetTaskIDs();
+    renderToDoSection();
 }
