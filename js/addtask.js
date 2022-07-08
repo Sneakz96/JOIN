@@ -43,7 +43,6 @@ async function createTask() {
         cancel();
         await addUserBacklogDB(task);
         alert('Das Ticket wurde erstellt');
-        changeOnBacklog();
     }
 }
 
@@ -80,7 +79,7 @@ function closeTeam() {
 /**
  * FUNCTION_RENDER_TEAM
  */
-function renderTeam() {
+async function renderTeam() {
     let renderedTeam = document.getElementById('rendered-team');
     console.log(assignTo);
     for (let i = 0; i < team.length; i++) {

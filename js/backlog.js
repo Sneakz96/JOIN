@@ -25,7 +25,7 @@ async function deleteBacklogTask(i) {
  * help functions are in helpers.js
  */
 
-function renderBacklog() {
+async function renderBacklog() {
     let logs = document.getElementById('logs');
     logs.innerHTML = '';
     for (let i = tasksInBacklog.length - 1; i >= 0; i--) { //render task backward

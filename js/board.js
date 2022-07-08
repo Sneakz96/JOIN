@@ -5,7 +5,7 @@ let currentDraggedCard;
  * FUNCTION_DELETE_BACKLOG_TASK
  */
 
-function renderBoard() {
+async function renderBoard() {
     let toDoJSON = tasksOnBoard.filter(t => t['status'] == 'toDo');
     let inProgressJSON = tasksOnBoard.filter(t => t['status'] == 'inProgress');
     let testingJSON = tasksOnBoard.filter(t => t['status'] == 'testing');
