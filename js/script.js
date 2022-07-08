@@ -1,10 +1,26 @@
 /**
  * FUNCTION_AT_START
  */
-async function init() {
-    setURL('http://gruppe-250.developerakademie.net/Gruppenarbeit%20JOIN/smallest_backend_ever');
+async function initAddTask() {
+    setURL('https://gruppe-250.developerakademie.net/Gruppenarbeit%20JOIN/smallest_backend_ever');
+    await syncArrays();
+    await renderTeam();
+  
+}
+
+async function initBoard() {
+    setURL('https://gruppe-250.developerakademie.net/Gruppenarbeit%20JOIN/smallest_backend_ever');
     await syncArrays();
     await renderBoard();
-    await renderTeam();
+}
+
+async function initBacklog() {
+    setURL('https://gruppe-250.developerakademie.net/Gruppenarbeit%20JOIN/smallest_backend_ever');
+    await syncArrays();
     await renderBacklog();
+}
+
+async function initHelp() {
+    setURL('https://gruppe-250.developerakademie.net/Gruppenarbeit%20JOIN/smallest_backend_ever');
+    await syncArrays();
 }

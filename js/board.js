@@ -12,7 +12,7 @@ async function renderBoard() {
     let doneJSON = tasksOnBoard.filter(t => t['status'] == 'done');
 
     console.log(toDoJSON, inProgressJSON, doneJSON, testingJSON);
-    
+
     let toDoContainer = document.getElementById('toDo');
     let inProgressContainer = document.getElementById('inProgress');
     let testingContainer = document.getElementById('testing');
@@ -44,7 +44,7 @@ function renderToDoArea(toDo, toDoContainer) {
 }
 
 
-function renderinProgressArea(inProgressJSON, inProgressContainer){
+function renderinProgressArea(inProgressJSON, inProgressContainer) {
     for (let i = 0; i < inProgressJSON.length; i++) {
         if (!inProgressJSON[i]) {
             return
