@@ -609,6 +609,10 @@ h3 {
     margin-left: 16px;
 }
 
+.content-text {
+    margin-left: 16px;
+}
+
 @keyframes zoomIn {
     from {
         transform: scale(0);
