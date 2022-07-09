@@ -13,7 +13,7 @@ function renderBoard() {
     let doneJSONs = tasksOnBoard.filter(t => t['status'] == 'done');
 
     console.log(toDoJSONs, inProgressJSONs, doneJSONs, testingJSONs);
-    
+
     let toDoContainer = document.getElementById('toDo');
     let inProgressContainer = document.getElementById('inProgress');
     let testingContainer = document.getElementById('testing');
@@ -27,12 +27,12 @@ function renderBoard() {
 }
 
 
-function renderToDoArea(toDo, toDoContainer) {
-    for (let i = 0; i < toDo.length; i++) {
-        if (!toDo[i]) {
+function renderToDoArea(toDoJSONs, toDoContainer) {
+    for (let i = 0; i < toDoJSONs.length; i++) {
+        if (!toDoJSONs[i]) {
             return
         }
-        let task = toDo[i];
+        let task = toDoJSONs[i];
         let id = task['id'];
         let title = task['title'];
         let names = [];
@@ -45,7 +45,7 @@ function renderToDoArea(toDo, toDoContainer) {
 }
 
 
-function renderinProgressArea(inProgressJSON, inProgressContainer){
+function renderinProgressArea(inProgressJSON, inProgressContainer) {
     for (let i = 0; i < inProgressJSON.length; i++) {
         if (!inProgressJSON[i]) {
             return
@@ -187,10 +187,12 @@ function closeDetailView(i) {
  * FUNCTION_DELETE_BOARD_TASK
  */
 
-async function deleteBoardTask(i) {
-    closeDetailView(i);
-    tasksOnBoard.splice(i, 1);
-    await deleteUserOnBoardDB()
-    //resetTaskIDs();
-    renderToDoSection();
+async function deleteBoardTask(id) {
+    let currentTask = tasksOnBoard.filter(t => t['id'] == id);
+    currentTask = currentTask[0];
+    console.log(currentTask);
+    closeDetailView(id);
+    tasksOnBoard.splice(currentTask, 1);
+    await deleteUserOnBoardDB();
+    renderBoard();
 }
