@@ -1,28 +1,29 @@
 let tasksOnBoard = [];
 let currentDraggedCard;
 
+
 /**
  * FUNCTION_DELETE_BACKLOG_TASK
  */
 
-async function renderBoard() {
-    let toDoJSON = tasksOnBoard.filter(t => t['status'] == 'toDo');
-    let inProgressJSON = tasksOnBoard.filter(t => t['status'] == 'inProgress');
-    let testingJSON = tasksOnBoard.filter(t => t['status'] == 'testing');
-    let doneJSON = tasksOnBoard.filter(t => t['status'] == 'done');
+function renderBoard() {
+    let toDoJSONs = tasksOnBoard.filter(t => t['status'] == 'toDo');
+    let inProgressJSONs = tasksOnBoard.filter(t => t['status'] == 'inProgress');
+    let testingJSONs = tasksOnBoard.filter(t => t['status'] == 'testing');
+    let doneJSONs = tasksOnBoard.filter(t => t['status'] == 'done');
 
-    console.log(toDoJSON, inProgressJSON, doneJSON, testingJSON);
-
+    console.log(toDoJSONs, inProgressJSONs, doneJSONs, testingJSONs);
+    
     let toDoContainer = document.getElementById('toDo');
     let inProgressContainer = document.getElementById('inProgress');
     let testingContainer = document.getElementById('testing');
     let doneContainer = document.getElementById('done');
 
     clearBoard(toDoContainer, inProgressContainer, testingContainer, doneContainer);
-    renderToDoArea(toDoJSON, toDoContainer);
-    renderinProgressArea(inProgressJSON, inProgressContainer);
-    renderTestingArea(testingJSON, testingContainer);
-    renderDoneArea(doneJSON, doneContainer);
+    renderToDoArea(toDoJSONs, toDoContainer);
+    renderinProgressArea(inProgressJSONs, inProgressContainer);
+    renderTestingArea(testingJSONs, testingContainer);
+    renderDoneArea(doneJSONs, doneContainer);
 }
 
 
@@ -37,14 +38,14 @@ function renderToDoArea(toDo, toDoContainer) {
         let names = [];
         let date = task['dueDate'];
         getUserNames(names, task);
-        toDoContainer.innerHTML += createTask_TEMPLATE_TO_DO(i, title, date, id);
-        renderNames(i, names);
-        addUrgencyColorsToBoard(i, task);
+        toDoContainer.innerHTML += createTask_TEMPLATE_TO_DO(id, title, date);
+        renderNames(id, names);
+        addUrgencyColorsToBoard(id, task);
     }
 }
 
 
-function renderinProgressArea(inProgressJSON, inProgressContainer) {
+function renderinProgressArea(inProgressJSON, inProgressContainer){
     for (let i = 0; i < inProgressJSON.length; i++) {
         if (!inProgressJSON[i]) {
             return
@@ -55,9 +56,9 @@ function renderinProgressArea(inProgressJSON, inProgressContainer) {
         let names = [];
         let date = task['dueDate'];
         getUserNames(names, task);
-        inProgressContainer.innerHTML += createTask_TEMPLATE_TO_DO(i, title, date, id);
-        renderNames(i, names);
-        addUrgencyColorsToBoard(i, task);
+        inProgressContainer.innerHTML += createTask_TEMPLATE_TO_DO(id, title, date);
+        renderNames(id, names);
+        addUrgencyColorsToBoard(id, task);
     }
 }
 
@@ -73,9 +74,9 @@ function renderTestingArea(testingJSON, testingContainer) {
         let names = [];
         let date = task['dueDate'];
         getUserNames(names, task);
-        testingContainer.innerHTML += createTask_TEMPLATE_TO_DO(i, title, date, id);
-        renderNames(i, names);
-        addUrgencyColorsToBoard(i, task);
+        testingContainer.innerHTML += createTask_TEMPLATE_TO_DO(id, title, date);
+        renderNames(id, names);
+        addUrgencyColorsToBoard(id, task);
     }
 }
 
@@ -90,9 +91,9 @@ function renderDoneArea(doneJSON, doneContainer) {
         let names = [];
         let date = task['dueDate'];
         getUserNames(names, task);
-        doneContainer.innerHTML += createTask_TEMPLATE_TO_DO(i, title, date, id);
-        renderNames(i, names);
-        addUrgencyColorsToBoard(i, task);
+        doneContainer.innerHTML += createTask_TEMPLATE_TO_DO(id, title, date);
+        renderNames(id, names);
+        addUrgencyColorsToBoard(id, task);
     }
 }
 
@@ -112,8 +113,8 @@ function clearBoard(toDoContainer, inProgressContainer, testingContainer, doneCo
  * FUNCTION_RENDER_USER_Name
  */
 
-function renderNames(i, names) {
-    let boardTemplateElement = document.getElementById('dragable-card-names' + i);
+function renderNames(id, names) {
+    let boardTemplateElement = document.getElementById('dragable-card-names' + id);
     for (let j = 0; j < names.length; j++) {
         boardTemplateElement.innerHTML += /*html*/ `<span>${names[j]}</span>`
     }
@@ -152,8 +153,9 @@ function moveTo(status) {
  * FUNCTION_OPEN_DETAIL_VIEW
  */
 
-function openDetailView(i) {
-    let currentTask = tasksOnBoard[i];
+function openDetailView(id) {
+    let currentTask = tasksOnBoard.filter(t => t['id'] == id);
+    currentTask = currentTask[0]; //id filtered array has only 1 position.
     let title = currentTask['title'];
     let description = currentTask['description'];
     let names = [];
@@ -161,13 +163,13 @@ function openDetailView(i) {
     getUserNames(names, currentTask);
     let container = document.getElementById('dialog-container');
     container.innerHTML = '';
-    container.innerHTML += detailViewTemplate(i, title, category, description);
-    addUrgencyColorToDetailCard(i, currentTask);
-    renderNamesInDetailCard(i, names);
+    container.innerHTML += detailViewTemplate(id, title, category, description);
+    addUrgencyColorToDetailCard(id, currentTask);
+    renderNamesInDetailCard(id, names);
 }
 
-function renderNamesInDetailCard(i, names) {
-    let currentTemplate = document.getElementById('detail-view-names' + i);
+function renderNamesInDetailCard(id, names) {
+    let currentTemplate = document.getElementById('detail-view-names' + id);
     for (let j = 0; j < names.length; j++) {
         currentTemplate.innerHTML += `<span>${names[j]}</span>`;
     }
