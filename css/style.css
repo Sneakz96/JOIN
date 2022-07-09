@@ -4,6 +4,7 @@
     font-family: 'PT Sans';
 }
 
+
 /*SIDE-MENU*/
 
 .side-menu {
@@ -67,6 +68,7 @@
     margin: 40px;
 }
 
+
 /*MAIN*/
 
 #content {
@@ -100,6 +102,7 @@ h2 {
 .content {
     width: 100%;
 }
+
 
 /*BOARD_CONTENT*/
 
@@ -214,14 +217,15 @@ h2 {
     right: 12px;
 }
 
-.detail-view-x-mark:hover, .detail-view-trash-icon:hover {
+.detail-view-x-mark:hover,
+.detail-view-trash-icon:hover {
     cursor: pointer;
     box-shadow: 0 16px 16px -3px rgba(0, 0, 0, 0.2);
     transition: all 125ms ease-in-out;
     transform: scale(1.02);
 }
 
-.detail-card-title{
+.detail-card-title {
     font-size: 26px;
     margin-top: 12px;
     width: 90%;
@@ -258,6 +262,7 @@ h2 {
     margin-bottom: 12px;
     color: rgb(10, 42, 172);
 }
+
 
 /*BACKLOG*/
 
@@ -312,7 +317,6 @@ h2 {
 .contact {
     display: flex;
     align-items: center;
-
 }
 
 .profile-picture {
@@ -333,7 +337,8 @@ h2 {
     border: 4px solid white;
 }
 
-.profile-picture:hover, .profile-picture-sm:hover {
+.profile-picture:hover,
+.profile-picture-sm:hover {
     cursor: pointer;
     box-shadow: 0 16px 16px -4px rgba(0, 0, 0, 0.3);
     transition: all 125ms ease-in-out;
@@ -399,8 +404,6 @@ h2 {
 }
 
 
-
-
 /*ADD TASK*/
 
 #addtaskContent {
@@ -461,19 +464,20 @@ h3 {
     margin-left: 20px;
 }
 
-#receivers{
+#receivers {
     display: flex;
     flex-wrap: wrap;
     max-width: 390px;
 }
 
-.receiver{
+.receiver {
     margin: 3px;
 }
 
-.team-img{
+.team-img {
     margin: 3px;
 }
+
 .plus {
     margin-left: 20px;
 }
@@ -482,9 +486,10 @@ h3 {
     cursor: pointer;
 }
 
+
 /*POPUP_MODAL*/
 
-#overlay{
+#overlay {
     display: none;
     position: fixed;
     top: 0;
@@ -495,7 +500,7 @@ h3 {
     background-color: rgba(0, 0, 0, 0.385);
 }
 
-#modal{
+#modal {
     width: 580px;
     height: 330px;
     margin: auto;
@@ -519,7 +524,7 @@ h3 {
     color: white;
 }
 
-#rendered-team{
+#rendered-team {
     display: flex;
     justify-content: space-evenly;
     align-items: center;
@@ -533,7 +538,7 @@ h3 {
     margin-top: 30px;
 }
 
-#close-modal-btn{
+#close-modal-btn {
     height: 45px;
     width: 45px;
     position: absolute;
@@ -551,10 +556,9 @@ h3 {
 #close-modal-btn:hover {
     background-color: rgba(255, 255, 255, 0.2);
     transition: all 125ms ease-in-out;
-
 }
 
-.join-logo{
+.join-logo {
     object-fit: cover;
     height: 60px;
 }
@@ -586,7 +590,6 @@ h3 {
     text-transform: uppercase;
     font-weight: 500;
     transition: all 125ms ease-in-out;
-   
 }
 
 .create-task:hover {
@@ -595,16 +598,21 @@ h3 {
     background-color: rgb(59, 66, 147);
 }
 
+
 /* Help content*/
-#helpcontent {
-    animation: opacity 175ms ease-in-out;
+
+.helpContent {
+    padding: 16px;
+}
+
+.content {
+    margin-left: 16px;
 }
 
 @keyframes zoomIn {
     from {
         transform: scale(0);
     }
-
     to {
         transform: scale(1);
     }
