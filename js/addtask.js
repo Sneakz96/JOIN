@@ -16,16 +16,17 @@ function cancel() {
 /**
  * FUNCTION_CREATE_TASK
  */
-function createTask() {
+async function createTask() {
+
     let title = document.getElementById('title').value;
     let category = document.getElementById('categoryBtn').value;
     let description = document.getElementById('description').value;
     let dueDate = document.getElementById('dueDate').value;
     let urgency = document.getElementById('urgencyBtn').value;
     let asiTo = assignTo;
-
+    
     let task = {
-        'id' : tasksInBacklog.length + tasksOnBoard.length + 1,
+        'id': idGenerator(),
         'title': title,
         'category': category,
         'description': description,
@@ -33,17 +34,18 @@ function createTask() {
         'dueDate': dueDate,
         'urgency': urgency,
         'assigned to': asiTo,
+        'status' : 'toDo'
     }
-    if (noUserAdded()) {
+    if (noUserAdded()) { //statsdessen alle Field filled
         alert('Bitte weisen Sie das Ticket mindestens einem Mitarbeiter zu.');
     } else {
-        tasksInBacklog.push(task);
-        save();
+        // tasksInBacklog.push(task);
         cancel();
+        await addUserBacklogDB(task);
         alert('Das Ticket wurde erstellt');
-        changeOnBacklog();
     }
 }
+
 
 /**
  * FUNCTION_NO_USER_ADDED
@@ -56,7 +58,7 @@ function noUserAdded() {
 /**
  * FUNCTION_OPEN_TEAM_MODAL
  */
- function openTeam() {
+function openTeam() {
     const overlay = document.querySelector('#overlay');
     document.querySelector('#add').addEventListener('click', () => {
         overlay.style.display = 'block';
@@ -68,7 +70,8 @@ function noUserAdded() {
  */
 function closeTeam() {
     const overlay = document.querySelector('#overlay');
-    document.querySelector('#close-modal-btn').addEventListener('click', () => {
+    document.querySelector('#close-modal-btn').addEventListener('click', (event) => {
+        event.preventDefault();
         overlay.style.display = 'none';
     })
 }
@@ -76,7 +79,7 @@ function closeTeam() {
 /**
  * FUNCTION_RENDER_TEAM
  */
-function renderTeam() {
+async function renderTeam() {
     let renderedTeam = document.getElementById('rendered-team');
     console.log(assignTo);
     for (let i = 0; i < team.length; i++) {

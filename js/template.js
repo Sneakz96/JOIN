@@ -1,8 +1,8 @@
-function createTask_TEMPLATE_TO_DO(i, title, date, ticketID) {
+function createTask_TEMPLATE_TO_DO(id, title, date) {
     return /*html*/ `
-    <div id="dragable-card${i}" draggable="true" ondragstart="startDragging(${ticketID})" class="dragable-card" onclick="openDetailView(${i})">
+    <div id="dragable-card${id}" draggable="true" ondragstart="startDragging(${id})" class="dragable-card" onclick="openDetailView(${id})">
        <span class="dragable-card-title">${title}</span>
-         <div id="dragable-card-names${i}" class="dragable-card-names">
+         <div id="dragable-card-names${id}" class="dragable-card-names">
            <!--names are rendered here-->
          </div>
        <span class="dragable-card-date">${date}</span>
@@ -36,14 +36,18 @@ function createTask_TEMPLATE_LOGS(i, title, category, description) {
  </div>`;
 }
 
-function detailViewTemplate(i, title, description){
+function detailViewTemplate(id, title, category, description) {
     return /*html*/ `
-    <div id="detail-view${i}" class="detail-view-bg" onclick="closeDetailView(${i})">
-        <div id="detail-view-container${i}" class="detail-view-container" onclick="stopAutoClose(event)">
-            <img onclick="closeDetailView(${i})" src="./icons/x-mark.png" class="detail-view-x-mark">
+    <div id="detail-view${id}" class="detail-view-bg" onclick="closeDetailView(${id})">
+        <div id="detail-view-container${id}" class="detail-view-container" onclick="stopAutoClose(event)">
+            <img onclick="closeDetailView(${id})" src="./icons/x-mark.png" class="detail-view-x-mark">
             <span class="detail-card-title">${title}</span>
-            <span class="detail-card-description">${description}<span>
-            <img onclick="deleteBoardTask(${i})" src="./icons/trash.ico" class="detail-view-trash-icon">
+            <div class="detail-card-category">${category}</div>
+            <span class="detail-card-description">${description}</span>
+            <div id="detail-view-names${id}" class="detail-card-names">
+                <!--names are rendered here-->
+            </div>
+            <img onclick="deleteBoardTask(${id})" src="./icons/trash.ico" class="detail-view-trash-icon">
         </div>
     </div>
     `;

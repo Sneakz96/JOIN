@@ -1,36 +1,26 @@
-
 /**
  * FUNCTION_AT_START
  */
-function init() {
-    loadAllTasks();
-    renderTeam();
-    renderBacklog();
+async function initAddTask() {
+    setURL('https://gruppe-250.developerakademie.net/Gruppenarbeit%20JOIN/smallest_backend_ever');
+    await syncArrays();
+    await renderTeam();
+  
 }
 
-/**
- * FUNCTION_LOAD_EXISTING_TASKS
- */
-function loadAllTasks() {
-    if (!localStorage.getItem('tasksInBacklog') || !localStorage.getItem('tasksOnBoard')) {
-        return;
-    } else {
-        let tasksInBacklogAsString = localStorage.getItem('tasksInBacklog');
-        tasksInBacklog = JSON.parse(tasksInBacklogAsString);
-
-        let tasksOnBoardAsString = localStorage.getItem('tasksOnBoard');
-        tasksOnBoard = JSON.parse(tasksOnBoardAsString);
-        console.log('loaded tasks', tasksInBacklog, tasksOnBoard);
-    }
+async function initBoard() {
+    setURL('https://gruppe-250.developerakademie.net/Gruppenarbeit%20JOIN/smallest_backend_ever');
+    await syncArrays();
+    await renderBoard();
 }
 
-/**
- * FUNCTION_SAVE
- */
-function save() {
-    let tasksInBacklogAsString = JSON.stringify(tasksInBacklog); //tasks in backlog, created in addTask section
-    localStorage.setItem('tasksInBacklog', tasksInBacklogAsString);
+async function initBacklog() {
+    setURL('https://gruppe-250.developerakademie.net/Gruppenarbeit%20JOIN/smallest_backend_ever');
+    await syncArrays();
+    await renderBacklog();
+}
 
-    let tasksOnBoardAsString = JSON.stringify(tasksOnBoard); //tasks, moved from backlog to board
-    localStorage.setItem('tasksOnBoard', tasksOnBoardAsString);
+async function initHelp() {
+    setURL('https://gruppe-250.developerakademie.net/Gruppenarbeit%20JOIN/smallest_backend_ever');
+    await syncArrays();
 }

@@ -46,15 +46,18 @@
     /*MAIN*/
 
     .main {
-
         top: 120px !important;
-        bottom: 0;
+        bottom: 60px !important;
         right: 0;
         left: 0px !important;
+    
     }
 
     .content {
-        margin-top: 5px !important;
+        margin-bottom: 100px !important;
+        display: flex;
+        justify-content: space-around;
+        height: fit-content;
     }
 
     .logged-profile {
@@ -77,11 +80,22 @@
     }
 
     .footer {
-        position: fixed;
-        bottom: 0;
+        position: absolute;
+        bottom: 0px;
+    }
+
+    /*BOARD*/
+    .board-content {
+        display: flex;
+        flex-direction: column;
     }
 
     /*BACKLOG*/
+    #backlogContent {
+        display: flex;
+        flex-direction: column;
+        justify-content: start;
+    }
 
     .headline {
         margin-top: 15px;
@@ -127,4 +141,19 @@
         margin-left: 30px;
         margin-right: 30px;
     }
+
+    /*ADD_TASK*/
+
+    #addtaskContent {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .new-task {
+        display: flex;
+        flex-direction: column;
+        margin-bottom: 100px;
+    }
+
+    /*HELP*/
 }
