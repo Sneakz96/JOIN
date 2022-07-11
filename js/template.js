@@ -1,10 +1,10 @@
-function createTask_TEMPLATE_TO_DO(i, title, names, date) {
+function createTask_TEMPLATE_TO_DO(i, title, date, ticketID) {
     return /*html*/ `
-    <div id="dragable-card${i}" class="dragable-card">
+    <div id="dragable-card${i}" draggable="true" ondragstart="startDragging(${ticketID})" class="dragable-card" onclick="openDetailView(${i})">
        <span class="dragable-card-title">${title}</span>
-         <span id="dragable-card-names${i}" class="dragable-card-names">
+         <div id="dragable-card-names${i}" class="dragable-card-names">
            <!--names are rendered here-->
-         </span>
+         </div>
        <span class="dragable-card-date">${date}</span>
     </div>`;
 }
@@ -34,6 +34,19 @@ function createTask_TEMPLATE_LOGS(i, title, category, description) {
        <img onclick="deleteBacklogTask(${i})" src="./icons/trash.ico" class="contact-card-icon">
     </div>
  </div>`;
+}
+
+function detailViewTemplate(i, title, description){
+    return /*html*/ `
+    <div id="detail-view${i}" class="detail-view-bg" onclick="closeDetailView(${i})">
+        <div id="detail-view-container${i}" class="detail-view-container" onclick="stopAutoClose(event)">
+            <img onclick="closeDetailView(${i})" src="./icons/x-mark.png" class="detail-view-x-mark">
+            <span class="detail-card-title">${title}</span>
+            <span class="detail-card-description">${description}<span>
+            <img onclick="deleteBoardTask(${i})" src="./icons/trash.ico" class="detail-view-trash-icon">
+        </div>
+    </div>
+    `;
 }
 
 function renderTeam_template(i) {

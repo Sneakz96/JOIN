@@ -19,7 +19,7 @@ function getUserNames(names, task) {
 function renderUserName(i, names) {
     let boardTemplateElement = document.getElementById('dragable-card-names' + i);
     for (let j = 0; j < names.length; j++) {
-        boardTemplateElement.innerHTML += /*html*/ `${names}`
+        boardTemplateElement.innerHTML += /*html*/ `<span>${names[j]}</span>`
     }
 }
 
@@ -69,18 +69,59 @@ function renderUserImg(i, userImgs) {
 }
 
 /**
- * FUNCTION_ADD_URGENCY_COLOR
+ * FUNCTION_ADD_URGENCY_COLOR_TO_BOARD
  * the name of the css class is identical to the name of 'urgency' (Low, Mid, High)
  * High = red, Mid = yellow, Low = green
  */
 
-function addUrgencyColor(task) {
+function addUrgencyColorsToBacklog(i, task) {
     let color = task['urgency'];
-    console.log(color);
-    //document.getElementById('contact-card' + i).classList.add(color); //backlog
-   // document.getElementById('dragable-card' + i).classList.add(color); //board
-
-
-    //document.getElementById('contact-card' + i);
+    document.getElementById('contact-card' + i).classList.add(color);
 }
 
+/**
+ * FUNCTION_ADD_URGENCY_COLOR_TO_BOARD
+ * the name of the css class is identical to the name of 'urgency' (Low, Mid, High)
+ * High = red, Mid = yellow, Low = green
+ */
+
+function addUrgencyColorsToBoard(i, task) {
+    let color = task['urgency'];
+    document.getElementById('dragable-card' + i).classList.add(color);
+}
+
+/**
+ * FUNCTION_ADD_URGENCY_COLOR_TO_DETAIL_CARD
+ * the name of the css class is identical to the name of 'urgency' (Low, Mid, High)
+ * High = red, Mid = yellow, Low = green
+ */
+
+function addUrgencyColorToDetailCard(i, currentTask) {
+    let color = currentTask['urgency'];
+    document.getElementById('detail-view-container' + i).classList.add(color);
+}
+
+
+/**
+ * FUNCTION_RESET_TASK_IDS
+ */
+
+ function resetTaskIDs() {
+    for (i = 0; i < tasksInBacklog.length; i++) {
+        let ID = tasksInBacklog[i]['id'];
+        ID - 1;
+    }
+
+    for(i = 0; i < tasksOnBoard.length; i++){
+        let ID = tasksOnBoard[i]['id'];
+        ID - 1;
+    }
+}
+
+/**
+ * FUNCTION_STOP_AUTO_CLOSE
+ */
+
+function stopAutoClose(event) {
+    event.stopPropagation();
+}
