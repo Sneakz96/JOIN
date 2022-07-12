@@ -18,15 +18,24 @@ function cancel() {
  * FUNCTION_CREATE_TASK
  */
 async function createTask() {
-
     let title = document.getElementById('title').value;
     let category = document.getElementById('categoryBtn').value;
     let description = document.getElementById('description').value;
     let dueDate = document.getElementById('dueDate').value;
     let urgency = document.getElementById('urgencyBtn').value;
     let asiTo = assignTo;
-    
-    let task = {
+    let task = getTaskValues(title, category, description, dueDate, urgency, asiTo);
+
+    if (noUserAdded(asiTo) || noTitle(title) || noDescription(description)) {
+        alert('Bitte füllen Sie das Formular vollständig aus.');
+    } else {
+        addTaskToBacklog(task);
+    }
+}
+
+
+function getTaskValues(title, category, description, dueDate, urgency, asiTo){
+   task = {
         'id': idGenerator(),
         'title': title,
         'category': category,
@@ -37,11 +46,22 @@ async function createTask() {
         'assigned to': asiTo,
         'status' : 'toDo'
     }
-    if (noUserAdded(asiTo) || noTitle(title) || noDescription(description)) {
-        alert('Bitte füllen Sie das Formular vollständig aus.');
-    } else {
-        addTaskToBacklog(task);
-    }
+    return task;
+}
+
+
+function noUserAdded(asiTo) {
+    return asiTo.length == 0;
+}
+
+
+function noTitle(title){
+   return title == '';
+}
+
+
+function noDescription(description) {
+    return description == '';
 }
 
 
@@ -51,25 +71,6 @@ async function addTaskToBacklog(task){
     alert('Das Ticket wurde erstellt');
 }
 
-/**
- * FUNCTION_NO_USER_ADDED
- */
-
-function noTitle(title){
-   return title == '';
-}
-
-function noDescription(description) {
-    return description == '';
-}
-
-/**
- * FUNCTION_NO_USER_ADDED
- */
-
-function noUserAdded(asiTo) {
-    return asiTo.length == 0;
-}
 
 
 /**
