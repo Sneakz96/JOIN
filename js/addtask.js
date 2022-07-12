@@ -36,24 +36,40 @@ async function createTask() {
         'assigned to': asiTo,
         'status' : 'toDo'
     }
-    if (noUserAdded()) { //statsdessen alle Field filled
-        alert('Bitte weisen Sie das Ticket mindestens einem Mitarbeiter zu.');
+    if (noUserAdded(asiTo) || noTitle(title) || noDescription(description)) {
+        alert('Bitte füllen Sie das Formular vollständig aus.');
     } else {
-        // tasksInBacklog.push(task);
-        cancel();
-        await addUserBacklogDB(task);
-        alert('Das Ticket wurde erstellt');
+        addTaskToBacklog(task);
     }
 }
 
+
+async function addTaskToBacklog(task){
+    cancel();
+    await addUserBacklogDB(task);
+    alert('Das Ticket wurde erstellt');
+}
 
 /**
  * FUNCTION_NO_USER_ADDED
  */
 
-function noUserAdded() {
-    return document.getElementById('receivers').childNodes.length === 0;
+function noTitle(title){
+   return title == '';
 }
+
+function noDescription(description) {
+    return description == '';
+}
+
+/**
+ * FUNCTION_NO_USER_ADDED
+ */
+
+function noUserAdded(asiTo) {
+    return asiTo.length == 0;
+}
+
 
 /**
  * FUNCTION_OPEN_TEAM_MODAL
