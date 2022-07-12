@@ -54,3 +54,8 @@ async function syncArrays() {
     console.log(tasksOnBoard)
     console.log(tasksInBacklog)
 }
+
+async function saveBoardTaskStatus(){
+    await backend.setItem('onboardTasks', JSON.stringify(tasksOnBoardDB) || []);
+    loadDB();
+};

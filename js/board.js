@@ -145,6 +145,7 @@ function allowDrop(ev) {
 function moveTo(status) {
     let ticket = tasksOnBoard.find(t => t.id === currentDraggedCard);
     ticket['status'] = status;
+    saveBoardTaskStatus();
     renderBoard();
 }
 
