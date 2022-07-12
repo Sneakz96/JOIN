@@ -11,6 +11,7 @@ function cancel() {
     document.getElementById('urgencyBtn').value = '';
     document.getElementById('receivers').innerHTML = '';
     resetMemberProfiles();
+    assignTo = [];
 }
 
 /**
@@ -45,7 +46,7 @@ async function createTask() {
 
 
 async function addTaskToBacklog(task){
-    cancel();
+    cancel(); //clear inputfields
     await addUserBacklogDB(task);
     alert('Das Ticket wurde erstellt');
 }
