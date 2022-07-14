@@ -9,7 +9,7 @@
 
 .side-menu {
     height: 100vh;
-    width: 160px;
+    width: 150px;
     background-color: rgb(61, 73, 202);
 }
 
@@ -27,27 +27,35 @@
     align-items: flex-start;
     justify-content: center;
     flex-direction: column;
-    margin-top: 20%;
     width: 100%;
-    margin-left: 20%;
 }
 
 .menu-links a {
     text-decoration: none;
     color: rgb(250, 250, 250);
-    margin-top: 15px;
     font-size: 23px;
+    transition: all 125ms ease-in-out;
+    padding-left: 24px;
 }
 
 .menu-links a:hover {
     cursor: pointer;
-    margin-left: 10px;
-    border-left: 5px solid white;
+    margin-left: 8px;
+    transition: all 125ms ease-in-out;
 }
 
-.active {
-    margin-right: 10px;
-    border-left: 5px solid white;
+.link-container {
+    display: flex;
+    justify-content: flex-start;
+    width: 100%;
+    margin-top: 20px;
+    border-left: 4px solid transparent;
+    transition: all 125ms ease-in-out;
+}
+
+.link-container:hover {
+    border-left: 4px solid white;
+    transition: all 125ms ease-in-out;
 }
 
 .logged-profile {
