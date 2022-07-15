@@ -189,9 +189,7 @@ function closeDetailView(i) {
  */
 
 async function deleteBoardTask(id) {
-    let currentTask = tasksOnBoard.filter(t => t['id'] == id);
-    currentTask = currentTask[0];
-    console.log(currentTask);
+    let currentTask = tasksOnBoard.findIndex(obj => obj.id == id);
     closeDetailView(id);
     tasksOnBoard.splice(currentTask, 1);
     await deleteUserOnBoardDB();
