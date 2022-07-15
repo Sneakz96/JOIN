@@ -28,6 +28,12 @@
     width: 470px !important;
 }
 
+@media(min-width: 1200px) {
+    .hide-desktop {
+        display: none;
+    }
+}
+
 
 }
 
@@ -323,6 +329,11 @@
 
     .side-menu {
         height: 75px !important;
+    }
+    /*responsive menu*/
+    .close-btn-container {
+        height: 75px !important;
+   
     }
 
     /*BOARD*/
