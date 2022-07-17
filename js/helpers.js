@@ -14,7 +14,9 @@ function getUserNames(names, array) {
 
 
 /**
- * FUNCTION_GUT_USER_EMAIL
+ * FUNCTION_GET_USER_EMAIL
+ * 
+ * @param {string} emails - PUSH EMAIL IN ARRAY
  */
 
 function getUserEmails(emails, array) {

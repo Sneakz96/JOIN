@@ -2,7 +2,7 @@ let tasksInBacklog = [];
 let assignTo = [];
 
 /**
- * FUNCTION_CANCEL
+ * FUNCTION TO CLEAR VALUES AFTER CLOSING
  */
 function cancel() {
     document.getElementById('title').value = '';
@@ -15,7 +15,7 @@ function cancel() {
 }
 
 /**
- * FUNCTION_CREATE_TASK
+ * FUNCTION TO CREATE TASK
  */
 async function createTask() {
     let title = document.getElementById('title').value;
@@ -33,7 +33,11 @@ async function createTask() {
     }
 }
 
-
+/**
+ * FUNCTION TO GET VALUES 
+ * 
+ * @param {string}
+ */
 function getTaskValues(title, category, description, dueDate, urgency, asiTo){
    task = {
         'id': idGenerator(),
@@ -49,22 +53,30 @@ function getTaskValues(title, category, description, dueDate, urgency, asiTo){
     return task;
 }
 
-
+/**
+ * FUNCTION TO CREATE TASK
+ */
 function noUserAdded(asiTo) {
     return asiTo.length == 0;
 }
 
-
+/**
+ * FUNCTION TO CREATE TASK
+ */
 function noTitle(title){
    return title == '';
 }
 
-
+/**
+ * FUNCTION TO CREATE TASK
+ */
 function noDescription(description) {
     return description == '';
 }
 
-
+/**
+ * FUNCTION TO CREATE TASK
+ */
 async function addTaskToBacklog(task){
     cancel(); //clear inputfields
     await addUserBacklogDB(task);
@@ -122,7 +134,6 @@ function addTeamImg(i) {
 /**
  * FUNCTION_HIDE_MEMBER_Profile
  */
-
 function hideMemberProfile(i) {
     document.getElementById('member_' + i).parentNode.classList.add('d-none');
 }
@@ -130,7 +141,6 @@ function hideMemberProfile(i) {
 /**
  * FUNCTION_HIDE_MEMBER_Profile
  */
-
 function resetMemberProfiles() {
     for (i = 0; i < team.length; i++) {
         document.getElementById('member_' + i).parentNode.classList.remove('d-none');
