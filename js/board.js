@@ -11,9 +11,6 @@ function renderBoard() {
     let inProgressJSONs = tasksOnBoard.filter(t => t['status'] == 'inProgress');
     let testingJSONs = tasksOnBoard.filter(t => t['status'] == 'testing');
     let doneJSONs = tasksOnBoard.filter(t => t['status'] == 'done');
-
-    console.log(toDoJSONs, inProgressJSONs, doneJSONs, testingJSONs);
-
     let toDoContainer = document.getElementById('toDo');
     let inProgressContainer = document.getElementById('inProgress');
     let testingContainer = document.getElementById('testing');
@@ -79,6 +76,7 @@ function renderTestingArea(testingJSON, testingContainer) {
         addUrgencyColorsToBoard(id, task);
     }
 }
+
 
 function renderDoneArea(doneJSON, doneContainer) {
     for (let i = 0; i < doneJSON.length; i++) {
@@ -168,6 +166,7 @@ function openDetailView(id) {
     addUrgencyColorToDetailCard(id, currentTask);
     renderNamesInDetailCard(id, names);
 }
+
 
 function renderNamesInDetailCard(id, names) {
     let currentTemplate = document.getElementById('detail-view-names' + id);
