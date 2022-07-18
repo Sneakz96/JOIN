@@ -48,6 +48,7 @@ function detailViewTemplate(id, title, category, description) {
                 <!--names are rendered here-->
             </div>
             <img onclick="deleteBoardTask(${id})" src="./icons/trash.ico" class="detail-view-trash-icon">
+            <img id="move-icon${id}" onclick="moveToNextArea(${id})" src="./icons/move_arrow.png" class="detail-view-move-icon">
         </div>
     </div>
     `;

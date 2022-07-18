@@ -292,6 +292,14 @@ h2 {
     right: 12px;
 }
 
+.detail-view-move-icon {
+    height: 26px;
+    position: absolute;
+    bottom: 54px;
+    right: 10px;
+    cursor: pointer;
+}
+
 .detail-view-x-mark:hover,
 .detail-view-trash-icon:hover {
     cursor: pointer;

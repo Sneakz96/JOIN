@@ -1,3 +1,8 @@
+@media(min-width: 1400px) {
+    .detail-view-move-icon {
+        display: none;
+    }
+}
 
 @media (max-width: 1399px) {
 /*board */
@@ -30,6 +35,9 @@
 
 @media(min-width: 1200px) {
     .hide-desktop {
+        display: none;
+    }
+    .detail-view-move-icon {
         display: none;
     }
 }
@@ -373,7 +381,6 @@
         width: 250px !important;
     }
     .detail-view-container {
-        min-height: 70vh !important;
         width: 75vw !important;
         min-width: 250px !important;
         }

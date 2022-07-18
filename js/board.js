@@ -165,6 +165,7 @@ function openDetailView(id) {
     container.innerHTML += detailViewTemplate(id, title, category, description);
     addUrgencyColorToDetailCard(id, currentTask);
     renderNamesInDetailCard(id, names);
+    checkIfTaskIsDone(id); //disable moveToNextArea() function if a Task is done.
 }
 
 
@@ -179,9 +180,58 @@ function renderNamesInDetailCard(id, names) {
  * FUNCTION_CLOSE_DETAIL_VIEW
  */
 
-function closeDetailView(i) {
-    document.getElementById('detail-view' + i).classList.add('d-none');
+function closeDetailView(id) {
+    document.getElementById('detail-view' + id).classList.add('d-none');
+    resetMoveIcon(id);
 }
+
+
+/**
+ * FUNCTION_
+ */
+
+function moveToNextArea(id) {
+    let currentTask = tasksOnBoard.filter(t => t.id == id);
+    currentTask = currentTask[0]; //id filtered array has only 1 position.
+  if (currentTask['status'] == 'toDo') {
+        currentTask['status'] = 'inProgress';
+    } else {
+        if (currentTask['status'] == 'inProgress') {
+            currentTask['status'] = 'testing';
+        } else {
+            if (currentTask['status'] == 'testing') {
+                currentTask['status'] = 'done';
+            }
+        }
+    }
+   saveBoardTaskStatus();
+   renderBoard();
+   closeDetailView(id);
+}
+
+/**
+ * FUNCTION to disable move icon if the task Status is "done"
+ */
+
+
+function checkIfTaskIsDone(id){
+    let currentTask = tasksOnBoard.filter(t => t.id == id);
+    currentTask = currentTask[0]; //id filtered array has only 1 position.
+    if (currentTask['status'] == 'done') {
+        hideMoveIcon(id);
+    }
+}
+
+
+function resetMoveIcon(id) {
+    document.getElementById('move-icon' + id).classList.remove('d-none');
+}
+
+
+function hideMoveIcon(id) {
+    document.getElementById('move-icon' + id).classList.add('d-none');
+}
+
 
 /**
  * FUNCTION_DELETE_BOARD_TASK
