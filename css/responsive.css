@@ -315,12 +315,9 @@
         font-size: 32px !important;
     }
 
-    /*HELP*/
 
-
-
-    /*Footer*/
-    .footer {
+    /*impressum*/
+    .impressum-link {
         display: none;
     }
 }
@@ -412,6 +409,11 @@
         font-size: 16px !important;
         font-weight: 500 !important;
     }
+      /* impressum*/
+      .impressum-box {
+        max-width: 400px;
+        word-break: break-word;
+      }
 }
 
 @media(max-width: 400px) {
@@ -426,6 +428,10 @@
     .contact-name span {
         font-size: 16px !important;
     }
+       /* impressum*/
+       .impressum-box {
+        max-width: 360px;
+      }
 }
 
 @media(max-width: 360px) {
@@ -447,6 +453,10 @@
         padding: 12px !important;
         font-size: 18px !important;
     }
+     /* impressum*/
+     .impressum-box {
+            max-width: 290px;
+          }
 }
 
 @media(max-width: 330px) {
