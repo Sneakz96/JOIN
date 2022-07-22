@@ -28,7 +28,13 @@ async function deleteBacklogTask(i) {
 async function renderBacklog() {
     let logs = document.getElementById('logs');
     logs.innerHTML = '';
-    for (let i = tasksInBacklog.length - 1; i >= 0; i--) { //render task backward
+    checkIfBacklogIsEmpty(logs);
+    renderTasks(logs);
+    
+}
+
+function renderTasks(logs) {
+    for (let i = tasksInBacklog.length - 1; i >= 0; i--) {
         let task = tasksInBacklog[i];
         let title = task['title'];
         let category = task['category'];
@@ -41,6 +47,14 @@ async function renderBacklog() {
         renderUserImg(i, userImgs);
         renderUserEmail(i, emails);
         addUrgencyColorsToBacklog(i, task);
+    }
+}
+
+function checkIfBacklogIsEmpty(logs){
+    if (tasksInBacklog == '') {
+        logs.innerHTML += noTaskInfoTemplate();
+    } else {
+        logs.innerHTML = '';
     }
 }
 

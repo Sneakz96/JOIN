@@ -386,6 +386,18 @@ h2 {
     margin-right: 50px;
 }
 
+.emtpy-logs-info {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 300px;
+}
+
+.emtpy-logs-infotext {
+    font-size: 35px;
+    color: grey;
+}
+
 .contact-card {
     height: 130px;
     background-color: rgb(231, 231, 231);

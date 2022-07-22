@@ -67,3 +67,10 @@ function addTeamImg_template(i) {
     <img id="members_${i}" src="${assignTo[i]['img.src']}" class="profile-picture">
     </div>`;
 }
+
+function noTaskInfoTemplate(){
+    return `
+    <div class="emtpy-logs-info">
+          <span class="emtpy-logs-infotext">Backlog is emtpy</span>
+       </div>`;
+}
