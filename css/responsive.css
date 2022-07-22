@@ -147,6 +147,10 @@
 
     /*Board*/
 
+    .board-content {
+        padding-top: 60px !important;
+    }
+
    .detail-view-container {
     min-height: 40vh !important;
     width: 65vw !important;
@@ -174,6 +178,7 @@
         display: flex;
         flex-direction: column;
         justify-content: start;
+        padding-top: 80px !important;
     }
 
     .table-header {
@@ -263,10 +268,11 @@
         flex-direction: column;
         align-items: center;
         padding-bottom: 20px;
+        padding-top: 80px !important;
     }
 
     #modal {
-        height: 40vh !important;
+        height: 75vh !important;
         width: 80vw !important;
     }
 
@@ -315,8 +321,14 @@
         font-size: 32px !important;
     }
 
+    /* help*/
+    .helpContent {
+        padding-top: 100px !important;
+    }
+
 
     /*impressum*/
+
     .impressum-link {
         display: none;
     }

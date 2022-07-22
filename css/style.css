@@ -520,6 +520,10 @@ h2 {
     padding-right: 16px;
 }
 
+#addtaskContent input {
+    outline: none !important;
+}
+
 h3 {
     text-transform: uppercase;
     color: rgb(10, 42, 172);
@@ -564,6 +568,8 @@ h3 {
     height: 220px;
     display: block;
     word-wrap: break-word;
+    resize: none;
+    outline: none;
 }
 
 .assigned-to-images {
