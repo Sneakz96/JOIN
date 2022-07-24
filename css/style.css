@@ -543,9 +543,14 @@ h3 {
     margin-bottom: 10px;
 }
 
+.alert{
+    margin-top: 25px;
+    width: 90%;
+}
+
 .new-task {
     margin-left: 50px;
-    margin-top: 50px;
+    margin-top: 25px;
     display: flex;
     justify-content: space-evenly;
     width: 90%;

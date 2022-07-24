@@ -27,7 +27,10 @@ async function createTask() {
     let task = getTaskValues(title, category, description, dueDate, urgency, asiTo);
 
     if (noUserAdded(asiTo) || noTitle(title) || noDescription(description)) {
-        alert('Bitte füllen Sie das Formular vollständig aus.');
+        let success = document.getElementById('successAlert');
+    success.classList.add('d-none');
+        let alert = document.getElementById('alert');
+        alert.classList.remove('d-none');
     } else {
         addTaskToBacklog(task);
     }
@@ -38,8 +41,8 @@ async function createTask() {
  * 
  * @param {string}
  */
-function getTaskValues(title, category, description, dueDate, urgency, asiTo){
-   task = {
+function getTaskValues(title, category, description, dueDate, urgency, asiTo) {
+    task = {
         'id': idGenerator(),
         'title': title,
         'category': category,
@@ -48,7 +51,7 @@ function getTaskValues(title, category, description, dueDate, urgency, asiTo){
         'dueDate': dueDate,
         'urgency': urgency,
         'assigned to': asiTo,
-        'status' : 'toDo'
+        'status': 'toDo'
     }
     return task;
 }
@@ -63,8 +66,8 @@ function noUserAdded(asiTo) {
 /**
  * FUNCTION TO CREATE TASK
  */
-function noTitle(title){
-   return title == '';
+function noTitle(title) {
+    return title == '';
 }
 
 /**
@@ -77,10 +80,14 @@ function noDescription(description) {
 /**
  * FUNCTION TO CREATE TASK
  */
-async function addTaskToBacklog(task){
+async function addTaskToBacklog(task) {
     cancel(); //clear inputfields
     await addUserBacklogDB(task);
-    alert('Das Ticket wurde erstellt');
+    let alert = document.getElementById('alert');
+    alert.classList.add('d-none');
+    let success = document.getElementById('successAlert');
+    success.classList.remove('d-none');
+
 }
 
 
@@ -111,7 +118,6 @@ function closeTeam() {
  */
 async function renderTeam() {
     let renderedTeam = document.getElementById('rendered-team');
-    console.log(assignTo);
     for (let i = 0; i < team.length; i++) {
         renderedTeam.innerHTML += renderTeam_template(i);
     }
@@ -132,14 +138,14 @@ function addTeamImg(i) {
 }
 
 /**
- * FUNCTION_HIDE_MEMBER_Profile
+ * FUNCTION_HIDE_MEMBER_PROFILE
  */
 function hideMemberProfile(i) {
     document.getElementById('member_' + i).parentNode.classList.add('d-none');
 }
 
 /**
- * FUNCTION_HIDE_MEMBER_Profile
+ * FUNCTION_HIDE_MEMBER_PROFILE
  */
 function resetMemberProfiles() {
     for (i = 0; i < team.length; i++) {

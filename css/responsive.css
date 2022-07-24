@@ -276,6 +276,8 @@
         width: 80vw !important;
     }
 
+
+    
     .new-task {
         display: flex;
         flex-direction: column;
@@ -475,5 +477,8 @@
     /* add Task*/
     .create-task {
         margin-left: 10px !important;
+    }
+    .alert{
+        width: 90%;
     }
 }

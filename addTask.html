@@ -46,6 +46,12 @@
                 <h2>Add Task</h2>
                 <span class="sub-header">Learning Management System Project</span>
             </div>
+            <div class="alert alert-success d-none" id="successAlert" role="alert">
+                Ihr Task wurde erstellt!
+            </div>
+            <div class="alert alert-danger d-none" id="alert" role="alert">
+                Fill in requestet details!
+            </div>
             <div class="new-task">
                 <div>
                     <h3>title</h3>
@@ -89,7 +95,7 @@
                             <div id="modal">
                                 <button id="close-modal-btn" onclick="closeTeam(event)">X</button>
                                 <img src="./img/logo.png" class="join-logo">
-                                <span class="headline-overlay">Choose an employee</span>
+                                <span class="headline-overlay">Choose an employer</span>
                                 <div id="rendered-team"></div>
                             </div>
                         </div>
