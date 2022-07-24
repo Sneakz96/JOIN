@@ -43,7 +43,7 @@ function detailViewTemplate(id, title, category, description) {
             <img onclick="closeDetailView(${id})" src="./icons/x-mark.png" class="detail-view-x-mark">
             <span class="detail-card-title">${title}</span>
             <div class="detail-card-category">${category}</div>
-            <span class="detail-card-description">${description}</span>
+            <span class="detail-card-description" contenteditable="true">${description}</span>
             <div id="detail-view-names${id}" class="detail-card-names">
                 <!--names are rendered here-->
             </div>

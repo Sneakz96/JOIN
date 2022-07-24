@@ -23,11 +23,11 @@ async function deleteUserOnBoardDB() {
 
 
 async function addUserOnBoardDB(i) {
-    tasksOnBoardDB.push(tasksInBacklogDB[i])
-    tasksInBacklogDB.splice(i, 1)
-    await backend.setItem('onboardTasks', JSON.stringify(tasksOnBoardDB) || [])
-    await backend.setItem('backlogTasks', JSON.stringify(tasksInBacklogDB) || [])
-    await syncArrays()
+    tasksOnBoardDB.push(tasksInBacklogDB[i]);
+    tasksInBacklogDB.splice(i, 1);
+    await backend.setItem('onboardTasks', JSON.stringify(tasksOnBoardDB) || []);
+    await backend.setItem('backlogTasks', JSON.stringify(tasksInBacklogDB) || []);
+    await syncArrays();
 }
 
 
@@ -35,8 +35,8 @@ async function loadDB() {
     await downloadFromServer();
     tasksInBacklogDB = JSON.parse(backend.getItem("backlogTasks")) || [];
     tasksOnBoardDB = JSON.parse(backend.getItem("onboardTasks")) || [];
-    console.log('backlog', tasksInBacklogDB)
-    console.log('onboard', tasksOnBoardDB)
+    console.log('backlog', tasksInBacklogDB);
+    console.log('onboard', tasksOnBoardDB);
 }
 
 
@@ -51,8 +51,6 @@ async function syncArrays() {
     await loadDB();
     tasksOnBoard = tasksOnBoardDB;
     tasksInBacklog = tasksInBacklogDB;
-    console.log(tasksOnBoard)
-    console.log(tasksInBacklog)
 }
 
 async function saveBoardTaskStatus(){

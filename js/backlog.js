@@ -30,7 +30,6 @@ async function renderBacklog() {
     logs.innerHTML = '';
     checkIfBacklogIsEmpty(logs);
     renderTasks(logs);
-    
 }
 
 function renderTasks(logs) {
@@ -50,7 +49,7 @@ function renderTasks(logs) {
     }
 }
 
-function checkIfBacklogIsEmpty(logs){
+function checkIfBacklogIsEmpty(logs) {
     if (tasksInBacklog == '') {
         logs.innerHTML += noTaskInfoTemplate();
     } else {
@@ -61,8 +60,7 @@ function checkIfBacklogIsEmpty(logs){
 /**
  * FUNCTION_RENDER_USER_EMAIL
  */
-
- function renderUserEmail(i, emails) {
+function renderUserEmail(i, emails) {
     let backlogTemplate = document.getElementById('userEmail' + i);
     for (let j = 0; j < emails.length; j++) {
         backlogTemplate.innerHTML += /*html*/ `<a href="mailto:${emails[j]}">${emails[j]}</a>`;
@@ -73,7 +71,7 @@ function checkIfBacklogIsEmpty(logs){
  * FUNCTION_RENDER_USER_IMG
  */
 
- function renderUserImg(i, userImgs) {
+function renderUserImg(i, userImgs) {
     let backlogTemplate = document.getElementById('userImg' + i);
     for (let j = 0; j < userImgs.length; j++) {
         backlogTemplate.innerHTML += /*html*/ `<img src="${userImgs[j]}" class="profile-picture-sm img">`;
