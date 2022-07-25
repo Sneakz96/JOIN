@@ -4,7 +4,13 @@
 
 async function addToDo(i) {
     await addUserOnBoardDB(i);
+    let move = document.getElementById('moveAlert');
+    move.classList.remove('d-none');
     deleteBacklogTask(i);
+
+    tasksInBacklog.splice(i, 1);
+    await deleteUserBacklogDB();
+    renderBacklog();
 }
 
 /**
@@ -14,7 +20,11 @@ async function addToDo(i) {
 async function deleteBacklogTask(i) {
     tasksInBacklog.splice(i, 1);
     await deleteUserBacklogDB();
-    //resetTaskIDs();
+    let trash = document.getElementById('deleteAlert');
+    setTimeout(()=>{
+        trash.classList.add('d-none');
+    },2000/1)
+    trash.classList.remove('d-none');
     renderBacklog();
 }
 
@@ -26,6 +36,7 @@ async function deleteBacklogTask(i) {
  */
 
 async function renderBacklog() {
+    
     let logs = document.getElementById('logs');
     logs.innerHTML = '';
     checkIfBacklogIsEmpty(logs);

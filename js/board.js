@@ -242,5 +242,7 @@ async function deleteBoardTask(id) {
     closeDetailView(id);
     tasksOnBoard.splice(currentTask, 1);
     await deleteUserOnBoardDB();
+    let deleteBoardTask = document.getElementById('deleteBoardTask');
+    deleteBoardTask.remove('d-none');
     renderBoard();
 }
