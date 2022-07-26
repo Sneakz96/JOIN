@@ -37,9 +37,14 @@ async function createTask() {
 }
 
 /**
- * FUNCTION TO GET VALUES 
+ * FUNCTION TO GET VALUES AT TASK CREATION
  * 
- * @param {string}
+ * @param {string} title - 
+ * @param {string} category - 
+ * @param {string} description - 
+ * @param {string} dueDate - 
+ * @param {string} urgency - 
+ * @param {string} asiTo - 
  */
 function getTaskValues(title, category, description, dueDate, urgency, asiTo) {
     task = {
@@ -57,28 +62,29 @@ function getTaskValues(title, category, description, dueDate, urgency, asiTo) {
 }
 
 /**
- * FUNCTION TO CREATE TASK
+ * FUNCTION TO RETURN THAT NO EMPLOYER IS ADDED
  */
 function noUserAdded(asiTo) {
     return asiTo.length == 0;
 }
 
 /**
- * FUNCTION TO CREATE TASK
+ * FUNCTION TO CLEAR TITLE
  */
 function noTitle(title) {
     return title == '';
 }
 
 /**
- * FUNCTION TO CREATE TASK
+ * FUNCTION TO CLEAR DESCRIPTION
  */
 function noDescription(description) {
     return description == '';
 }
 
 /**
- * FUNCTION TO CREATE TASK
+ * FUNCTION TO CREATE TASK AND MOVE TO BACKLOG
+ * @param {string} task - ADDED TASK
  */
 async function addTaskToBacklog(task) {
     cancel(); //clear inputfields
@@ -87,13 +93,10 @@ async function addTaskToBacklog(task) {
     alert.classList.add('d-none');
     let success = document.getElementById('successAlert');
     success.classList.remove('d-none');
-
 }
 
-
-
 /**
- * FUNCTION_OPEN_TEAM_MODAL
+ * FUNCTION TO OPEN TEAM MODAL
  */
 function openTeam() {
     const overlay = document.querySelector('#overlay');
@@ -103,7 +106,7 @@ function openTeam() {
 }
 
 /**
- * FUNCTION_CLOSE_TEAM_MODAL
+ * FUNCTION TO CLOSE TEAM MODAL
  */
 function closeTeam() {
     const overlay = document.querySelector('#overlay');
@@ -114,18 +117,9 @@ function closeTeam() {
 }
 
 /**
- * FUNCTION_RENDER_TEAM
- */
-async function renderTeam() {
-    let renderedTeam = document.getElementById('rendered-team');
-    for (let i = 0; i < team.length; i++) {
-        renderedTeam.innerHTML += renderTeam_template(i);
-    }
-}
-
-/**
- * onclick push to team[]
- * and create of for-loop
+ * ONCLICK -> PUSH TO TEAM[]
+ * AND CREATE FOR-LOOP
+ * @param {string} i - NUMBER OF TEAM MEMBER
  */
 function addTeamImg(i) {
     let receiver = document.getElementById('receivers');
@@ -138,14 +132,24 @@ function addTeamImg(i) {
 }
 
 /**
- * FUNCTION_HIDE_MEMBER_PROFILE
+ * FUNCTION TO RENDER TEAM
+ */
+ async function renderTeam() {
+    let renderedTeam = document.getElementById('rendered-team');
+    for (let i = 0; i < team.length; i++) {
+        renderedTeam.innerHTML += renderTeam_template(i);
+    }
+}
+
+/**
+ * FUNCTION TO HIDE MEMBER PROFILES WHEN CHOOSED
  */
 function hideMemberProfile(i) {
     document.getElementById('member_' + i).parentNode.classList.add('d-none');
 }
 
 /**
- * FUNCTION_HIDE_MEMBER_PROFILE
+ * FUNCTION TO RESET MEMBER PROFILES
  */
 function resetMemberProfiles() {
     for (i = 0; i < team.length; i++) {
