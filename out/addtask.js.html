@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: addtask.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: addtask.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>let tasksInBacklog = [];
+let assignTo = [];
+
+/**
+ * FUNCTION TO CLEAR VALUES AFTER CLOSING
+ */
+function cancel() {
+    document.getElementById('title').value = '';
+    document.getElementById('description').value = '';
+    document.getElementById('dueDate').value = '';
+    document.getElementById('urgencyBtn').value = '';
+    document.getElementById('receivers').innerHTML = '';
+    resetMemberProfiles();
+    assignTo = [];
+}
+
+/**
+ * FUNCTION TO CREATE TASK
+ */
+async function createTask() {
+    let title = document.getElementById('title').value;
+    let category = document.getElementById('categoryBtn').value;
+    let description = document.getElementById('description').value;
+    let dueDate = document.getElementById('dueDate').value;
+    let urgency = document.getElementById('urgencyBtn').value;
+    let asiTo = assignTo;
+    let task = getTaskValues(title, category, description, dueDate, urgency, asiTo);
+
+    if (noUserAdded(asiTo) || noTitle(title) || noDescription(description)) {
+        let success = document.getElementById('successAlert');
+    success.classList.add('d-none');
+        let alert = document.getElementById('alert');
+        alert.classList.remove('d-none');
+    } else {
+        addTaskToBacklog(task);
+    }
+}
+
+/**
+ * FUNCTION TO GET VALUES 
+ * 
+ * @param {string}
+ */
+function getTaskValues(title, category, description, dueDate, urgency, asiTo) {
+    task = {
+        'id': idGenerator(),
+        'title': title,
+        'category': category,
+        'description': description,
+        'createdAt': new Date().getTime(),
+        'dueDate': dueDate,
+        'urgency': urgency,
+        'assigned to': asiTo,
+        'status': 'toDo'
+    }
+    return task;
+}
+
+/**
+ * FUNCTION TO CREATE TASK
+ */
+function noUserAdded(asiTo) {
+    return asiTo.length == 0;
+}
+
+/**
+ * FUNCTION TO CREATE TASK
+ */
+function noTitle(title) {
+    return title == '';
+}
+
+/**
+ * FUNCTION TO CREATE TASK
+ */
+function noDescription(description) {
+    return description == '';
+}
+
+/**
+ * FUNCTION TO CREATE TASK
+ */
+async function addTaskToBacklog(task) {
+    cancel(); //clear inputfields
+    await addUserBacklogDB(task);
+    let alert = document.getElementById('alert');
+    alert.classList.add('d-none');
+    let success = document.getElementById('successAlert');
+    success.classList.remove('d-none');
+
+}
+
+
+
+/**
+ * FUNCTION_OPEN_TEAM_MODAL
+ */
+function openTeam() {
+    const overlay = document.querySelector('#overlay');
+    document.querySelector('#add').addEventListener('click', () => {
+        overlay.style.display = 'block';
+    })
+}
+
+/**
+ * FUNCTION_CLOSE_TEAM_MODAL
+ */
+function closeTeam() {
+    const overlay = document.querySelector('#overlay');
+    document.querySelector('#close-modal-btn').addEventListener('click', (event) => {
+        event.preventDefault();
+        overlay.style.display = 'none';
+    })
+}
+
+/**
+ * FUNCTION_RENDER_TEAM
+ */
+async function renderTeam() {
+    let renderedTeam = document.getElementById('rendered-team');
+    for (let i = 0; i &lt; team.length; i++) {
+        renderedTeam.innerHTML += renderTeam_template(i);
+    }
+}
+
+/**
+ * onclick push to team[]
+ * and create of for-loop
+ */
+function addTeamImg(i) {
+    let receiver = document.getElementById('receivers');
+    assignTo.push(team[i]);
+    receiver.innerHTML = '';
+    for (let i = 0; i &lt; assignTo.length; i++) {
+        receiver.innerHTML += addTeamImg_template(i);
+    }
+    hideMemberProfile(i);
+}
+
+/**
+ * FUNCTION_HIDE_MEMBER_PROFILE
+ */
+function hideMemberProfile(i) {
+    document.getElementById('member_' + i).parentNode.classList.add('d-none');
+}
+
+/**
+ * FUNCTION_HIDE_MEMBER_PROFILE
+ */
+function resetMemberProfiles() {
+    for (i = 0; i &lt; team.length; i++) {
+        document.getElementById('member_' + i).parentNode.classList.remove('d-none');
+    }
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addTaskToBacklog">addTaskToBacklog</a></li><li><a href="global.html#addTeamImg">addTeamImg</a></li><li><a href="global.html#addToDo">addToDo</a></li><li><a href="global.html#addUrgencyColorsToBacklog">addUrgencyColorsToBacklog</a></li><li><a href="global.html#addUrgencyColorsToBoard">addUrgencyColorsToBoard</a></li><li><a href="global.html#addUrgencyColorToDetailCard">addUrgencyColorToDetailCard</a></li><li><a href="global.html#allowDrop">allowDrop</a></li><li><a href="global.html#cancel">cancel</a></li><li><a href="global.html#checkIfTaskIsDone">checkIfTaskIsDone</a></li><li><a href="global.html#clearBoard">clearBoard</a></li><li><a href="global.html#closeDetailView">closeDetailView</a></li><li><a href="global.html#closeTeam">closeTeam</a></li><li><a href="global.html#createTask">createTask</a></li><li><a href="global.html#deleteBacklogTask">deleteBacklogTask</a></li><li><a href="global.html#deleteBoardTask">deleteBoardTask</a></li><li><a href="global.html#getTaskValues">getTaskValues</a></li><li><a href="global.html#getUserEmails">getUserEmails</a></li><li><a href="global.html#getUserImg">getUserImg</a></li><li><a href="global.html#getUserNames">getUserNames</a></li><li><a href="global.html#hideMemberProfile">hideMemberProfile</a></li><li><a href="global.html#idGenerator">idGenerator</a></li><li><a href="global.html#initAddTask">initAddTask</a></li><li><a href="global.html#loadJSONFromServer">loadJSONFromServer</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#moveToNextArea">moveToNextArea</a></li><li><a href="global.html#noDescription">noDescription</a></li><li><a href="global.html#noTitle">noTitle</a></li><li><a href="global.html#noUserAdded">noUserAdded</a></li><li><a href="global.html#openDetailView">openDetailView</a></li><li><a href="global.html#openTeam">openTeam</a></li><li><a href="global.html#renderBacklog">renderBacklog</a></li><li><a href="global.html#renderBoard">renderBoard</a></li><li><a href="global.html#renderNames">renderNames</a></li><li><a href="global.html#renderTeam">renderTeam</a></li><li><a href="global.html#renderUserEmail">renderUserEmail</a></li><li><a href="global.html#renderUserImg">renderUserImg</a></li><li><a href="global.html#resetMemberProfiles">resetMemberProfiles</a></li><li><a href="global.html#saveJSONToServer">saveJSONToServer</a></li><li><a href="global.html#startDragging">startDragging</a></li><li><a href="global.html#stopAutoClose">stopAutoClose</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Tue Jul 26 2022 10:06:15 GMT+0200 (Mitteleuropäische Sommerzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>

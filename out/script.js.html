@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: mini_backend.js</title>
+    <title>JSDoc: Source: script.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: mini_backend.js</h1>
+    <h1 class="page-title">Source: script.js</h1>
 
     
 
@@ -26,125 +26,31 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>let jsonFromServer = {};
-let BASE_SERVER_URL;
-
-const backend = {
-    setItem: function(key, item) {
-        jsonFromServer[key] = item;
-        return saveJSONToServer();
-    },
-    getItem: function(key) {
-        if (!jsonFromServer[key]) {
-            return null;
-        }
-        return jsonFromServer[key];
-    },
-    deleteItem: function(key) {
-        delete jsonFromServer[key];
-        return saveJSONToServer();
-    },
-};
-window.onload = async function() {
-    downloadFromServer();
-}
-
-async function downloadFromServer() {
-    let result = await loadJSONFromServer();
-    if (result == '') {
-        result = {};
-    }
-    try {
-        jsonFromServer = JSON.parse(result);
-        console.log('Loaded', result);
-    } catch (e) {
-        debugger;
-        console.error(e);
-    }
-}
-
-
-function setURL(url) {
-    BASE_SERVER_URL = url;
-}
-
-/**
- * Loads a JSON or JSON Array to the Server
- * payload {JSON | Array} - The payload you want to store
+            <pre class="prettyprint source linenums"><code>/**
+ * FUNCTION_AT_START
  */
-
-async function loadJSONFromServer() {
-    let response = await fetch(BASE_SERVER_URL + '/nocors.php?json=database&amp;noache=' + (new Date().getTime()));
-    return await response.text();
-
+async function initAddTask() {
+    setURL('https://gruppe-250.developerakademie.net/JOIN/smallest_backend_ever');
+    await syncArrays();
+    await renderTeam();
+  
 }
 
-function loadJSONFromServerOld() {
-    return new Promise(function(resolve, reject) {
-        let xhttp = new XMLHttpRequest();
-        let proxy = determineProxySettings();
-        let serverURL = proxy + BASE_SERVER_URL + '/nocors.php?json=database&amp;noache=' + (new Date().getTime());
-
-
-
-
-        xhttp.open('GET', serverURL);
-
-        xhttp.onreadystatechange = function(oEvent) {
-            if (xhttp.readyState === 4) {
-                if (xhttp.status >= 200 &amp;&amp; xhttp.status &lt;= 399) {
-                    resolve(xhttp.responseText);
-                } else {
-                    reject(xhttp.statusText);
-                }
-            }
-        };
-
-        xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        xhttp.send();
-
-    });
+async function initBoard() {
+    setURL('https://gruppe-250.developerakademie.net/JOIN/smallest_backend_ever');
+    await syncArrays();
+    await renderBoard();
 }
 
-
-
-
-
-/**
- * Saves a JSON or JSON Array to the Server
- */
-function saveJSONToServer() {
-    return new Promise(function(resolve, reject) {
-        let xhttp = new XMLHttpRequest();
-        let proxy = determineProxySettings();
-        let serverURL = proxy + BASE_SERVER_URL + '/save_json.php';
-        xhttp.open('POST', serverURL);
-
-        xhttp.onreadystatechange = function(oEvent) {
-            if (xhttp.readyState === 4) {
-                if (xhttp.status >= 200 &amp;&amp; xhttp.status &lt;= 399) {
-                    resolve(xhttp.responseText);
-                } else {
-                    reject(xhttp.statusText);
-                }
-            }
-        };
-
-        xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        xhttp.send(JSON.stringify(jsonFromServer));
-
-    });
+async function initBacklog() {
+    setURL('https://gruppe-250.developerakademie.net/JOIN/smallest_backend_ever');
+    await syncArrays();
+    await renderBacklog();
 }
 
-
-function determineProxySettings() {
-    return '';
-
-    if (window.location.href.indexOf('.developerakademie.com') > -1) {
-        return '';
-    } else {
-        return 'https://cors-anywhere.herokuapp.com/';
-    }
+async function initHelp() {
+    setURL('https://gruppe-250.developerakademie.net/JOIN/smallest_backend_ever');
+    await syncArrays();
 }</code></pre>
         </article>
     </section>

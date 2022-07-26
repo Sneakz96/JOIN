@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: mini_backend.js</title>
+    <title>JSDoc: Source: backlog.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: mini_backend.js</h1>
+    <h1 class="page-title">Source: backlog.js</h1>
 
     
 
@@ -26,126 +26,97 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>let jsonFromServer = {};
-let BASE_SERVER_URL;
+            <pre class="prettyprint source linenums"><code>/**
+ * FUNCTION_ADD_TO_TO_DO
+ */
 
-const backend = {
-    setItem: function(key, item) {
-        jsonFromServer[key] = item;
-        return saveJSONToServer();
-    },
-    getItem: function(key) {
-        if (!jsonFromServer[key]) {
-            return null;
-        }
-        return jsonFromServer[key];
-    },
-    deleteItem: function(key) {
-        delete jsonFromServer[key];
-        return saveJSONToServer();
-    },
-};
-window.onload = async function() {
-    downloadFromServer();
-}
+async function addToDo(i) {
+    await addUserOnBoardDB(i);
+    let move = document.getElementById('moveAlert');
+    move.classList.remove('d-none');
+    deleteBacklogTask(i);
 
-async function downloadFromServer() {
-    let result = await loadJSONFromServer();
-    if (result == '') {
-        result = {};
-    }
-    try {
-        jsonFromServer = JSON.parse(result);
-        console.log('Loaded', result);
-    } catch (e) {
-        debugger;
-        console.error(e);
-    }
-}
-
-
-function setURL(url) {
-    BASE_SERVER_URL = url;
+    tasksInBacklog.splice(i, 1);
+    await deleteUserBacklogDB();
+    renderBacklog();
 }
 
 /**
- * Loads a JSON or JSON Array to the Server
- * payload {JSON | Array} - The payload you want to store
+ * FUNCTION_DELETE_BACKLOG_TASK
  */
 
-async function loadJSONFromServer() {
-    let response = await fetch(BASE_SERVER_URL + '/nocors.php?json=database&amp;noache=' + (new Date().getTime()));
-    return await response.text();
-
+async function deleteBacklogTask(i) {
+    tasksInBacklog.splice(i, 1);
+    await deleteUserBacklogDB();
+    let trash = document.getElementById('deleteAlert');
+    setTimeout(()=>{
+        trash.classList.add('d-none');
+    },2000/1)
+    trash.classList.remove('d-none');
+    renderBacklog();
 }
-
-function loadJSONFromServerOld() {
-    return new Promise(function(resolve, reject) {
-        let xhttp = new XMLHttpRequest();
-        let proxy = determineProxySettings();
-        let serverURL = proxy + BASE_SERVER_URL + '/nocors.php?json=database&amp;noache=' + (new Date().getTime());
-
-
-
-
-        xhttp.open('GET', serverURL);
-
-        xhttp.onreadystatechange = function(oEvent) {
-            if (xhttp.readyState === 4) {
-                if (xhttp.status >= 200 &amp;&amp; xhttp.status &lt;= 399) {
-                    resolve(xhttp.responseText);
-                } else {
-                    reject(xhttp.statusText);
-                }
-            }
-        };
-
-        xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        xhttp.send();
-
-    });
-}
-
-
 
 
 
 /**
- * Saves a JSON or JSON Array to the Server
+ * FUNCTION_ADD_TO_BACKLOG
+ * help functions are in helpers.js
  */
-function saveJSONToServer() {
-    return new Promise(function(resolve, reject) {
-        let xhttp = new XMLHttpRequest();
-        let proxy = determineProxySettings();
-        let serverURL = proxy + BASE_SERVER_URL + '/save_json.php';
-        xhttp.open('POST', serverURL);
 
-        xhttp.onreadystatechange = function(oEvent) {
-            if (xhttp.readyState === 4) {
-                if (xhttp.status >= 200 &amp;&amp; xhttp.status &lt;= 399) {
-                    resolve(xhttp.responseText);
-                } else {
-                    reject(xhttp.statusText);
-                }
-            }
-        };
-
-        xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        xhttp.send(JSON.stringify(jsonFromServer));
-
-    });
+async function renderBacklog() {
+    
+    let logs = document.getElementById('logs');
+    logs.innerHTML = '';
+    checkIfBacklogIsEmpty(logs);
+    renderTasks(logs);
 }
 
+function renderTasks(logs) {
+    for (let i = tasksInBacklog.length - 1; i >= 0; i--) {
+        let task = tasksInBacklog[i];
+        let title = task['title'];
+        let category = task['category'];
+        let userImgs = [];
+        let emails = [];
+        let description = task['description'];
+        getUserEmails(emails, task);
+        getUserImg(userImgs, task);
+        logs.innerHTML += createTask_TEMPLATE_LOGS(i, title, category, description);
+        renderUserImg(i, userImgs);
+        renderUserEmail(i, emails);
+        addUrgencyColorsToBacklog(i, task);
+    }
+}
 
-function determineProxySettings() {
-    return '';
-
-    if (window.location.href.indexOf('.developerakademie.com') > -1) {
-        return '';
+function checkIfBacklogIsEmpty(logs) {
+    if (tasksInBacklog == '') {
+        logs.innerHTML += noTaskInfoTemplate();
     } else {
-        return 'https://cors-anywhere.herokuapp.com/';
+        logs.innerHTML = '';
     }
-}</code></pre>
+}
+
+/**
+ * FUNCTION_RENDER_USER_EMAIL
+ */
+function renderUserEmail(i, emails) {
+    let backlogTemplate = document.getElementById('userEmail' + i);
+    for (let j = 0; j &lt; emails.length; j++) {
+        backlogTemplate.innerHTML += /*html*/ `&lt;a href="mailto:${emails[j]}">${emails[j]}&lt;/a>`;
+    }
+}
+
+/**
+ * FUNCTION_RENDER_USER_IMG
+ */
+
+function renderUserImg(i, userImgs) {
+    let backlogTemplate = document.getElementById('userImg' + i);
+    for (let j = 0; j &lt; userImgs.length; j++) {
+        backlogTemplate.innerHTML += /*html*/ `&lt;img src="${userImgs[j]}" class="profile-picture-sm img">`;
+    }
+}
+</code></pre>
         </article>
     </section>
 

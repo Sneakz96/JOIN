@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
     <meta charset="utf-8">
-    <title>JSDoc: Source: mini_backend.js</title>
+    <title>JSDoc: Source: helpers.js</title>
 
     <script src="scripts/prettify/prettify.js"> </script>
     <script src="scripts/prettify/lang-css.js"> </script>
@@ -17,7 +17,7 @@
 
 <div id="main">
 
-    <h1 class="page-title">Source: mini_backend.js</h1>
+    <h1 class="page-title">Source: helpers.js</h1>
 
     
 
@@ -26,126 +26,99 @@
     
     <section>
         <article>
-            <pre class="prettyprint source linenums"><code>let jsonFromServer = {};
-let BASE_SERVER_URL;
-
-const backend = {
-    setItem: function(key, item) {
-        jsonFromServer[key] = item;
-        return saveJSONToServer();
-    },
-    getItem: function(key) {
-        if (!jsonFromServer[key]) {
-            return null;
-        }
-        return jsonFromServer[key];
-    },
-    deleteItem: function(key) {
-        delete jsonFromServer[key];
-        return saveJSONToServer();
-    },
-};
-window.onload = async function() {
-    downloadFromServer();
-}
-
-async function downloadFromServer() {
-    let result = await loadJSONFromServer();
-    if (result == '') {
-        result = {};
-    }
-    try {
-        jsonFromServer = JSON.parse(result);
-        console.log('Loaded', result);
-    } catch (e) {
-        debugger;
-        console.error(e);
-    }
-}
-
-
-function setURL(url) {
-    BASE_SERVER_URL = url;
-}
+            <pre class="prettyprint source linenums"><code>
+//Help functions for board.js, backlog.js
 
 /**
- * Loads a JSON or JSON Array to the Server
- * payload {JSON | Array} - The payload you want to store
+ * FUNCTION_GET_USER_NAMES
  */
 
-async function loadJSONFromServer() {
-    let response = await fetch(BASE_SERVER_URL + '/nocors.php?json=database&amp;noache=' + (new Date().getTime()));
-    return await response.text();
-
+function getUserNames(names, array) {
+    for (let j = 0; j &lt; array['assigned to'].length; j++) {
+        let name = array['assigned to'][j]['name'];
+        names.push(name);
+    }
 }
-
-function loadJSONFromServerOld() {
-    return new Promise(function(resolve, reject) {
-        let xhttp = new XMLHttpRequest();
-        let proxy = determineProxySettings();
-        let serverURL = proxy + BASE_SERVER_URL + '/nocors.php?json=database&amp;noache=' + (new Date().getTime());
-
-
-
-
-        xhttp.open('GET', serverURL);
-
-        xhttp.onreadystatechange = function(oEvent) {
-            if (xhttp.readyState === 4) {
-                if (xhttp.status >= 200 &amp;&amp; xhttp.status &lt;= 399) {
-                    resolve(xhttp.responseText);
-                } else {
-                    reject(xhttp.statusText);
-                }
-            }
-        };
-
-        xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        xhttp.send();
-
-    });
-}
-
-
-
 
 
 /**
- * Saves a JSON or JSON Array to the Server
+ * FUNCTION_GET_USER_EMAIL
+ * 
+ * @param {string} emails - PUSH EMAIL IN ARRAY
  */
-function saveJSONToServer() {
-    return new Promise(function(resolve, reject) {
-        let xhttp = new XMLHttpRequest();
-        let proxy = determineProxySettings();
-        let serverURL = proxy + BASE_SERVER_URL + '/save_json.php';
-        xhttp.open('POST', serverURL);
 
-        xhttp.onreadystatechange = function(oEvent) {
-            if (xhttp.readyState === 4) {
-                if (xhttp.status >= 200 &amp;&amp; xhttp.status &lt;= 399) {
-                    resolve(xhttp.responseText);
-                } else {
-                    reject(xhttp.statusText);
-                }
-            }
-        };
+function getUserEmails(emails, array) {
+    for (j = 0; j &lt; array['assigned to'].length; j++) {
+        let email = array['assigned to'][j]['e-mail'];
+        emails.push(email);
+    }
+}
 
-        xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
-        xhttp.send(JSON.stringify(jsonFromServer));
+/**
+ * FUNCTION_GUT_USER_IMG
+ */
 
-    });
+function getUserImg(userImgs, array) {
+    for (j = 0; j &lt; array['assigned to'].length; j++) {
+        let userImg = array['assigned to'][j]['img.src'];
+        userImgs.push(userImg);
+    }
+}
+
+/**
+ * FUNCTION_ADD_URGENCY_COLOR_TO_BOARD
+ * the name of the css class is identical to the name of 'urgency' (Low, Mid, High)
+ * High = red, Mid = yellow, Low = green
+ */
+
+function addUrgencyColorsToBacklog(i, task) {
+    let color = task['urgency'];
+    document.getElementById('contact-card' + i).classList.add(color);
+}
+
+/**
+ * FUNCTION_ADD_URGENCY_COLOR_TO_BOARD
+ * the name of the css class is identical to the name of 'urgency' (Low, Mid, High)
+ * High = red, Mid = yellow, Low = green
+ */
+
+function addUrgencyColorsToBoard(i, task) {
+    let color = task['urgency'];
+    document.getElementById('dragable-card' + i).classList.add(color);
+}
+
+/**
+ * FUNCTION_ADD_URGENCY_COLOR_TO_DETAIL_CARD
+ * the name of the css class is identical to the name of 'urgency' (Low, Mid, High)
+ * High = red, Mid = yellow, Low = green
+ */
+
+function addUrgencyColorToDetailCard(i, currentTask) {
+    let color = currentTask['urgency'];
+    document.getElementById('detail-view-container' + i).classList.add(color);
 }
 
 
-function determineProxySettings() {
-    return '';
+/**
+ * FUNCTION_STOP_AUTO_CLOSE
+ */
 
-    if (window.location.href.indexOf('.developerakademie.com') > -1) {
-        return '';
-    } else {
-        return 'https://cors-anywhere.herokuapp.com/';
-    }
-}</code></pre>
+function stopAutoClose(event) {
+    event.stopPropagation();
+}
+
+
+/**
+ * Function Id Generator
+ */
+
+function idGenerator() {
+    var S4 = function() {
+       return (((1+Math.random())*0x10000)|0);
+    };
+    return (S4()+S4()+S4()+S4()+S4());
+}
+</code></pre>
         </article>
     </section>
 
