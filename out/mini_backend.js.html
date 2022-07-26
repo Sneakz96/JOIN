@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <title>JSDoc: Source: mini_backend.js</title>
+
+    <script src="scripts/prettify/prettify.js"> </script>
+    <script src="scripts/prettify/lang-css.js"> </script>
+    <!--[if lt IE 9]>
+      <script src="//html5shiv.googlecode.com/svn/trunk/html5.js"></script>
+    <![endif]-->
+    <link type="text/css" rel="stylesheet" href="styles/prettify-tomorrow.css">
+    <link type="text/css" rel="stylesheet" href="styles/jsdoc-default.css">
+</head>
+
+<body>
+
+<div id="main">
+
+    <h1 class="page-title">Source: mini_backend.js</h1>
+
+    
+
+
+
+    
+    <section>
+        <article>
+            <pre class="prettyprint source linenums"><code>let jsonFromServer = {};
+let BASE_SERVER_URL;
+
+const backend = {
+    setItem: function(key, item) {
+        jsonFromServer[key] = item;
+        return saveJSONToServer();
+    },
+    getItem: function(key) {
+        if (!jsonFromServer[key]) {
+            return null;
+        }
+        return jsonFromServer[key];
+    },
+    deleteItem: function(key) {
+        delete jsonFromServer[key];
+        return saveJSONToServer();
+    },
+};
+window.onload = async function() {
+    downloadFromServer();
+}
+
+async function downloadFromServer() {
+    let result = await loadJSONFromServer();
+    if (result == '') {
+        result = {};
+    }
+    try {
+        jsonFromServer = JSON.parse(result);
+        console.log('Loaded', result);
+    } catch (e) {
+        debugger;
+        console.error(e);
+    }
+}
+
+
+function setURL(url) {
+    BASE_SERVER_URL = url;
+}
+
+/**
+ * Loads a JSON or JSON Array to the Server
+ * payload {JSON | Array} - The payload you want to store
+ */
+
+async function loadJSONFromServer() {
+    let response = await fetch(BASE_SERVER_URL + '/nocors.php?json=database&amp;noache=' + (new Date().getTime()));
+    return await response.text();
+
+}
+
+function loadJSONFromServerOld() {
+    return new Promise(function(resolve, reject) {
+        let xhttp = new XMLHttpRequest();
+        let proxy = determineProxySettings();
+        let serverURL = proxy + BASE_SERVER_URL + '/nocors.php?json=database&amp;noache=' + (new Date().getTime());
+
+
+
+
+        xhttp.open('GET', serverURL);
+
+        xhttp.onreadystatechange = function(oEvent) {
+            if (xhttp.readyState === 4) {
+                if (xhttp.status >= 200 &amp;&amp; xhttp.status &lt;= 399) {
+                    resolve(xhttp.responseText);
+                } else {
+                    reject(xhttp.statusText);
+                }
+            }
+        };
+
+        xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhttp.send();
+
+    });
+}
+
+
+
+
+
+/**
+ * Saves a JSON or JSON Array to the Server
+ */
+function saveJSONToServer() {
+    return new Promise(function(resolve, reject) {
+        let xhttp = new XMLHttpRequest();
+        let proxy = determineProxySettings();
+        let serverURL = proxy + BASE_SERVER_URL + '/save_json.php';
+        xhttp.open('POST', serverURL);
+
+        xhttp.onreadystatechange = function(oEvent) {
+            if (xhttp.readyState === 4) {
+                if (xhttp.status >= 200 &amp;&amp; xhttp.status &lt;= 399) {
+                    resolve(xhttp.responseText);
+                } else {
+                    reject(xhttp.statusText);
+                }
+            }
+        };
+
+        xhttp.setRequestHeader("Content-Type", "application/json;charset=UTF-8");
+        xhttp.send(JSON.stringify(jsonFromServer));
+
+    });
+}
+
+
+function determineProxySettings() {
+    return '';
+
+    if (window.location.href.indexOf('.developerakademie.com') > -1) {
+        return '';
+    } else {
+        return 'https://cors-anywhere.herokuapp.com/';
+    }
+}</code></pre>
+        </article>
+    </section>
+
+
+
+
+</div>
+
+<nav>
+    <h2><a href="index.html">Home</a></h2><h3>Global</h3><ul><li><a href="global.html#addTaskToBacklog">addTaskToBacklog</a></li><li><a href="global.html#addTeamImg">addTeamImg</a></li><li><a href="global.html#addToDo">addToDo</a></li><li><a href="global.html#addUrgencyColorsToBacklog">addUrgencyColorsToBacklog</a></li><li><a href="global.html#addUrgencyColorsToBoard">addUrgencyColorsToBoard</a></li><li><a href="global.html#addUrgencyColorToDetailCard">addUrgencyColorToDetailCard</a></li><li><a href="global.html#addUserBacklogDB">addUserBacklogDB</a></li><li><a href="global.html#addUserOnBoardDB">addUserOnBoardDB</a></li><li><a href="global.html#allowDrop">allowDrop</a></li><li><a href="global.html#cancel">cancel</a></li><li><a href="global.html#checkIfBacklogIsEmpty">checkIfBacklogIsEmpty</a></li><li><a href="global.html#checkIfTaskIsDone">checkIfTaskIsDone</a></li><li><a href="global.html#clearBoard">clearBoard</a></li><li><a href="global.html#closeDetailView">closeDetailView</a></li><li><a href="global.html#closeResponsiveMenu">closeResponsiveMenu</a></li><li><a href="global.html#closeTeam">closeTeam</a></li><li><a href="global.html#createTask">createTask</a></li><li><a href="global.html#deleteBacklogTask">deleteBacklogTask</a></li><li><a href="global.html#deleteBoardTask">deleteBoardTask</a></li><li><a href="global.html#deleteUserBacklogDB">deleteUserBacklogDB</a></li><li><a href="global.html#deleteUserOnBoardDB">deleteUserOnBoardDB</a></li><li><a href="global.html#deleteUsersDB">deleteUsersDB</a></li><li><a href="global.html#getTaskValues">getTaskValues</a></li><li><a href="global.html#getUserEmails">getUserEmails</a></li><li><a href="global.html#getUserImg">getUserImg</a></li><li><a href="global.html#getUserNames">getUserNames</a></li><li><a href="global.html#hideMemberProfile">hideMemberProfile</a></li><li><a href="global.html#hideMoveIcon">hideMoveIcon</a></li><li><a href="global.html#idGenerator">idGenerator</a></li><li><a href="global.html#includeHTML">includeHTML</a></li><li><a href="global.html#initAddTask">initAddTask</a></li><li><a href="global.html#initBacklog">initBacklog</a></li><li><a href="global.html#initBoard">initBoard</a></li><li><a href="global.html#initHelp">initHelp</a></li><li><a href="global.html#loadDB">loadDB</a></li><li><a href="global.html#loadJSONFromServer">loadJSONFromServer</a></li><li><a href="global.html#moveTo">moveTo</a></li><li><a href="global.html#moveToNextArea">moveToNextArea</a></li><li><a href="global.html#noDescription">noDescription</a></li><li><a href="global.html#noTitle">noTitle</a></li><li><a href="global.html#noUserAdded">noUserAdded</a></li><li><a href="global.html#openDetailView">openDetailView</a></li><li><a href="global.html#openResponsiveMenu">openResponsiveMenu</a></li><li><a href="global.html#openTeam">openTeam</a></li><li><a href="global.html#renderBacklog">renderBacklog</a></li><li><a href="global.html#renderBoard">renderBoard</a></li><li><a href="global.html#renderDoneArea">renderDoneArea</a></li><li><a href="global.html#renderinProgressArea">renderinProgressArea</a></li><li><a href="global.html#renderNames">renderNames</a></li><li><a href="global.html#renderNamesInDetailCard">renderNamesInDetailCard</a></li><li><a href="global.html#renderTasks">renderTasks</a></li><li><a href="global.html#renderTeam">renderTeam</a></li><li><a href="global.html#renderTestingArea">renderTestingArea</a></li><li><a href="global.html#renderToDoArea">renderToDoArea</a></li><li><a href="global.html#renderUserEmail">renderUserEmail</a></li><li><a href="global.html#renderUserImg">renderUserImg</a></li><li><a href="global.html#resetMemberProfiles">resetMemberProfiles</a></li><li><a href="global.html#resetMoveIcon">resetMoveIcon</a></li><li><a href="global.html#saveBoardTaskStatus">saveBoardTaskStatus</a></li><li><a href="global.html#saveJSONToServer">saveJSONToServer</a></li><li><a href="global.html#startDragging">startDragging</a></li><li><a href="global.html#stopAutoClose">stopAutoClose</a></li><li><a href="global.html#syncArrays">syncArrays</a></li></ul>
+</nav>
+
+<br class="clear">
+
+<footer>
+    Documentation generated by <a href="https://github.com/jsdoc/jsdoc">JSDoc 3.6.11</a> on Tue Jul 26 2022 22:31:10 GMT+0200 (Mitteleuropäische Sommerzeit)
+</footer>
+
+<script> prettyPrint(); </script>
+<script src="scripts/linenumber.js"> </script>
+</body>
+</html>
