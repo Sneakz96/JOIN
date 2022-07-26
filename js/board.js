@@ -1,11 +1,9 @@
 let tasksOnBoard = [];
 let currentDraggedCard;
 
-
 /**
- * FUNCTION_DELETE_BACKLOG_TASK
+ * FUNCTION TO DELETE BACKLOG TASK
  */
-
 function renderBoard() {
     let toDoJSONs = tasksOnBoard.filter(t => t['status'] == 'toDo');
     let inProgressJSONs = tasksOnBoard.filter(t => t['status'] == 'inProgress');
@@ -23,7 +21,11 @@ function renderBoard() {
     renderDoneArea(doneJSONs, doneContainer);
 }
 
-
+/**
+ * FUNCTION TO RENDER TO DO CONTENT
+ * @param {string} toDoJSONs - GIVE THE CONTENT OF TO DO JSON
+ * @param {string} toDoContainer - GIVE THE CONTENT OF TO DO CONTAINER
+ */
 function renderToDoArea(toDoJSONs, toDoContainer) {
     for (let i = 0; i < toDoJSONs.length; i++) {
         if (!toDoJSONs[i]) {
@@ -41,7 +43,11 @@ function renderToDoArea(toDoJSONs, toDoContainer) {
     }
 }
 
-
+/**
+ * FUNCTION TO RENDER PROGRESS CONTENT
+ * @param {string} inProgressJSON - GIVE THE CONTENT OF PROGRESS JSON
+ * @param {string} inProgressContainer - GIVE THE CONTENT OF PROGRESS CONTAINER
+ */
 function renderinProgressArea(inProgressJSON, inProgressContainer) {
     for (let i = 0; i < inProgressJSON.length; i++) {
         if (!inProgressJSON[i]) {
@@ -59,7 +65,11 @@ function renderinProgressArea(inProgressJSON, inProgressContainer) {
     }
 }
 
-
+/**
+ * FUNCTION TO RENDER TESTING CONTENT
+ * @param {string} testingJSON - GIVE THE CONTENT OF TESTING JSON
+ * @param {string} testingContainer - GIVE THE CONTENT OF TESTING CONTAINER
+ */
 function renderTestingArea(testingJSON, testingContainer) {
     for (let i = 0; i < testingJSON.length; i++) {
         if (!testingJSON[i]) {
@@ -77,7 +87,11 @@ function renderTestingArea(testingJSON, testingContainer) {
     }
 }
 
-
+/**
+ * FUNCTION TO RENDER DONE SECTION
+ * @param {string} doneJSON - GIVE THE CONTENT OF DONE JSON
+ * @param {string} doneContainer - GIVE THE CONTENT OF DONE CONTAINER
+ */
 function renderDoneArea(doneJSON, doneContainer) {
     for (let i = 0; i < doneJSON.length; i++) {
         if (!doneJSON[i]) {
@@ -95,11 +109,13 @@ function renderDoneArea(doneJSON, doneContainer) {
     }
 }
 
-
 /**
- * FUNCTION
+ * FUNCTION TO CLEAR THE MAIN BOARD
+ * @param {string} toDoContainer - GIVE THE TO DO SECTION
+ * @param {string} inProgressContainer - GIVE THE PROGRESS SECTION
+ * @param {string} testingContainer - GIVE THE TESTING SECTION
+ * @param {string} doneContainer - GIVE THE DONE SECTION
  */
-
 function clearBoard(toDoContainer, inProgressContainer, testingContainer, doneContainer) {
     toDoContainer.innerHTML = '';
     inProgressContainer.innerHTML = '';
@@ -108,9 +124,10 @@ function clearBoard(toDoContainer, inProgressContainer, testingContainer, doneCo
 }
 
 /**
- * FUNCTION_RENDER_USER_Name
+ * FUNCTION TO RENDER USER NAMES
+ * @param {string} id - GIVE NUMBER OF CURRENT CARD/TASK
+ * @param {string} names - GIVE NAMES OF CURRENT EMPLOYERS
  */
-
 function renderNames(id, names) {
     let boardTemplateElement = document.getElementById('dragable-card-names' + id);
     for (let j = 0; j < names.length; j++) {
@@ -118,28 +135,26 @@ function renderNames(id, names) {
     }
 }
 
-
 /**
- * FUNCTION_START_DRAGGING
+ * FUNCTION TO START DRAGGING
+ * @param {string} id - GIVE NUMBER OF CURRENT CARD/TASK
  */
-
 function startDragging(id) {
     currentDraggedCard = id;
 }
 
 /**
- * FUNCTION allow Drop
+ * FUNCTION TO ALLOW A DROP
+ * @param {string} ev - GIVE FUNCTION THE EVENT
  */
-
 function allowDrop(ev) {
     ev.preventDefault();
 }
 
-
 /**
- * Function move to
+ * FUNCTION FOR MOVING AND DRANG AND DROP
+ * @param {string} status - STATUS OF POSITION
  */
-
 function moveTo(status) {
     let ticket = tasksOnBoard.find(t => t.id === currentDraggedCard);
     ticket['status'] = status;
@@ -147,11 +162,10 @@ function moveTo(status) {
     renderBoard();
 }
 
-
 /**
- * FUNCTION_OPEN_DETAIL_VIEW
+ * FUNCTION TO OPEN A DETAIL VIEW
+ * @param {string} id - GIVE THE CURRENT TASK 
  */
-
 function openDetailView(id) {
     let currentTask = tasksOnBoard.filter(t => t['id'] == id);
     currentTask = currentTask[0]; //id filtered array has only 1 position.
@@ -168,7 +182,11 @@ function openDetailView(id) {
     checkIfTaskIsDone(id); //disable moveToNextArea() function if a Task is done.
 }
 
-
+/**
+ * FUNCTION TO RENDER THE NAMES IN THE DETAIL CARD
+ * @param {string} id - GIVE THE CURRENT TASK 
+ * @param {string} names - GIVE THE CURRENT NAMES OF CHOOSEN EMPLOYERS
+ */
 function renderNamesInDetailCard(id, names) {
     let currentTemplate = document.getElementById('detail-view-names' + id);
     for (let j = 0; j < names.length; j++) {
@@ -177,23 +195,22 @@ function renderNamesInDetailCard(id, names) {
 }
 
 /**
- * FUNCTION_CLOSE_DETAIL_VIEW
+ * FUNCTION FOR CLOSEING DETAIL VIEW
+ * @param {string} id - GIVE THE CURRENT TASK
  */
-
 function closeDetailView(id) {
     document.getElementById('detail-view' + id).classList.add('d-none');
     resetMoveIcon(id);
 }
 
-
 /**
- * FUNCTION_
+ * FUNCTION FOR DRAG AND DROP
+ * @param {string} id - GIVE THE CURRENT TASK
  */
-
 function moveToNextArea(id) {
     let currentTask = tasksOnBoard.filter(t => t.id == id);
     currentTask = currentTask[0]; //id filtered array has only 1 position.
-  if (currentTask['status'] == 'toDo') {
+    if (currentTask['status'] == 'toDo') {
         currentTask['status'] = 'inProgress';
     } else {
         if (currentTask['status'] == 'inProgress') {
@@ -204,17 +221,16 @@ function moveToNextArea(id) {
             }
         }
     }
-   saveBoardTaskStatus();
-   renderBoard();
-   closeDetailView(id);
+    saveBoardTaskStatus();
+    renderBoard();
+    closeDetailView(id);
 }
 
 /**
- * FUNCTION to disable move icon if the task Status is "done"
+ * FUNCTION TO DISABLE MOVE ICON IF THE TASTK IS IN "DONE"
+ * @param {string} id - GIVE THE NUMBER WHICH TASK IS CHOOSEN 
  */
-
-
-function checkIfTaskIsDone(id){
+function checkIfTaskIsDone(id) {
     let currentTask = tasksOnBoard.filter(t => t.id == id);
     currentTask = currentTask[0]; //id filtered array has only 1 position.
     if (currentTask['status'] == 'done') {
@@ -222,21 +238,26 @@ function checkIfTaskIsDone(id){
     }
 }
 
-
+/**
+ * FUNCTION TO RESET MOVE ICON
+ * @param {string} id - GIVE THE NUMBER WHICH TASK IS CHOOSEN 
+ */
 function resetMoveIcon(id) {
     document.getElementById('move-icon' + id).classList.remove('d-none');
 }
 
-
+/**
+ * FUNCTION TO HIDE MOVE ICON
+ * @param {string} id - GIVE THE NUMBER WHICH TASK IS CHOOSEN 
+ */
 function hideMoveIcon(id) {
     document.getElementById('move-icon' + id).classList.add('d-none');
 }
 
-
 /**
- * FUNCTION_DELETE_BOARD_TASK
+ * FUNCTION TO DELETE A BOARD TASK
+ * @param {string} id - GIVE THE NUMBER WHICH TASK IS CHOOSEN 
  */
-
 async function deleteBoardTask(id) {
     let currentTask = tasksOnBoard.findIndex(obj => obj.id == id);
     closeDetailView(id);

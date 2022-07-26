@@ -1,22 +1,21 @@
 /**
- * FUNCTION_ADD_TO_TO_DO
+ * FUNCTION FOR ADDING/PUSHING TO -> TO DO
+ * @param {string} i - GIVE THE NUMBER WHICH TASK IS CHOOSEN
  */
-
 async function addToDo(i) {
     await addUserOnBoardDB(i);
     let move = document.getElementById('moveAlert');
     move.classList.remove('d-none');
     deleteBacklogTask(i);
-
     tasksInBacklog.splice(i, 1);
     await deleteUserBacklogDB();
     renderBacklog();
 }
 
 /**
- * FUNCTION_DELETE_BACKLOG_TASK
+ * FUNCTION FOR DELETING A BACKLOG TASK
+ * @param {string} i - GIVE THE NUMBER WHICH TASK IS GOING TO GET DELETED
  */
-
 async function deleteBacklogTask(i) {
     tasksInBacklog.splice(i, 1);
     await deleteUserBacklogDB();
@@ -28,21 +27,20 @@ async function deleteBacklogTask(i) {
     renderBacklog();
 }
 
-
-
 /**
- * FUNCTION_ADD_TO_BACKLOG
- * help functions are in helpers.js
+ * FUNCTION FOR ADDING TO BACKLOG
  */
-
-async function renderBacklog() {
-    
+async function renderBacklog() {    
     let logs = document.getElementById('logs');
     logs.innerHTML = '';
     checkIfBacklogIsEmpty(logs);
     renderTasks(logs);
 }
 
+/**
+ * FUNCTION TO RENDER TASKS
+ * @param {string} logs - GIVE THE CONTAINER/POSITION/NUMBER FOR LOGS
+ */
 function renderTasks(logs) {
     for (let i = tasksInBacklog.length - 1; i >= 0; i--) {
         let task = tasksInBacklog[i];
@@ -59,7 +57,10 @@ function renderTasks(logs) {
         addUrgencyColorsToBacklog(i, task);
     }
 }
-
+/**
+ * FUNCTION TO CHECK EMPTY BACKLOG
+ * @param {string} logs - CHECK IF THERE'S A LOG
+ */
 function checkIfBacklogIsEmpty(logs) {
     if (tasksInBacklog == '') {
         logs.innerHTML += noTaskInfoTemplate();
@@ -69,7 +70,9 @@ function checkIfBacklogIsEmpty(logs) {
 }
 
 /**
- * FUNCTION_RENDER_USER_EMAIL
+ * FUNCTION TO RENDER USER IMG
+ * @param {string} i - THE NUMBER OF THE CHOOSEN MEMBER
+ * @param {string} emails - THE EMAIL OF THE CHOOSEN MEMBER
  */
 function renderUserEmail(i, emails) {
     let backlogTemplate = document.getElementById('userEmail' + i);
@@ -79,9 +82,10 @@ function renderUserEmail(i, emails) {
 }
 
 /**
- * FUNCTION_RENDER_USER_IMG
+ * FUNCTION TO RENDER USER IMG
+ * @param {string} i - THE NUMBER OF THE CHOOSEN MEMBER
+ * @param {string} userImgs - THE IMAGE OF THE CHOOSEN MEMBER
  */
-
 function renderUserImg(i, userImgs) {
     let backlogTemplate = document.getElementById('userImg' + i);
     for (let j = 0; j < userImgs.length; j++) {

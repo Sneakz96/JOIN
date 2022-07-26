@@ -1,10 +1,8 @@
-
-//Help functions for board.js, backlog.js
-
 /**
- * FUNCTION_GET_USER_NAMES
+ * FUNCTION TO GET THE NAMES OF THE USERS 
+ * @param {string} names - NAME OF ALL USERS
+ * @param {string} array - ARRAY OF ALL USER NAMES
  */
-
 function getUserNames(names, array) {
     for (let j = 0; j < array['assigned to'].length; j++) {
         let name = array['assigned to'][j]['name'];
@@ -12,13 +10,11 @@ function getUserNames(names, array) {
     }
 }
 
-
 /**
- * FUNCTION_GET_USER_EMAIL
- * 
+ * FUNCTION TO GET THE EMAIL OF THE CHOOSEN USER
  * @param {string} emails - PUSH EMAIL IN ARRAY
+ * @param {string} array - SET ARRAY
  */
-
 function getUserEmails(emails, array) {
     for (j = 0; j < array['assigned to'].length; j++) {
         let email = array['assigned to'][j]['e-mail'];
@@ -27,9 +23,10 @@ function getUserEmails(emails, array) {
 }
 
 /**
- * FUNCTION_GUT_USER_IMG
+ * FUNCTION TO GET THE IMG OF THE USERS
+ * @param {string} userImgs - PUSH IMG OF USER IN ARRAY
+ * @param {string} array - GIVE THE ARRAY WHERE THE PICTURES/DETAILS ARE
  */
-
 function getUserImg(userImgs, array) {
     for (j = 0; j < array['assigned to'].length; j++) {
         let userImg = array['assigned to'][j]['img.src'];
@@ -38,52 +35,49 @@ function getUserImg(userImgs, array) {
 }
 
 /**
- * FUNCTION_ADD_URGENCY_COLOR_TO_BOARD
- * the name of the css class is identical to the name of 'urgency' (Low, Mid, High)
- * High = red, Mid = yellow, Low = green
+ * FUNCTION TO ADD URGENCY COLOR TO BACKLOG
+ * HIGH = RED, MID = YELLOW, LOW = GREEN
+ * @param {string} i - GIVE NUMBER OF TASK
+ * @param {string} task - GIVE CONTENT OF CURRENT TASK
  */
-
 function addUrgencyColorsToBacklog(i, task) {
     let color = task['urgency'];
     document.getElementById('contact-card' + i).classList.add(color);
 }
 
 /**
- * FUNCTION_ADD_URGENCY_COLOR_TO_BOARD
- * the name of the css class is identical to the name of 'urgency' (Low, Mid, High)
- * High = red, Mid = yellow, Low = green
+ * FUNCTION TO ADD URGENCY COLOR TO BOARD
+ * HIGH = RED, MID = YELLOW, LOW = GREEN
+ * @param {string} i - GIVE NUMBER OF TASK
+ * @param {string} task - GIVE CONTENT OF CURRENT TASK
  */
-
 function addUrgencyColorsToBoard(i, task) {
     let color = task['urgency'];
     document.getElementById('dragable-card' + i).classList.add(color);
 }
 
 /**
- * FUNCTION_ADD_URGENCY_COLOR_TO_DETAIL_CARD
- * the name of the css class is identical to the name of 'urgency' (Low, Mid, High)
- * High = red, Mid = yellow, Low = green
+ * FUNCTION TO ADD URGENCY COLOR TO DETAIL CARD
+ * HIGH = RED, MID = YELLOW, LOW = GREEN
+ * @param {string} i - GIVE NUMBER OF TASK
+ * @param {string} currentTask - GIVE CONTENT OF CURRENT TASK
  */
-
 function addUrgencyColorToDetailCard(i, currentTask) {
     let color = currentTask['urgency'];
     document.getElementById('detail-view-container' + i).classList.add(color);
 }
 
-
 /**
- * FUNCTION_STOP_AUTO_CLOSE
+ * FUNCTION TO STOP AUTOMATICAL CLOSE
+ * @param {string} event - GIVE EVENT
  */
-
 function stopAutoClose(event) {
     event.stopPropagation();
 }
 
-
 /**
- * Function Id Generator
+ * FUNCTION TO GENERATE A ID
  */
-
 function idGenerator() {
     var S4 = function() {
        return (((1+Math.random())*0x10000)|0);
