@@ -28,7 +28,7 @@ async function downloadFromServer() {
     }
     try {
         jsonFromServer = JSON.parse(result);
-        console.log('Loaded', result);
+        //console.log('Loaded', result);
     } catch (e) {
         debugger;
         console.error(e);

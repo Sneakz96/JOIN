@@ -48,8 +48,8 @@ async function loadDB() {
     await downloadFromServer();
     tasksInBacklogDB = JSON.parse(backend.getItem("backlogTasks")) || [];
     tasksOnBoardDB = JSON.parse(backend.getItem("onboardTasks")) || [];
-    console.log('backlog', tasksInBacklogDB);
-    console.log('onboard', tasksOnBoardDB);
+    //console.log('backlog', tasksInBacklogDB);
+    //console.log('onboard', tasksOnBoardDB);
 }
 
 /**

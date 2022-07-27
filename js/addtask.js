@@ -27,25 +27,34 @@ async function createTask() {
     let task = getTaskValues(title, category, description, dueDate, urgency, asiTo);
 
     if (noUserAdded(asiTo) || noTitle(title) || noDescription(description)) {
-        
-
-        let alert = document.getElementById('alert');
-        alert.classList.remove('d-none');
-        setInterval(() => {
-            alert.classList.add('d-none');
-        }, 2000 / 1);
-
+        alert();
     } else {
         addTaskToBacklog(task);
-        let success = document.getElementById('successAlert');
+        successAlert();
+    }
+}
+
+/**
+ * FUNCTION TO ALERT IF TASK GETS CREATED
+ */
+function successAlert() {
+    let success = document.getElementById('successAlert');
         success.classList.remove('d-none');
         setInterval(() => {
             success.classList.add('d-none');
         }, 2000 / 1);
-    }
 }
 
-
+/**
+ * FUNCTION TO ALERT IF THERE'S SOME MISSING
+ */
+function alert(){
+    let alert = document.getElementById('alert');
+    alert.classList.remove('d-none');
+    setInterval(() => {
+        alert.classList.add('d-none');
+    }, 2000 / 1);
+}
 
 
 
@@ -144,6 +153,14 @@ function addTeamImg(i) {
     hideMemberProfile(i);
 }
 
+function spliceTeamImg(i){
+    let receiver = document.getElementById('receivers');
+    assignTo.splice(team[i]);
+    receiver.innerHTML = '';
+    resetMemberProfiles();
+    showMemberProfile(i);
+}
+
 /**
  * FUNCTION TO RENDER TEAM
  */
@@ -159,6 +176,13 @@ async function renderTeam() {
  */
 function hideMemberProfile(i) {
     document.getElementById('member_' + i).parentNode.classList.add('d-none');
+}
+
+/**
+ * FUNCTION TO SHOW MEMBER PROFILES WHEN CHOOSED
+ */
+function showMemberProfile(i) {
+    document.getElementById('member_' + i).parentNode.classList.remove('d-none');
 }
 
 /**

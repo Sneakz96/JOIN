@@ -30,8 +30,8 @@ function createTask_TEMPLATE_LOGS(i, title, category, description) {
         <div class="detail-card">${description}</div>
     </div>
     <div class="icon-container">
-       <img onclick="addToDo(${i})" src="./icons/arrow.png" class="contact-card-icon">
-       <img onclick="deleteBacklogTask(${i})" src="./icons/trash.ico" class="contact-card-icon">
+       <img onclick="addToDo(${i})" src="./icons/arrow.png" class="contact-card-icon" title="Move task to board">
+       <img onclick="deleteBacklogTask(${i})" src="./icons/trash.ico" class="contact-card-icon" title="Delete task">
     </div>
  </div>`;
 }
@@ -63,14 +63,16 @@ function renderTeam_template(i) {
 
 
 function addTeamImg_template(i) {
-    return `<div class="receiver" id="">
+    return /*html*/ `
+    <div class="receiver" id="" onclick="spliceTeamImg(${i})">
     <img id="members_${i}" src="${assignTo[i]['img.src']}" class="profile-picture">
     </div>`;
 }
 
 function noTaskInfoTemplate(){
-    return `
+    return /*html*/ `
     <div class="emtpy-logs-info">
           <span class="emtpy-logs-infotext">Backlog is emtpy</span>
+          <span class="emtpy-logs-infotext">Please create a new task at AddTask-Section!</span>
        </div>`;
 }

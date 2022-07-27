@@ -15,9 +15,6 @@ async function addToDo(i) {
     renderBacklog();
 }
 
-
-    
-
 /**
  * FUNCTION FOR DELETING A BACKLOG TASK
  * @param {string} i - GIVE THE NUMBER WHICH TASK IS GOING TO GET DELETED
@@ -28,12 +25,6 @@ async function deleteBacklogTask(i) {
     
     renderBacklog();
 }
-/**let trash = document.getElementById('deleteAlert');
-    setTimeout(()=>{
-        trash.classList.add('d-none');
-    },3000/1)
-    trash.classList.remove('d-none'); 
-    */
 
 /**
  * FUNCTION FOR ADDING TO BACKLOG
