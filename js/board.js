@@ -260,10 +260,10 @@ function hideMoveIcon(id) {
  */
 async function deleteBoardTask(id) {
     let currentTask = tasksOnBoard.findIndex(obj => obj.id == id);
+    let deleteBoardTask = document.getElementById('deleteBoardTask');
     closeDetailView(id);
     tasksOnBoard.splice(currentTask, 1);
     await deleteUserOnBoardDB();
-    let deleteBoardTask = document.getElementById('deleteBoardTask');
-    deleteBoardTask.remove('d-none');
+    deleteBoardTask.classList.remove('d-none');
     renderBoard();
 }
