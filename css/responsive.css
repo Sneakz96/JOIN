@@ -276,7 +276,9 @@
         width: 80vw !important;
     }
 
-
+    .alert{
+        margin-left: 0 !important;
+    }
     
     .new-task {
         display: flex;
@@ -480,5 +482,8 @@
     }
     .alert{
         width: 90%;
+    }
+    .boardContent{
+        padding-top: 40px;
     }
 }

@@ -27,14 +27,27 @@ async function createTask() {
     let task = getTaskValues(title, category, description, dueDate, urgency, asiTo);
 
     if (noUserAdded(asiTo) || noTitle(title) || noDescription(description)) {
-        let success = document.getElementById('successAlert');
-    success.classList.add('d-none');
+        
+
         let alert = document.getElementById('alert');
         alert.classList.remove('d-none');
+        setInterval(() => {
+            alert.classList.add('d-none');
+        }, 2000 / 1);
+
     } else {
         addTaskToBacklog(task);
+        let success = document.getElementById('successAlert');
+        success.classList.remove('d-none');
+        setInterval(() => {
+            success.classList.add('d-none');
+        }, 2000 / 1);
     }
 }
+
+
+
+
 
 /**
  * FUNCTION TO GET VALUES AT TASK CREATION
@@ -134,7 +147,7 @@ function addTeamImg(i) {
 /**
  * FUNCTION TO RENDER TEAM
  */
- async function renderTeam() {
+async function renderTeam() {
     let renderedTeam = document.getElementById('rendered-team');
     for (let i = 0; i < team.length; i++) {
         renderedTeam.innerHTML += renderTeam_template(i);

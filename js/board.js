@@ -265,5 +265,8 @@ async function deleteBoardTask(id) {
     tasksOnBoard.splice(currentTask, 1);
     await deleteUserOnBoardDB();
     deleteBoardTask.classList.remove('d-none');
+    setInterval(() => {
+        deleteBoardTask.classList.add('d-none');
+    }, 3000 / 1)
     renderBoard();
 }

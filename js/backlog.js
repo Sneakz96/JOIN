@@ -3,14 +3,20 @@
  * @param {string} i - GIVE THE NUMBER WHICH TASK IS CHOOSEN
  */
 async function addToDo(i) {
-    await addUserOnBoardDB(i);
     let move = document.getElementById('moveAlert');
+    await addUserOnBoardDB(i);
     move.classList.remove('d-none');
+    setInterval(() => {
+        move.classList.add('d-none');
+    }, 3000 / 1)
     deleteBacklogTask(i);
     tasksInBacklog.splice(i, 1);
     await deleteUserBacklogDB();
     renderBacklog();
 }
+
+
+    
 
 /**
  * FUNCTION FOR DELETING A BACKLOG TASK
@@ -19,13 +25,15 @@ async function addToDo(i) {
 async function deleteBacklogTask(i) {
     tasksInBacklog.splice(i, 1);
     await deleteUserBacklogDB();
-    let trash = document.getElementById('deleteAlert');
-    setTimeout(()=>{
-        trash.classList.add('d-none');
-    },2000/1)
-    trash.classList.remove('d-none');
+    
     renderBacklog();
 }
+/**let trash = document.getElementById('deleteAlert');
+    setTimeout(()=>{
+        trash.classList.add('d-none');
+    },3000/1)
+    trash.classList.remove('d-none'); 
+    */
 
 /**
  * FUNCTION FOR ADDING TO BACKLOG
